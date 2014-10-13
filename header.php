@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<body style="background-color:AliceBlue"><br/>
 		<meta charset="utf-8">
 		<title>PickMe UCSC Job Seekers' Portal</title>
 
@@ -37,11 +38,14 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-
+				<a class="brand" href="home.php"><img src="images/logo.png" height="35"/></a>
 				<h3><a class="brand" href="home.php"><?php _e('PickMe'); ?></a></h3>
 				<div class="nav-collapse">
 					<ul class="nav">
 						<li><a href="home.php"><?php _e('Home'); ?></a></li>
+						<li><a href="about_us.php"><?php _e('About Us'); ?></a></li>
+						<li><a href="resources.php"><?php _e('Resources'); ?></a></li>
+						<li><a href="contact_us.php"><?php _e('Contact Us'); ?></a></li>
                                                 <li><a href="protected.php"><?php _e('Test Page'); ?></a></li>
                                                 <?php  if(isset($_SESSION['pickme']['user_level']) && in_array(1, $_SESSION['pickme']['user_level'])) { ?>
 						<li><a href="admin/"><?php _e('Admin panel'); ?></a></li>
@@ -69,6 +73,7 @@
 		<?php } else { ?>
 		<ul class="nav pull-right">
 			<li><a href="login.php" class="signup-link"><em><?php _e('Have an account?'); ?></em> <strong><?php _e('Sign in!'); ?></strong></a></li>
+			<li><a href="sign_up.php" class="signup-link"><em><?php _e('New to Pickme?'); ?></em> <strong><?php _e('Join today!'); ?></strong></a></li>
 		</ul>
 		<?php } ?>
 				</div>

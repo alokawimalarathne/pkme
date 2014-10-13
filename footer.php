@@ -5,7 +5,7 @@
 	</div> <!-- /.row -->
 	<footer>
 		<hr>
-		&copy; 2014 Solution by Group 24
+		<center>&copy; 2014 Solution by Group 24</center>
 	</footer>
 
 </div> <!-- /.container -->
