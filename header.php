@@ -73,7 +73,7 @@
 		<?php } else { ?>
 		<ul class="nav pull-right">
 			<li><a href="login.php" class="signup-link"><em><?php _e('Have an account?'); ?></em> <strong><?php _e('Sign in!'); ?></strong></a></li>
-			<li><a href="sign_up.php" class="signup-link"><em><?php _e('New to Pickme?'); ?></em> <strong><?php _e('Join today!'); ?></strong></a></li>
+			<li><a href="login.php" class="signup-link"><em><?php _e('New to Pickme?'); ?></em> <strong><?php _e('Join today!'); ?></strong></a></li>
 		</ul>
 		<?php } ?>
 				</div>

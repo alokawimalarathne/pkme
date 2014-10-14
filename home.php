@@ -36,9 +36,12 @@
 					<?php } ?>
 				</div>
 			</div>
+          </div>
 			<hr>
+                        
 <div class="features">
 	<div class="row">
+            
 		
 	</div>
 

@@ -13,6 +13,7 @@
 			<label for="usernamemail"><?php _e('Username or Email Address'); ?></label>
 				<div class="control">
 					<input id="usernamemail" name="usernamemail" type="text"/>
+                                        <a href="login.php"></a>
 				</div>
 			</div>
 			<input type="submit" class="hidden" name="forgotten">
@@ -52,7 +53,10 @@
 			<input type="checkbox" id="remember" name="remember"/><span><?php _e('Stay signed in'); ?></span>
 		</label>
 
-		<p class="signup"><a href="sign_up.php"><?php _e('New to Pickme? <strong>Join today!</strong>'); ?></a></p>
+		<p class="signup"><?php _e('New to Pickme? <strong>Join today!</strong>'); ?></a></p>
+                <p class="signup"><a href="studentSignup.php"><?php _e('Join as student'); ?></a></p>
+                <p class="signup"><a href="staffSignup.php"><?php _e('Join as staff'); ?></a></p>
+                <p class="signup"><a href="companySignup.php"><?php _e('Join as company'); ?></a></p>
 
 		<?php if ( !empty($pickme_integration->enabledMethods) ) : ?>
 
