@@ -1,10 +1,11 @@
 <?php include_once('header.php'); ?>
 
 	<div class="row">
+            
             <div class="span6">
-                Registered Users goes here....
+                <strong>Welcome to PICKME</strong>
 				<br/><br/><br/>
-				<img src="images/slide1.jpg"/>
+				<img src="images/slide1.jpg" height="300"/ >
             </div>
             <div class="span6">
                 <?php if(isset($_SESSION['pickme']['username'])) {  ?>
@@ -35,7 +36,27 @@
 
 					<?php } ?>
 				</div>
+                <br/><br/><br/><br/><br/><br/><br/>
+                	<center><div class="demo features">
+		<div class="row">
+                    <strong>Advanced Search....</strong>
+                            
+			<br/><br/>
+			<div class="controls">
+				<div class="input-prepend">
+					<input class="span2" style="margin:0" id="username-search" type="text" name="searchUsers" onkeyup="searchSuggest(event);" placeholder="<?php _e('Search'); ?>">
+					<span class="add-on">
+					<label for="username-search"><a href="#" data-rel="tooltip-bottom" title="<?php _e('Search by Name'); ?>"><i class="icon-search"></i></a></label>
+					</span>
+				</div>
+			</div>	
+		</div></center>
+		<br/><hr><br/>
+		
+	</div>
+                
 			</div>
+            
           </div>
 			<hr>
                         
@@ -47,22 +68,7 @@
 
 	<br><br><hr>
 
-	<div class="demo features">
-		<div class="row">
-			Advanced Search....
-			<br/><br/>
-			<div class="controls">
-				<div class="input-prepend">
-					<input class="span2" style="margin:0" id="username-search" type="text" name="searchUsers" onkeyup="searchSuggest(event);" placeholder="<?php _e('Search'); ?>">
-					<span class="add-on">
-					<label for="username-search"><a href="#" data-rel="tooltip-bottom" title="<?php _e('Search by Name'); ?>"><i class="icon-search"></i></a></label>
-					</span>
-				</div>
-			</div>	
-		</div>
-		<br/><hr><br/>
-		
-	</div>
+
 
 
 <?php include_once('footer.php'); ?>
