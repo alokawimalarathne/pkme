@@ -1,10 +1,11 @@
 <?php include_once('header.php'); ?>
 
 	<div class="row">
+            
             <div class="span6">
-                Registered Users goes here....
+                <strong>Welcome to PICKME</strong>
 				<br/><br/><br/>
-				<img src="images/slide1.jpg"/>
+				<img src="images/slide1.jpg" height="300"/ >
             </div>
             <div class="span6">
                 <?php if(isset($_SESSION['pickme']['username'])) {  ?>
@@ -35,18 +36,11 @@
 
 					<?php } ?>
 				</div>
-			</div>
-			<hr>
-<div class="features">
-	<div class="row">
-		
-	</div>
-
-	<br><br><hr>
-
-	<div class="demo features">
+                <br/><br/><br/><br/><br/><br/><br/>
+                	<center><div class="demo features">
 		<div class="row">
-			Advanced Search....
+                    <strong>Advanced Search....</strong>
+                            
 			<br/><br/>
 			<div class="controls">
 				<div class="input-prepend">
@@ -56,10 +50,25 @@
 					</span>
 				</div>
 			</div>	
-		</div>
+		</div></center>
 		<br/><hr><br/>
 		
 	</div>
+                
+			</div>
+            
+          </div>
+			<hr>
+                        
+<div class="features">
+	<div class="row">
+            
+		
+	</div>
+
+	<br><br><hr>
+
+
 
 
 <?php include_once('footer.php'); ?>
