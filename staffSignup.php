@@ -44,6 +44,12 @@
 						<input type="email" class="input-xlarge" id="email" name="email" value="<?php echo $signUp->getPost('email'); ?>" placeholder="<?php _e('Email'); ?>">
 					</div>
 				</div>
+                                <div class="control-group">
+                                        <label class="control-label" for="email_confirm"><?php _e('Re-enter Email'); ?></label>				
+                                        <div class="controls">
+                                                <input type="email" class="input-xlarge" id="email_confirm" name="email_confirm" value="<?php echo $signUp->getPost('Confirm your email'); ?>" placeholder="<?php _e('Confirm your Email'); ?>">
+                                        </div>
+                                </div>
 
 				<div class="control-group">
 					<?php $signUp->profileSignUpFields(); ?>
@@ -53,10 +59,10 @@
 					<?php $signUp->doCaptcha(true); ?>
 				</div>
 
-			</fieldset>
+                        </fieldset><center>
 			<input type="hidden" name="token" value="<?php echo $_SESSION['pickme']['token']; ?>"/>
 			<button type="submit" class="btn btn-primary"><?php _e('Create my account'); ?></button>
-                        <button class="btn">Reset</button>
+                        <button class="btn">Reset</button></center>
 		</form>
 	</div>
 	<div class="span6">

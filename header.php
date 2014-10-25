@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<body style="background-color:AliceBlue"><br/>
 		<meta charset="utf-8">
 		<title>PickMe UCSC Job Seekers' Portal</title>
 
@@ -22,13 +21,12 @@
 		<link href="assets/css/pickme.css" rel="stylesheet">
 
 	</head>
-
-	<body>
+	<body background="images/5259_aurora.jpg"/> 
 
 <!-- Navigation
 ================================================== -->
 
-	<div class="navbar navbar-fixed-top">
+	<div class="navbar navbar-fixed-top" >
 		<div class="navbar">
 			<div class="navbar-inner">
 				<div class="container">

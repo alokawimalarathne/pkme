@@ -20,7 +20,6 @@
 		<?php if ( !$profile->guest ) : ?>
 			<li class="active"><a href="#usr-control" data-toggle="tab"><i class="icon-cog"></i> <?php _e('General'); ?></a></li>
 		<?php endif; ?>
-
 		<?php $profile->generateProfileTabs($profile->guest); ?>
 		<?php if (!$profile->guest && !$profile->denyAccessLogs()) : ?>
 		<li><a href="#usr-access-logs" data-toggle="tab"><i class="icon-list-alt"></i> <?php _e('Access logs'); ?></a></li>
@@ -39,12 +38,7 @@
 		<div class="tab-pane fade in active" id="usr-control">
 			<fieldset>
 				<legend><?php _e('General'); ?></legend>
-				<div class="control-group">
-					<label class="control-label" for="CurrentPass"><?php _e('Current password'); ?></label>
-					<div class="controls">
-						<input type="password" autocomplete="off" class="input-xlarge" id="CurrentPass" name="CurrentPass">
-					</div>
-				</div>
+
 				<div class="control-group">
 					<label class="control-label" for="name"><?php _e('First Name'); ?></label>
 					<div class="controls">
@@ -63,16 +57,23 @@
 						<input type="email" class="input-xlarge" id="email" name="email" value="<?php echo $profile->getField('email'); ?>">
 					</div>
 				</div>
+                                <div class="control-group">
+					<label class="control-label" for="CurrentPass"><?php _e('Current password'); ?></label>
+					<div class="controls">
+						<input type="password" autocomplete="off" class="input-xlarge" id="CurrentPass" name="CurrentPass" >
+					</div>
+				</div>
 				<div class="control-group">
 					<label class="control-label" for="password"><?php _e('New password'); ?></label>
 					<div class="controls">
 						<input type="password" autocomplete="off" class="input-xlarge" id="password" name="password" placeholder="<?php _e('Leave blank for no change'); ?>">
 					</div>
 				</div>
+
 				<div class="control-group">
 					<label class="control-label" for="confirm"><?php _e('New password again'); ?></label>
 					<div class="controls">
-						<input type="password" autocomplete="off" class="input-xlarge" id="confirm" name="confirm">
+						<input type="password" autocomplete="off" class="input-xlarge" id="confirm" name="confirm" placeholder="<?php _e('Leave blank for no change'); ?>">
 					</div>
 				</div>
 

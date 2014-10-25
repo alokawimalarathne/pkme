@@ -30,7 +30,7 @@
 
 	</head>
 
-	<body>
+	<body background="images/5259_aurora.jpg"/>
 
 <!-- Navigation
 ================================================== -->
