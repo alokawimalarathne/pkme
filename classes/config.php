@@ -5,8 +5,8 @@
 // 
 
 $host = "localhost"; // 
-$dbName = "pickme2"; // Database name
+$dbName = "pk"; // Database name
 $dbUser = "root"; // Username
-$dbPass = ""; // Password
+$dbPass = "isanka"; // Password
 
 ?>
