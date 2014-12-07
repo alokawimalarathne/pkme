@@ -21,7 +21,7 @@
 		<link href="assets/css/pickme.css" rel="stylesheet">
 
 	</head>
-	<body background="images/5259_aurora.jpg"/> 
+	<body> 
 
 <!-- Navigation
 ================================================== -->
