@@ -53,13 +53,14 @@
           <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required=""></textarea>
           <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span></div>
       </div>
-         <div class="form-group">
-             <label for="InputMessage"></label>
-               <div class="input-group">
-                   <input type="button" name="submit" id="submit" value="<?php _e('cancel'); ?>" class="btn btn-info" /> &nbsp;
-                   <input type="submit" name="submit" id="submit" value="<?php _e('submit'); ?>" class="btn btn-info" />
-      
-   </div> </div>
+        <div class="form-group">
+            <label for="InputMessage"></label>
+            <div class="input-group">
+                <input type="button" name="submit" id="submit" value="<?php _e('cancel'); ?>" class="btn btn-info" /> &nbsp;
+                <input type="submit" name="submit" id="submit" value="<?php _e('submit'); ?>" class="btn btn-info" />
+
+            </div> 
+        </div>
     </div>
   </form>
                

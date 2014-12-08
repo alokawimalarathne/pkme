@@ -43,7 +43,74 @@ $('#forgot-form').bind('hidden', function () {
     $('#username').focus();
 });
 
-$("#sign-up-form").validate({
+$("#com-sign-up-form").validate({
+	rules: {
+		name: "required",
+		username: {
+			required: true,
+			minlength: 2,
+			remote: {
+				url: "classes/signup.class.php",
+				type: "post",
+				data: { checkusername: "1" }
+			}
+		},
+		password: {
+			required: true,
+			minlength: 5
+		},
+		validation: {
+			required: true
+		},
+		password_confirm: {
+			required: true,
+			minlength: 5,
+			equalTo: "#password"
+		},
+		email: {
+			required: true,
+			email: true,
+			remote: {
+				url: "classes/signup.class.php",
+				type: "post",
+				data: { checkemail: "1" }
+			}
+		}
+	},
+	messages: {
+		name: "I know you've got one.",
+		username: {
+			required: "You need a username!",
+			minlength: $.format("Enter at least {0} characters"),
+			remote: jQuery.format("Username has been taken.")
+		},
+		password: {
+			required: "Create a password",
+			minlength: $.format("Enter at least {0} characters")
+		},
+		password_confirm: {
+			required: "Confirm your password",
+			minlength: $.format("Enter at least {0} characters"),
+			equalTo: "Your passwords do not match."
+		},
+		email: {
+			required: "What's your email address?",
+			email: "Doesn't look like a valid email :(",
+			remote: jQuery.format("Email address is in use.")
+		}
+   },
+	errorClass: 'error',
+	validClass: 'success',
+	errorElement: 'p',
+	highlight: function(element, errorClass, validClass) {
+		$(element).parent('div').parent('div').removeClass(validClass).addClass(errorClass);
+	},
+	unhighlight: function(element, errorClass, validClass) {
+		$(element).parent('div').parent('div').removeClass(errorClass).addClass(validClass);
+	},
+});
+
+$("#st-sign-up-form").validate({
 	rules: {
 		name: "required",
 		username: {
@@ -169,4 +236,48 @@ $(function(){
     $('a[data-toggle="tab"], a[data-toggle="pill"]').on('shown', function () {
         window.location.hash = '/' + $(this).attr('href').replace('#', '');
     });
+});
+
+
+//$(function() {
+//    $('#studentregsubmit').click(function(e) {
+//        console.log($('#st-sign-up-form').serialize());
+//         
+//        e.preventDefault();
+//        $.ajax({
+//            url: "studentSignup.php", //this is the submit URL
+//            type: 'POST', //or POST
+//            data: $('#st-sign-up-form').serialize(),
+//            success: function(data) {
+//               // console.log(data);
+//               // return false;
+//            }
+//        });
+//    });
+//});
+
+
+
+$(function() {
+    $('#resetbutton').click(function() { 
+        $(':input', '#st-sign-up-form' )
+            .not(':button, :submit, :reset, :hidden')
+            .val('')
+            .removeAttr('checked')
+            .removeAttr('selected');
+    return false;
+    });
+    
+});
+
+$(function() {
+    $('#resetbutton').click(function() { 
+        $(':input','#com-sign-up-form' )
+            .not(':button, :submit, :reset, :hidden')
+            .val('')
+            .removeAttr('checked')
+            .removeAttr('selected');
+    return false;
+    });
+    
 });

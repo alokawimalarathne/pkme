@@ -65,13 +65,7 @@
                         <button class="btn">Reset</button></center>
 		</form>
 	</div>
-	<div class="span6">
-		<h1><?php _e('You are going to register as a staff member'); ?></h1>
-                <a class="brand" href="home.php"><img src="images/staff.jpg" width="550" height="150"/></a>
-		<p><?php _e(' '); ?></p>
-		<h2><?php _e(''); ?></h2>
-		<p><?php _e(''); ?></p>
-	</div>
+	
 </div>
 
 <?php include_once('footer.php'); ?><?php

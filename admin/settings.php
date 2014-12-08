@@ -68,7 +68,7 @@ $settings = new Settings();
 						Emails - Activate
 
 				- - - - - - - - - - - - - - - - - -->
-                                <div class="tab-pane fade" id="emails-activate">
+                                    <div class="tab-pane fade" id="emails-activate">
                                     <?php include_once('page/emails-activate.php'); ?>
                                 </div>
 
@@ -119,12 +119,14 @@ $settings = new Settings();
 				
 
 			</div>
-			<div class="span12">
+                    <div class="divouter">
+			<div class="col-md-12">
 				<div class="form-actions">
 					<button type="submit" data-loading-text="<?php _e('saving...'); ?>" data-complete-text="<?php _e('Changes saved'); ?>" name="save-settings" class="btn btn-primary" id="save-settings"><?php _e('Save changes'); ?></button>
 				</div>
 			</div>
+                    </div>
 		</form>
-	  </div>
+	  </div >
 
 <?php include_once('footer.php'); ?>

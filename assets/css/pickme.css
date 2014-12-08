@@ -269,19 +269,20 @@ p.signup { margin: 2em }
 }
 .sub-joinus{
     height: 75px;
-border-bottom: 1px solid #ddd;
-border-left: 1px solid #ddd;
-border-right: 1px solid #ddd;
-padding-top: 20px;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    padding-top: 20px;
+    text-align: center;
 }
 .divouter{
     margin-top: 25px;
-}
+}   
 .tab-pane{
     min-height: 300px;
     border-left: 1px solid #ddd;
-border-right: 1px solid #ddd;
-border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 .username{
     min-width: 205px;
@@ -289,10 +290,30 @@ border-bottom: 1px solid #ddd;
 .randompro{
     min-height: 485px;
     border-left: 1px solid #ddd;
-border-right: 1px solid #ddd;
-border-bottom: 1px solid #ddd;
-border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
 }
 .homesearch{
     min-height: 35px;
+}
+.modal-content {
+    padding: 20px;
+}
+.alert-block{
+    max-width: 400px;
+margin: auto;
+padding-left: 0;
+color: red;
+}
+#denied,
+#emails-welcome,
+#emails-activate,
+#emails-forgot,
+#emails-add-user,
+#emails-acct-update,
+#user-profiles,
+#integration,
+#general-options{
+    padding-left: 50px;
 }

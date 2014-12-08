@@ -266,10 +266,11 @@ class SignUp extends Generic {
 			$_SESSION['pickme']['gravatar'] = parent::get_gravatar($this->settings['email'], true, 26);
 
 			/* Create their account */
-			$sql = "INSERT INTO login_users (user_level, name, lname, email, username, password)
-						VALUES (:user_level, :name, :lname, :email, :username, :password);";
+			$sql = "INSERT INTO login_users (user_level, registered_number, name, lname, email, username, password)
+                                                    VALUES (:user_level, :registered_number, :name, :lname, :email, :username, :password);";
 			$params = array(
 				':user_level' => parent::getOption('default-level'),
+                                ':registered_number' => $this->settings['registered_number'],
 				':name'       => $this->settings['name'],
 				':lname'       => $this->settings['lname'],
 				':email'      => $this->settings['email'],

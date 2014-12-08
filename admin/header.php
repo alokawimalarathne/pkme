@@ -3,19 +3,21 @@
 <?php include_once(dirname(dirname(__FILE__)) . '/classes/translate.class.php'); ?>
 <?php include_once(dirname(__FILE__) . '/classes/functions.php'); ?>
 
-<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>PickMe UCSC Job Seekers' Portal</title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>PickMe UCSC Job Seekers' Portal</title>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="PickMe UCSC Job Seekers' Portal">
-		
-		<!-- HTML5 shim, for IE6-8 support of HTML elements -->
-		<!--[if lt IE 9]>
-			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="PickMe UCSC Job Seekers' Portal">		
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
 		<!-- styles -->
 		<link href="../assets/css/bootstrap.min.css" rel="stylesheet">
@@ -24,32 +26,30 @@
 		<link href="assets/css/datepicker.css" rel="stylesheet">
 		<link href="assets/js/chosen/chosen.css" rel="stylesheet">
 		<link href="assets/css/prettify.css" rel="stylesheet">
+               
 
 		<!-- Added library to header in order to load reports -->
 		<script src="assets/js/jquery.min.js"></script>
 
 	</head>
 
-	<body background="images/5259_aurora.jpg"/>
+	<body/>
 
 <!-- Navigation
 ================================================== -->
 
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar">
-			<div class="navbar-inner">
-				<div class="container">
-
-				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</a>
-
-				<h3><a class="brand" href="home.php">PickMe</a></h3>
-				<div class="nav-collapse">
-					<ul class="nav" id="findme">
-						<li><a href="../home.php"><?php _e('Home'); ?></a></li>
+	<div class="navbar navbar-fixed-top" >
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <div class="logo">
+                            <a class="imagelogo" href="./">
+                                <img src="../images/logo.png" />
+                            </a>
+                        </div>  
+                         <div class="nav-collapse">
+                            <ul class="nav nav-pills col-md-8">
+				<li  role="presentation" class="active"><a href="home.php"><?php _e('HOME'); ?></a></li>
 						<li><a href="../protected.php"><?php _e('Secure page'); ?></a></li>
 						<li><a href="index.php"><?php _e('Admin panel'); ?></a></li>
 					</ul>
@@ -82,6 +82,6 @@
 <!-- Main content
 ================================================== -->
 		<div class="container">
-			<div class="row">
+			<div class="">
 
-				<div class="span12">
+				<div class="page">
