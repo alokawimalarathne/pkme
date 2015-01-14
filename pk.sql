@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 09, 2014 at 02:58 AM
+-- Generation Time: Jan 14, 2015 at 10:32 AM
 -- Server version: 5.5.40-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.5
 
@@ -208,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `login_timestamps` (
   `user_id` int(11) NOT NULL,
   `ip` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `login_timestamps`
@@ -245,7 +245,8 @@ INSERT INTO `login_timestamps` (`id`, `user_id`, `ip`, `timestamp`) VALUES
 (28, 1, '127.0.0.1', '2014-12-08 16:41:25'),
 (29, 1, '127.0.0.1', '2014-12-08 17:16:36'),
 (30, 1, '127.0.0.1', '2014-12-08 17:16:55'),
-(31, 1, '127.0.0.1', '2014-12-08 17:17:27');
+(31, 1, '127.0.0.1', '2014-12-08 17:17:27'),
+(32, 1, '127.0.0.1', '2015-01-12 06:01:31');
 
 -- --------------------------------------------------------
 
@@ -284,7 +285,7 @@ INSERT INTO `login_users` (`user_id`, `registered_number`, `user_level`, `restri
 (14, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'sd21212', '11123123', 'sdadasda', 'asdasd@mail.com', 'efe6398127928f1b2e9ef3207fb82663', '2014-12-08 15:23:07'),
 (15, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'klansldnals', 'dasdasd', 'sdasdasda', 'adnasldad@mail.com', 'efe6398127928f1b2e9ef3207fb82663', '2014-12-08 15:32:51'),
 (16, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'isankast', 'isankast', 'isanka', 'isankadn@yahoo.com', 'efe6398127928f1b2e9ef3207fb82663', '2014-12-08 16:36:45'),
-(17, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'asanka', 'asanka', 'dada', 'asnak@mail.com', 'efe6398127928f1b2e9ef3207fb82663', '2014-12-08 17:18:13'),
+(17, NULL, 'a:1:{i:0;s:1:"2";}', 0, 'asanka', 'asanka', 'dada', 'asnak@mail.com', 'efe6398127928f1b2e9ef3207fb82663', '2014-12-08 17:18:13'),
 (18, 'isankacom', 'a:1:{i:0;s:1:"3";}', 0, 'isankacom', 'isankacom', NULL, 'isankacom@mail.com', '560111e44bde4559226b5420bf1bbdf4', '2014-12-08 17:38:43');
 
 --
@@ -372,7 +373,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
 -- AUTO_INCREMENT for table `login_timestamps`
 --
 ALTER TABLE `login_timestamps`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `login_users`
 --
