@@ -248,9 +248,18 @@ class SignUp extends Generic {
 
 	// Once everything's filled out
 	private function register() {
-
+            //print_r(parent::getOption('default-level')); die;
 		if(empty($this->error)) {
-
+                        if(isset($_GET['level'])){
+                            //$level = $_GET['level'];
+                            if($_GET['level'] == 3){
+                                $level = parent::getOption('default-level');
+                            }  else {
+                                $level = "a:1:{i:0;s:1:\"".$_GET['level']."\";}"; 
+                            }
+                        }else{
+                            $level = parent::getOption("default-level");   
+                        } 
 			/* See if the admin requires new users to activate */
 			$requireActivate = parent::getOption('user-activation-enable');
 
@@ -258,7 +267,8 @@ class SignUp extends Generic {
 			$_SESSION['pickme']['username'] = $this->settings['username'];
 
 			/* Apply default user_level */
-			$_SESSION['pickme']['user_level'] = unserialize(parent::getOption('default-level'));
+			//$_SESSION['pickme']['user_level'] = unserialize(parent::getOption('default-level'));
+                        $_SESSION['pickme']['user_level'] = unserialize($level);
 
 			if ( $requireActivate )
 				$_SESSION['pickme']['activate'] = 1;
@@ -269,7 +279,8 @@ class SignUp extends Generic {
 			$sql = "INSERT INTO login_users (user_level, registered_number, name, lname, email, username, password)
                                                     VALUES (:user_level, :registered_number, :name, :lname, :email, :username, :password);";
 			$params = array(
-				':user_level' => parent::getOption('default-level'),
+				//':user_level' => parent::getOption('default-level'),
+                                ':user_level' => $level,
                                 ':registered_number' => $this->settings['registered_number'],
 				':name'       => $this->settings['name'],
 				':lname'       => $this->settings['lname'],

@@ -6,7 +6,7 @@ include_once ('classes/generic.class.php');?>
 
 <div class="row">   
     <div class="divouter">
-        <form class="form-horizontal" method="post" action="studentSignup.php" id="st-sign-up-form">
+        <form class="form-horizontal" method="post" action="studentSignup.php?level=3" id="st-sign-up-form">
             <fieldset>
                 <div class="form-group">
                     <label for="name" class="col-sm-4 control-label"><?php _e('First name'); ?></label>

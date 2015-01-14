@@ -3,7 +3,7 @@
 
 <div class="row">
 	 <div class="divouter">
-            <form class="form-horizontal" method="post" action="companySignup.php" id="sign-up-form">
+            <form class="form-horizontal" method="post" action="companySignup.php?level=4" id="sign-up-form">
 			<fieldset>
 				<div class="form-group">
 					<label class="col-sm-4 control-label" for="name"><?php _e('company name'); ?></label>
