@@ -75,7 +75,7 @@
 
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#studentreg" data-whatever="@mdo">Student</button>
                                 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#companyreg" data-whatever="@fat">Company</button>
-                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="@twbootstrap">Staff</button>
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#staffreg" data-whatever="@twbootstrap">Staff</button>
 
 
                                 <div class="modal fade" id="studentreg" tabindex="-1" role="" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -237,7 +237,86 @@
                                         </div>
                                     </div>
                                 </div>
+ <!-- ============================================== --> 
+                                <div class="modal fade" id="staffreg" tabindex="-1" role="" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                <h4 class="modal-title" id="exampleModalLabel">Register as staff</h4>
+                                            </div>
+                                            <div class="divouter">
+                                                <form class="form-horizontal" method="post" action="staffSignup.php" id="sign-up-form">
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-4 control-label" for="name"><?php _e('company name'); ?></label>
+                                                            <div class="col-sm-4">
+                                                                <input type="text" class="input-xlarge" id="name" name="name" value="<?php echo $signUp->getPost('name'); ?>" placeholder="<?php _e('Company name'); ?>">
+                                                            </div>
+                                                        </div>
 
+
+                                                        <div class="form-group" id="usrCheck">
+                                                            <label class="col-sm-4 control-label" for="username"><?php _e('Username'); ?></label>				
+                                                            <div class="col-sm-4">
+                                                                <input type="text" class="input-xlarge" id="username" name="username" maxlength="15" value="<?php echo $signUp->getPost('username'); ?>" placeholder="<?php _e('Choose your username'); ?>">
+                                                            </div>
+                                                        </div> 
+
+                                                        <div class="form-group" id="usrCheck">
+                                                            <label class="col-sm-4 control-label" for="Registered_number"><?php _e('Registered number'); ?></label>				
+                                                            <div class="col-sm-4">
+                                                                <input type="text" class="input-xlarge" id="Registered_number" name="Registered_number" maxlength="15" value="<?php echo $signUp->getPost('Registered_number'); ?>" placeholder="<?php _e('Enter registered number'); ?>">
+                                                            </div>        
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="col-sm-4 control-label" for="password"><?php _e('Password'); ?></label>				
+                                                            <div class="col-sm-4">
+                                                                <input type="password" class="input-xlarge" id="password" name="password" placeholder="<?php _e('Create a password'); ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-4 control-label" for="password_confirm"><?php _e('re-enter Password'); ?></label>				
+                                                            <div class="col-sm-4">
+                                                                <input type="password" class="input-xlarge" id="password_confirm" name="password_confirm" placeholder="<?php _e('Confirm your password'); ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-4 control-label" for="email"><?php _e('Email'); ?></label>				
+                                                            <div class="col-sm-4">
+                                                                <input type="email" class="input-xlarge" id="email" name="email" value="<?php echo $signUp->getPost('email'); ?>" placeholder="<?php _e('Email'); ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-4 control-label" for="email_confirm"><?php _e('Re-enter Email'); ?></label>				
+                                                            <div class="col-sm-4">
+                                                                <input type="email" class="input-xlarge" id="email_confirm" name="email_confirm" value="<?php echo $signUp->getPost('Confirm your email'); ?>" placeholder="<?php _e('Confirm your Email'); ?>">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+    <?php $signUp->profileSignUpFields(); ?>
+                                                        </div>
+
+                                                        <div class="form-group">
+    <?php $signUp->doCaptcha(true); ?>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-4 control-label"  for="InputMessage"></label>
+                                                            <div class="col-sm-5">
+                                                                <input type="hidden" name="token" value="<?php echo $_SESSION['pickme']['token']; ?>"/>
+                                                                <button type="submit" id="studentregsubmit" class="btn btn-primary"><?php _e('Create account'); ?></button>
+                                                                <button class="btn" id="resetbutton">Reset</button>
+
+                                                            </div> 
+                                                        </div>
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
 
