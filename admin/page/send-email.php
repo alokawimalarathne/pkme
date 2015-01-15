@@ -1,5 +1,8 @@
-<?php include_once('admin.php'); ?>
-<?php include_once('../classes/send_email.class.php'); ?>
+<?php 
+include_once('admin.php'); 
+include_once('../classes/send_email.class.php'); 
+include_once(dirname(dirname(dirname(__FILE__))) . '/classes/translate.class.php');
+?>
 <fieldset>
 	<form method="post" class="form form-horizontal" action="page/send-email.php" id="send-email-form">
 		<legend><?php _e('Send email'); ?></legend>

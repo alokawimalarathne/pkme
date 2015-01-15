@@ -1,4 +1,6 @@
-<?php include_once('admin.php'); ?>
+<?php include_once('admin.php'); 
+include_once(dirname(dirname(dirname(__FILE__))) . '/classes/translate.class.php');
+?>
 <div id="message">
 	<script src="assets/js/jquery.flot.min.js"></script>
 	<script src="assets/js/jquery.flot.resize.min.js"></script>

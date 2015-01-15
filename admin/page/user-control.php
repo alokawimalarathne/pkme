@@ -1,4 +1,8 @@
-<?php include_once('admin.php'); ?>
+<?php 
+include_once('admin.php'); 
+//include_once('../../classes/translate.class.php');
+include_once(dirname(dirname(dirname(__FILE__))) . '/classes/translate.class.php');
+?>
 
 <fieldset>
 

@@ -1,4 +1,6 @@
-<?php include_once('admin.php'); ?>
+<?php include_once('admin.php'); 
+include_once(dirname(dirname(dirname(__FILE__))) . '/classes/translate.class.php');
+?>
 
 <fieldset>
 	<legend><?php _e('Modify levels'); ?>

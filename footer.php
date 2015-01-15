@@ -12,6 +12,7 @@
 
 <!-- javascript -->	
 <script src="assets/js/jquery.min.js"></script>
+
 <script src="assets/js/bootstrap-transition.js"></script>
 <script src="assets/js/bootstrap-collapse.js"></script>
 <script src="assets/js/bootstrap-modal.js"></script>

@@ -29,7 +29,7 @@
                
 
 		<!-- Added library to header in order to load reports -->
-		<script src="assets/js/jquery.min.js"></script>
+		
 
 	</head>
 
