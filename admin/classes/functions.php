@@ -232,6 +232,12 @@ function pagination($table, $args = '',$total_pages = '') {
 		if (!empty($_SESSION['pickme']['users_page_limit']))
 			$limit = $_SESSION['pickme']['users_page_limit'];
 	endif;
+        
+        if($table == 'articles') :
+		$hash = '#articles';
+		if (!empty($_SESSION['pickme']['users_page_limit']))
+			$limit = $_SESSION['pickme']['users_page_limit'];
+	endif;
 
 	/** The page number to retrieve. */
 	$page = (!empty($_GET['page']) && $_GET['page'] > 0) ? (int)$_GET['page'] : 1;
@@ -325,3 +331,70 @@ function pagination($table, $args = '',$total_pages = '') {
 	return $paginate;
 
 }
+
+
+function articles() {
+    
+   $pagination = pagination('articles');
+
+	global $sql, $query, $generic;
+
+	/* Check that at least one row was returned */
+	$stmt = $generic->query($sql);
+	if($stmt->rowCount() < 1) return false;
+
+	/* Manage levels */
+	?><table class='table'>
+			<thead>
+				<tr>
+					<th><?php echo _('Name'); ?></th>
+					<th><?php echo _('Category'); ?></th>
+					<th><?php echo _('Content'); ?></th>
+					<th><?php echo _('Published'); ?></th>
+				</tr>
+			</thead>
+			<tbody>
+
+			<?php
+
+				while($row = $stmt->fetch(PDO::FETCH_ASSOC)) :
+                                   
+				/* Count of users in this level */
+//				$lid = $row['id'];
+//				$params = array( ':user_level' => "%:\"$lid\";%" );
+//				$query = $generic->query("SELECT COUNT(user_level) as num FROM login_users WHERE user_level LIKE :user_level", $params);
+//				$count = $query->fetch(PDO::FETCH_ASSOC);
+//				$count = $count['num'];
+//
+//				/* Admin level? */
+//				$admin = ($row['level_level'] == 1)
+//						  ? ' <span class="label label-important">*</span>'
+//						  : '';
+//
+//				/* Disabled level? */
+//				$status = !empty($row['level_disabled'])
+//						  ? ' <span class="label label-warning">'._('Disabled').'</span>'
+//						  : '';
+			
+                                    $limitedcontent =  string_limit_words($row['content'], 15);
+                                    ?>
+
+				<tr>
+					<td><a href="levels.php?lid="><?php echo $row['name']; ?></a></td>
+					<td width="5%"><?php echo $row['category']; ?></td>
+					<td width="60%"><?php echo $limitedcontent." ..."; ?></td>
+					<td width="5%"><?php echo $row['published']; ?></a></td>
+				</tr>
+
+			<?php endwhile; ?>
+			</tbody>
+			</table>
+
+	<?php echo $pagination;
+}
+
+function string_limit_words($string, $word_limit) { 
+    $words = explode(' ', $string);   // echo '<pre>';print_r(array_slice($words, 0, $word_limit));
+    return implode(' ', array_slice($words, 0, $word_limit));
+}
+

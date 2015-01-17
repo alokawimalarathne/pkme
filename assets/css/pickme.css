@@ -317,3 +317,17 @@ color: red;
 #general-options{
     padding-left: 50px;
 }
+.hide-adduser {
+    display: none;
+    padding: 10px;
+}
+legend {
+    height: 45px;
+padding: 5px;
+}
+.buttonsubmit{
+    margin-top: 10px;
+}
+.tabpane{
+    padding: 10px;
+}

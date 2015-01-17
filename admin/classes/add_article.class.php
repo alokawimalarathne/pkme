@@ -10,7 +10,10 @@ class Add_article extends Generic {
 	private $name;
         private $category;
         private $content;
-
+        private $date;
+        private $published;
+        
+        
 	function __construct() {
 
 		// jQuery form validation
@@ -23,7 +26,10 @@ class Add_article extends Generic {
 
 		if(isset($_POST['add_article'])) {
 			
-			$this->level = parent::secure($_POST['level']);
+			$this->name = parent::secure($_POST['name']);
+                        $this->category = parent::secure($_POST['category']);
+                        $this->content = parent::secure($_POST['content']);
+                        $this->published = parent::secure($_POST['published']);
 
 			// Confirm all details are correct
 			$this->verify();
@@ -38,25 +44,25 @@ class Add_article extends Generic {
 	/** @todo: Should be in a different class, not add_user. */
 	private function searchArticles() {
 
-		if(empty($_POST['searchLevels'])) return false;
+		if(empty($_POST['searchArticles'])) return false;
 
 		$params = array(
-			':searchQ'  => $_POST['searchLevels'] . '%',
-			':searchQ2' => '%' . $_POST['searchLevels'] . '%'
+			':searchQ'  => $_POST['searchArticles'] . '%',
+			':searchQ2' => '%' . $_POST['searchArticles'] . '%'
 		);
-		$sql = "SELECT level_name as suggest, id
-				FROM login_levels
-				WHERE level_name LIKE :searchQ
-				OR level_level LIKE :searchQ
-				OR redirect LIKE :searchQ2
-				ORDER BY level_name
+		$sql = "SELECT name as suggest, id
+				FROM articles
+				WHERE name LIKE :searchQ
+				OR content LIKE :searchQ
+				
+				ORDER BY name
 				LIMIT 0, 5";
 
 		$stmt = parent::query($sql, $params);
 
 		if ( $stmt->rowCount() < 1 ) {
 			echo '<h3>' . _('No suggestions') . '</h3>
-				  <p class="help-block">' . _('Try searching by name, level, or redirect url.') . '</p>';
+				  <p class="help-block">' . _('Try searching by name, content.') . '</p>';
 			return false;
 		}
 
@@ -83,15 +89,15 @@ class Add_article extends Generic {
 			return false;
 		}
 
-		if(!is_numeric($this->auth)) {
-			$this->error = '<div class="alert alert-error">'._('Auth level has to be a number.').'</div>';
-			return false;
-		}
+//		if(!is_numeric($this->auth)) {
+//			$this->error = '<div class="alert alert-error">'._('Auth level has to be a number.').'</div>';
+//			return false;
+//		}
 
 	}
 
 	private function addarticle() {
-
+                $date = time();
 		if(isset($_POST['add_article']) && empty($this->error)) {
 
 //			$params = array( ':authLevel' => $this->auth );
@@ -106,13 +112,15 @@ class Add_article extends Generic {
 				':name' => $this->name,
 				':category' => $this->category,
                                 ':content' => $this->content,
+                                ':date' => $date,
+                                ':published' => $this->published,
                             
 			);
 
-			parent::query("INSERT INTO `article` (`name`, `category`, `content`)
-						   VALUES (:name, :category, :content)", $params);
+			parent::query("INSERT INTO `articles` (`name`, `category`, `content`,`date`, `published`)
+						   VALUES (:name, :category, :content, :date, :published)", $params);
 
-			$this->error = 	"<div class='alert alert-success'>" . sprintf(_('Successfully added article <b>%s</b> to the database.'), $this->level) . "</div>";
+			$this->error = 	"<div class='alert alert-success'>" . sprintf(_('Successfully added article <b>%s</b> to the database.'), $this->name) . "</div>";
 
 			$this->level = '';
 			$this->auth = '';

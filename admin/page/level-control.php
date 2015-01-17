@@ -21,7 +21,7 @@ include_once(dirname(dirname(dirname(__FILE__))) . '/classes/translate.class.php
 		</form>
 	</legend>
 
-	<div id="create_level" class="hide">
+	<div id="create_level" class="hide-adduser">
 		<?php include_once('level-create.php'); ?>
 	</div>
 

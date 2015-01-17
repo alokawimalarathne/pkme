@@ -26,7 +26,7 @@
 		<link href="assets/css/datepicker.css" rel="stylesheet">
 		<link href="assets/js/chosen/chosen.css" rel="stylesheet">
 		<link href="assets/css/prettify.css" rel="stylesheet">
-               
+               <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 
 		<!-- Added library to header in order to load reports -->
 		

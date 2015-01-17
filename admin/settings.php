@@ -51,7 +51,7 @@ $settings = new Settings();
 
 				- - - - - - - - - - - - - - - - - -->
                                 <div class="tab-pane fade" id="denied">                                    
-                                  <?php include_once('page/denied.php'); ?>
+                                  <?php //include_once('page/denied.php'); ?>
                                 </div>
 
 				<!-- - - - - - - - - - - - - - - - -

@@ -1,29 +1,47 @@
 <?php include_once('admin.php'); ?>
-<?php include_once(dirname(dirname(__FILE__)) . '/classes/add_level.class.php'); ?>
+<?php include_once(dirname(dirname(__FILE__)) . '/classes/add_article.class.php'); ?>
 <fieldset>
-	<form method="post" class="form form-horizontal" id="level-add-form" action="page/level-create.php">
+	<form method="post" class="form form-horizontal" id="level-add-form" action="page/article-create.php">
 		<div id="level-message"></div>
 		<fieldset>
 			<div class="control-group">
-				<label class="control-label" for="level"><?php _e('Name'); ?></label>
+				<label class="control-label" for="name"><?php _e('Name'); ?></label>
 				<div class="controls">
-					<input type="text" class="input-xlarge" id="level" name="level" value="<?php echo $addLevel->getPost('level'); ?>">
+					<input type="text" class="input-xlarge" id="name" name="name" value="<?php echo $addLevel->getPost('name'); ?>">
 				</div>
 			</div>
 			<div class="control-group">
-				<label class="control-label" for="auth"><?php _e('Level'); ?></label>
+				<label class="control-label" for="category"><?php _e('Category'); ?></label>
 				<div class="controls">
-					<input type="number" min="0" class="input-mini" id="auth" name="auth" value="<?php echo $addLevel->getPost('auth'); ?>">
+                                    <select class="selectpicker" name="category">
+                                            <option value='news'>News</option>
+                                            <option value='resources'>Resources</option>
+                                            
+                                        </select>
 				</div>
 			</div>
 			<div class="control-group">
-				<label class="control-label" for="auth"><?php _e('Redirect'); ?> <a href="#" data-rel="tooltip" tabindex="99" title="<?php _e('When logging in, this user will be redirected to the URL you specify. Leave blank to redirect to the referring page.'); ?>"><i class="icon-question-sign"></i></a></label>
+				<label class="control-label" for="content"><?php _e('Content'); ?></label>
 				<div class="controls">
-					<input id="redirect" class="input-xlarge" name="redirect" type="url" placeholder="eg, http://google.com" value="<?php echo $addLevel->getPost('auth'); ?>"/>
+					<textarea class="form-control" id="article-content" name="content" rows="10" autocomplete="off"></textarea>
 				</div>
 			</div>
-		<div class="form-actions">
-			<button type="submit" name="add_level" class="btn btn-primary" id="level-add-submit"><?php _e('Create level'); ?></button>
+                        <div class="control-group">
+				<label class="control-label" for="published"><?php _e('Publish'); ?></label>
+                                <div class="controls">
+				<label class="checkbox-inline">
+                                    <input type="checkbox" id="publishedyes" value="1" name='published'> Yes
+                                  </label>
+                                  <label class="checkbox-inline">
+                                    <input type="checkbox" id="publishedno" value="0" name='published'> No
+                                </label>
+                                </div>
+			</div>
+		 <div class="control-group">
+                     <div class="controls">
+                         
+			<button type="submit" name="add_article" class="btn btn-primary buttonsubmit" id="article-add-submit"><?php _e('Create article'); ?></button>
+                     </div>
 		</div>
 		</fieldset>
 	</form>

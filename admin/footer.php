@@ -11,7 +11,7 @@
 </div> <!-- /.container -->
 
 	<!-- javascript -->
-        <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+        
 	<script src="../assets/js/bootstrap-transition.js"></script>
 	<script src="../assets/js/bootstrap-collapse.js"></script>
 	<script src="../assets/js/bootstrap-modal.js"></script>

@@ -10,7 +10,7 @@ include_once(dirname(dirname(dirname(__FILE__))) . '/classes/translate.class.php
 			<div class="control-group">
 			  <div class="controls">
 				<div class="input-prepend">
-				  <button id="create_new_level_btn" class="btn btn-small"><?php _e('Create new article'); ?></button>
+				  <button id="create_new_article_btn" class="btn btn-small"><?php _e('Create new article'); ?></button>
 				  <input type="number" class="input-mini" min="0" id="showLevels" name="showArticles" placeholder="<?php _e('Show'); ?>" value="<?php echo !empty($_SESSION['pickme']['levels_page_limit']) ? $_SESSION['pickme']['levels_page_limit'] : 10; ?>">
 				  <span class="add-on">
 				    <label for="articleSearch"><a href="#" data-rel="tooltip-bottom" title="<?php _e('Search by Name, ID, or Date.'); ?>"><i class="icon-search"></i></a></label>
@@ -22,18 +22,17 @@ include_once(dirname(dirname(dirname(__FILE__))) . '/classes/translate.class.php
 		</form>
 	</legend>
 
-	<div id="create_level" class="hide">
-		<?php include_once('level-create.php'); ?>
+	<div id="create_article" class="hide-adduser">
+		<?php include_once('article-create.php'); ?>
 	</div>
 
-	<?php user_levels(); ?>
+	<?php articles(); ?>
 </fieldset>
 
 <script>
-$('#create_new_level_btn').click(function(e) {
-
+$('#create_new_article_btn').click(function(e) {
 	e.preventDefault();
-	$('#create_level').slideToggle();
+	$('#create_article').slideToggle();
 
 });
 

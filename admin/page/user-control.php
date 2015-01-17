@@ -23,7 +23,7 @@ include_once(dirname(dirname(dirname(__FILE__))) . '/classes/translate.class.php
 	</form>
 	</legend>
 
-	<div id="add_user" class="hide">
+	<div id="add_user" class="hide-adduser">
 		<?php include_once('user-add.php'); ?>
 	</div>
 
@@ -34,8 +34,7 @@ include_once(dirname(dirname(dirname(__FILE__))) . '/classes/translate.class.php
 </fieldset>
 
 <script>
-$('#add_new_user_btn').click(function(e) {
-
+$('#add_new_user_btn').click(function(e) { 
 	e.preventDefault();
 	$('#add_user').slideToggle();
 
