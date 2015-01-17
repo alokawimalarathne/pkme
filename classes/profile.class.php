@@ -72,7 +72,7 @@ class Profile extends Generic {
 	private function retrieveFields() {
 
 		$params = array( ':user_id' => $this->user_id );
-		$stmt   = parent::query("SELECT `user_id`, `username`, `name`, `lname`, `email` FROM `login_users` WHERE `user_id` = :user_id;", $params);
+		$stmt   = parent::query("SELECT `user_id`, `username`, `user_level`,`name`, `lname`, `email` FROM `login_users` WHERE `user_id` = :user_id;", $params);
 
 		if ( $stmt->rowCount() < 1 ) {
 			$this->error = sprintf('<div class="alert alert-warning">%s</div>', _('Sorry, that user does not exist.') );
@@ -249,7 +249,7 @@ class Profile extends Generic {
 		endforeach;
 
 	}
-
+        
 }
 
 $profile = new Profile();

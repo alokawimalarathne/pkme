@@ -279,7 +279,7 @@ p.signup { margin: 2em }
     margin-top: 25px;
 }   
 .tab-pane{
-    min-height: 300px;
+    min-height: 360px;
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
@@ -330,4 +330,14 @@ padding: 5px;
 }
 .tabpane{
     padding: 10px;
+}
+.newsname{
+    color: rgb(51, 122, 183);
+font-weight: bold;
+}
+fieldset{
+    padding: .35em .625em .75em !important;
+}
+.form-actions{
+    margin-top: 15px;
 }

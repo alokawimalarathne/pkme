@@ -398,3 +398,33 @@ function string_limit_words($string, $word_limit) {
     return implode(' ', array_slice($words, 0, $word_limit));
 }
 
+function get_news(){
+    $pagination = pagination('articles', 'ORDER BY id DESC');
+
+	global $sql, $query, $generic;
+
+	/* Check that at least one row was returned */
+	$stmt = $generic->query($sql);
+	if($stmt->rowCount() < 1) return false;
+
+	/* Manage levels */
+	?>
+
+			<?php
+                                $count = 0;
+				while($count < 5 && $row = $stmt->fetch(PDO::FETCH_ASSOC)) :
+                                
+                                    $limitedcontent =  string_limit_words($row['content'], 15);
+                                    ?>
+        <div class="col-md-12">
+            <div class="newsname col-md-8"><h4><?php echo $row['name']; ?></h></div>
+            <div class="content col-md-12"><?php echo $limitedcontent." ..."; ?></div>
+        </div>
+				
+
+			<?php 
+                         $count ++;
+                        endwhile; 
+                        ?>
+			
+<?php } ?>

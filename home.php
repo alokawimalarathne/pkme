@@ -1,4 +1,7 @@
-<?php include_once('classes/signup.class.php'); ?>
+<?php 
+include_once('classes/signup.class.php'); 
+include_once('admin/classes/functions.php');
+?>
 <?php include_once('header.php'); ?>
 <div><div>
         <div class="row">  
