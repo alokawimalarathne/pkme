@@ -6,9 +6,9 @@
 
 	<a href="http://localhost/pickme/" class="a-tooltip" data-rel="tooltip-bottom" title="<?php _e('Upload your image if you did not'); ?>">
                 <?php if( $profile->getField('image')){ ?>
-		<img class="gravatar thumbnail ownimage"  src="./uploads/images/<?php echo $profile->getField('image') ; ?>"/>
+		<img class="gravatar  ownimage img-responsive img-thumbnail"  src="./uploads/images/<?php echo $profile->getField('image') ; ?>"/>
                 <?php }else{ ?>
-                <img class="gravatar thumbnail" src="<?php echo $profile->get_gravatar($profile->getField('email'), false, 54); ?>"/>
+                <img class="gravatar  img-responsive img-thumbnail" src="<?php echo $profile->get_gravatar($profile->getField('email'), false, 54); ?>"/>
                 <?php } ?>
 	</a>
 
@@ -77,7 +77,7 @@
                             <input type="email" class="form-control" id="email" name="email" value="<?php echo $profile->getField('email'); ?>">
 
                         </div>
-                        <div class="form-group col-xs-4">
+                        <div class="form-group col-xs-4 has-error">
                             <label class="" for="CurrentPass"><?php _e('Current password'); ?></label>
 
                             <input type="password" autocomplete="off" class="form-control" id="CurrentPass" name="CurrentPass" >
@@ -99,9 +99,41 @@
                         <div class="form-group col-xs-4">
                             <label class="" for="mobile"><?php _e('Telephone'); ?></label>
 
-                            <input type="number" min="0700000000"  autocomplete="off" class="form-control" id="confirm" name="mobile" placeholder="<?php _e('Mobile'); ?>" value="<?php echo $profile->getField('mobile'); ?>">
+                            <input type="number"  autocomplete="off" class="form-control" id="mobile" name="mobile" placeholder="<?php _e('Mobile'); ?>" value="<?php echo $profile->getField('mobile'); ?>">
 
                         </div>
+                        <?php  if( protectThis("4") ){  ?>
+                        <div class="form-group col-xs-4">
+                            <label class="" for="dob"><?php _e('Start Date'); ?></label>
+                            <input type="date"   autocomplete="off" class="form-control" id="dob" name="dob" placeholder="" value="<?php echo $profile->getField('dob'); ?>">
+
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label class="" for="description"><?php _e('Description'); ?></label>
+                              <textarea class="form-control" id="description" name="description" rows="5" autocomplete="off" ><?php echo $profile->getField('description'); ?></textarea>
+
+                        </div>
+                        <?php  }else{  ?>
+                        <div class="form-group col-xs-4">
+                            <label class="" for="dob"><?php _e('Date of Birth'); ?></label>
+
+                            <input type="date"   autocomplete="off" class="form-control" id="dob" name="dob" placeholder="<?php _e('Date of birth'); ?>" value="<?php echo $profile->getField('dob'); ?>">
+
+                        </div>
+                         <div class="form-group col-xs-4">
+                                <label class="" for="sex"><?php _e('Gender'); ?></label>
+                                <div class=""> 
+                                    <label class="checkbox-inline">
+                                        <input type="radio" id="Male" value="Male" <?php echo ($profile->getField('sex')== 'Male') ?  "checked" : "" ;  ?> name='sex'/> Male
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" id="Female" value="Female" <?php echo ($profile->getField('sex')== 'Female') ?  "checked" : "" ;  ?> name='sex'/> Female
+                                    </label>
+                               
+                                   
+                                </div>
+                            </div>
+                        <?php } ?>
                         <?php  if( protectThis("3") ){  ?>
 
                             <legend><?php _e('Skill Set'); ?></legend>
@@ -254,10 +286,10 @@
                             <div class="form-group col-xs-4">
                                 <label class="" for="qualification"><?php _e('Qualification');?></label>
                                 <select multiple class="form-control" id="qualification" name="qualification[]">
-                                    <option value='1' <?php echo (@in_array('1', unserialize(base64_decode($profile->getField('qualification'))))) ?  "selected" : "" ;  ?>>Professorship</option>
-                                    <option value='2' <?php echo (@in_array('2', unserialize(base64_decode($profile->getField('qualification'))))) ?  "selected" : "" ;  ?>>Doctorate</option>
-                                    <option value='3' <?php echo (@in_array('3', unserialize(base64_decode($profile->getField('qualification'))))) ?  "selected" : "" ;  ?>>MSc level</option>
-                                    <option value='3' <?php echo (@in_array('4', unserialize(base64_decode($profile->getField('qualification'))))) ?  "selected" : "" ;  ?>>BSc level</option>       
+                                    <option value='Professorship' <?php echo (@in_array('Professorship', unserialize(base64_decode($profile->getField('qualification'))))) ?  "selected" : "" ;  ?>>Professorship</option>
+                                    <option value='Doctorate' <?php echo (@in_array('Doctorate', unserialize(base64_decode($profile->getField('qualification'))))) ?  "selected" : "" ;  ?>>Doctorate</option>
+                                    <option value='MSc level' <?php echo (@in_array('MSc level', unserialize(base64_decode($profile->getField('qualification'))))) ?  "selected" : "" ;  ?>>MSc level</option>
+                                    <option value='BSc level' <?php echo (@in_array('4', unserialize(base64_decode($profile->getField('qualification'))))) ?  "selected" : "" ;  ?>>BSc level</option>       
                                     
                                 </select>
 
@@ -265,11 +297,11 @@
                             <div class="form-group col-xs-4">
                                     <label class="" for="field"><?php _e('Teaching area');?></label>
                                 <select multiple class="form-control" id="field" name="field[]">
-                                    <option value='1' <?php echo (@in_array('1', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Programing</option>
-                                    <option value='2' <?php echo (@in_array('2', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Networking</option>
-                                    <option value='3' <?php echo (@in_array('3', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Web developments</option>
-                                    <option value='3' <?php echo (@in_array('4', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Business </option>       
-                                    <option value='3' <?php echo (@in_array('5', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Accounting </option> 
+                                    <option value='Programing' <?php echo (@in_array('Programing', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Programing</option>
+                                    <option value='Networking' <?php echo (@in_array('Networking', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Networking</option>
+                                    <option value='Web developments' <?php echo (@in_array('Web developments', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Web developments</option>
+                                    <option value='Business' <?php echo (@in_array('Business', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Business</option>       
+                                    <option value='Accounting' <?php echo (@in_array('Accounting', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Accounting</option> 
                                 </select>
 
                             </div>
@@ -287,33 +319,33 @@
                              <div class="form-group col-xs-4">
                                     <label class="" for="field"><?php _e('Technologies');?></label>
                                 <select multiple class="form-control" id="field" name="field[]">
-                                    <option value='1' <?php echo (@in_array('1', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Software Programing</option>
-                                    <option value='2' <?php echo (@in_array('2', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Networking</option>
-                                    <option value='3' <?php echo (@in_array('3', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Web developments</option>
-                                    <option value='4' <?php echo (@in_array('4', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Business </option>       
-                                    <option value='5' <?php echo (@in_array('5', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Accounting </option> 
-                                    <option value='6' <?php echo (@in_array('6', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Education </option> 
+                                    <option value='Software Programing' <?php echo (@in_array('Software Programing', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Software Programing</option>
+                                    <option value='Networking' <?php echo (@in_array('Networking', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Networking</option>
+                                    <option value='Web developments' <?php echo (@in_array('Web developments', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Web developments</option>
+                                    <option value='Business' <?php echo (@in_array('Business', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Business </option>       
+                                    <option value='Accounting' <?php echo (@in_array('Accounting', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Accounting </option> 
+                                    <option value='Education' <?php echo (@in_array('Education', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Education </option> 
                                 </select>
 
                             </div>
                              <div class="form-group col-xs-4">
-                                    <label class="" for="type"><?php _e('Type');?></label>
+                                    <label class="" for="type"><?php _e('Type');echo $profile->getField('type');?></label>
                                 <select  class="form-control" id="type" name="type">
-                                    <option value='1' <?php echo ($profile->getField('type') == 1  ? "selected" : "") ?>>Government</option>
-                                    <option value='2' <?php echo ($profile->getField('type') == 2  ? "selected" : "") ?>>Private</option>
-                                    <option value='3' <?php echo ($profile->getField('type') == 3  ? "selected" : "") ?>>Semi government</option>
-                                    <option value='4' <?php echo ($profile->getField('type') == 4  ? "selected" : "") ?>>Multi national</option>
+                                    <option value='Government' <?php echo ($profile->getField('type') == 'Government'  ? "selected" : "") ?>>Government</option>
+                                    <option value='Private' <?php echo ($profile->getField('type') == 'Private'  ? "selected" : "") ?>>Private</option>
+                                    <option value='Semi government' <?php echo ($profile->getField('type') == 'Semi government'  ? "selected" : "") ?>>Semi government</option>
+                                    <option value='Multi national' <?php echo ($profile->getField('type') == 'Multi national'  ? "selected" : "") ?>>Multi national</option>
                                 </select>
 
                             </div>
                             <div class="form-group col-xs-4">
                                     <label class="" for="city"><?php _e('City');?></label>
                                 <select  class="form-control" id="city" name="city">
-                                    <option value='1' <?php echo ($profile->getField('city') == 1  ? "selected" : "") ?>>Colombo</option>
-                                    <option value='2' <?php echo ($profile->getField('city') == 2  ? "selected" : "") ?>>Kandy</option>
-                                    <option value='3' <?php echo ($profile->getField('city') == 3  ? "selected" : "") ?>>Kurunegala</option>
-                                    <option value='4' <?php echo ($profile->getField('city') == 4  ? "selected" : "") ?>>Galle</option>
-                                    <option value='5' <?php echo ($profile->getField('city') == 5  ? "selected" : "") ?>>Matara</option>
+                                    <option value='Colombo' <?php echo ($profile->getField('city') == 'Colombo ' ? "selected" : "") ?>>Colombo</option>
+                                    <option value='Kandy' <?php echo ($profile->getField('city') == 'Kandy'  ? "selected" : "") ?>>Kandy</option>
+                                    <option value='Kurunegala' <?php echo ($profile->getField('city') == 'Kurunegala'  ? "selected" : "") ?>>Kurunegala</option>
+                                    <option value='Galle' <?php echo ($profile->getField('city') == 'Galle'  ? "selected" : "") ?>>Galle</option>
+                                    <option value='Matara' <?php echo ($profile->getField('city') == 'Matara'  ? "selected" : "") ?>>Matara</option>
                                 </select>
 
                             </div>

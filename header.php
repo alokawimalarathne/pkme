@@ -11,19 +11,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="PickMe UCSC Job Seekers' Portal">		
 
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+     
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 
         <!-- styles -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet">           
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet">                
         <link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet">
         <link href="assets/css/pickme.css" rel="stylesheet">
-        
+        <link href="assets/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
 
     </head>
     <body> 
@@ -44,6 +42,9 @@
                         <div class="nav-collapse">
                             <ul class="nav nav-pills col-md-8">
                                 <li  role="presentation" class="active"><a href="home.php"><?php _e('HOME'); ?></a></li>
+                                <?php if (isset($_SESSION['pickme']['username'])){?>
+                                 <li role="presentation"><a href="profileview.php"><?php _e('PROFILE'); ?></a></li>
+                                  <?php } ?>
                                 <li role="presentation"><a href="about_us.php"><?php _e('ABOUT US'); ?></a></li>
                                 <li role="presentation"><a href="resources.php"><?php _e('RESOURCES'); ?></a></li>
                                 <li role="presentation"><a href="contact_us.php"><?php _e('CONTACT US'); ?></a></li>

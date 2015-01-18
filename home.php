@@ -51,10 +51,9 @@ include_once('admin/classes/functions.php');
             </div>
 
             <div class="col-md-6">
-                <?php if (isset($_SESSION['pickme']['username'])) { ?>
-                    <div> <?php
-                        _e('Welcome , ');
-                        echo $_SESSION['pickme']['username'];
+                <?php  if (isset($_SESSION['pickme']['username'])) { ?>
+                <div class="welcomemessage"> <?php
+                        _e('Welcome , ');  echo $_SESSION['pickme']['username'];
                         ?>
 <?php } else { ?>
 

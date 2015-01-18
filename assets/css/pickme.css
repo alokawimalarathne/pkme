@@ -404,3 +404,29 @@ text-align: center !important;
     padding: 10px;
     margin-bottom: 10px;
 }
+.welcomemessage{
+    height: 35px;
+    padding: 5px;
+    padding-top: 10px;
+}
+.news-profile{
+    
+padding-right: 10px;
+padding-bottom: 20px;
+padding-top: 10px;
+}
+.news-overflow{
+    height: 150px;
+overflow-y: auto;
+overflow-x: hidden;
+}
+.profile-left{
+    padding: 25px;
+}
+.bg-info legend{
+     height: 40px !important;
+    margin-bottom: 10px !important;
+}
+.profilepic{
+    max-width: 170px;
+}

@@ -74,7 +74,7 @@ class Profile extends Generic {
 		$params = array( ':user_id' => $this->user_id ); 
                 $level = ($_SESSION['pickme']); //print_r( $level );
                 if( protectThis("3") ){
-                    $sql = " SELECT `user_id`, `username`, `user_level`,`name`, `lname`, `email`, `image` ";
+                    $sql = " SELECT `user_id`, `username`, `user_level`,`name`, `lname`, `email`, `image`, dob, sex ";
                     $stmt2 = parent::query( "SELECT * FROM projects WHERE `uid` = :user_id" , $params);
                     $stmt3 = parent::query( "SELECT * FROM skills WHERE `uid` = :user_id" , $params);
                     if ($stmt2->rowCount() >= 1){
@@ -109,7 +109,7 @@ class Profile extends Generic {
                     
                 }else{
                     
-                    $stmt   = parent::query("SELECT `user_id`, `username`, `user_level`,`name`, `lname`, `email`, `image`, qualification, position, field, type, city
+                    $stmt   = parent::query("SELECT `user_id`, `username`, `user_level`,`name`, `lname`, dob, sex, description, `email`, `image`, qualification, position, field, type, city
                                          FROM `login_users`
                                          WHERE `user_id` = :user_id;", $params);
                     
@@ -149,7 +149,7 @@ class Profile extends Generic {
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		if ( !parent::validatePassword($this->settings['CurrentPass'], $row['password']) ) {
-			$this->error = '<div class="alert alert-error">'._('You entered the wrong current password.').'</div>';
+			$this->error = '<div class="alert alert-error bg-danger">'._('You entered the wrong current password.').'</div>';
 			return false;
 		}
 
@@ -274,9 +274,15 @@ class Profile extends Generic {
                 
          if (protectThis(3)) {
 
+            $params = array (			
+                        ':dob'     => $this->settings['dob'],
+                        ':sex'     => $this->settings['sex'],
+                        ':username' => $this->username
+		);
+            parent::query("UPDATE `login_users` SET  `dob`= :dob, `sex`= :sex WHERE `username` = :username", $params);
             
             #transcript handling
-
+            if($_FILES['transcript']['name']) {
             $exttr = pathinfo($_FILES['transcript']['name'], PATHINFO_EXTENSION);
             $allowedtra = array('pdf', 'doc', 'docx');
             $uniname = $time . '_' . $this->settings['user_id'] . '.' . $exttr;
@@ -296,9 +302,10 @@ class Profile extends Generic {
             } else {
                 $this->error = "<div class='alert alert-warning'> <a href='#' class='close' data-dismiss='alert'>&times;</a>" . _('Please upload PDF, DOC, DOCX fils for transcript.') . ".</div>";
             }
-
+             }
             #cv handling
-
+            
+            if($_FILES['cv']['name']) {
             $extcv = pathinfo($_FILES['cv']['name'], PATHINFO_EXTENSION);
             $allowedcv = array('pdf', 'doc', 'docx');
             $uniname = $time . '_' . $this->settings['user_id'] . '.' . $extcv;
@@ -319,7 +326,7 @@ class Profile extends Generic {
                 $this->error = "<div class='alert alert-warning'> <a href='#' class='close' data-dismiss='alert'>&times;</a>" . _('Please upload PDF, DOC, DOCX fils for transcript.') . ".</div>";
             }
 
-
+            }
 
             $params = array(':uid' => $this->settings['user_id']);
             $sql = "SELECT * FROM `skills` WHERE `uid` = :uid;";
@@ -368,23 +375,27 @@ class Profile extends Generic {
             }
         }
         
-         if(protectThis(4)){ print_r($this->settings['type']);
+         if(protectThis(4)){ //print_r($this->settings['type']);
              $params = array (
 			':field' => (is_array($this->settings['field'])) ? base64_encode(serialize($this->settings['field'])) : "",
                         ':type'     => $this->settings['type'],
                         ':city'     => $this->settings['city'],
+                        ':dob'     => $this->settings['dob'],
+                        ':description'     => $this->settings['description'],
                         ':username' => $this->username
 		);
-		parent::query("UPDATE `login_users` SET `field` = :field, `type`= :type, `city`= :city WHERE `username` = :username", $params);
+		parent::query("UPDATE `login_users` SET `field` = :field, `type`= :type, `city`= :city, `dob`= :dob,`description`= :description WHERE `username` = :username", $params);
          }
          
          if(protectThis(2)){
             $params = array (
 			':qualification' => (is_array($this->settings['qualification'])) ? base64_encode(serialize($this->settings['qualification'])) : "",
                         ':field'     => (is_array($this->settings['field'])) ? base64_encode(serialize($this->settings['field'])) : "",
+                        ':dob'     => $this->settings['dob'],
+                        ':sex'     => $this->settings['sex'],
                         ':username' => $this->username
 		);
-		parent::query("UPDATE `login_users` SET `qualification` = :qualification, `field`= :field WHERE `username` = :username", $params); 
+		parent::query("UPDATE `login_users` SET `qualification` = :qualification, `field`= :field, `dob`= :dob, `sex`= :sex WHERE `username` = :username", $params); 
          }
 
         $this->error .= "<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert'>&times;</a>"._('User information updated for')." <b>".$this->settings['name']."</b> ($this->username).</div>";

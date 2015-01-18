@@ -417,7 +417,7 @@ function get_news(){
                                     $limitedcontent =  string_limit_words($row['content'], 15);
                                     ?>
         <div class="col-md-12">
-            <div class="newsname col-md-8"><h4><?php echo $row['name']; ?></h4></div>
+            <div class="newsname col-md-8"><h5><?php echo $row['name']; ?></h5></div>
             <div class="content col-md-12"><?php echo $limitedcontent." ..."; ?></div>
         </div>
 				
@@ -514,31 +514,31 @@ LEFT JOIN skills s ON s.uid=u.user_id  WHERE u.user_level = 'a:1:{i:0;s:1:\"3\";
                     <?php if($row['programing']){
                     echo '<div>Programing</div>';
                     $programing = @unserialize(base64_decode($row['programing']));//echo '<pre>';print_r($programing) ;
-                    echo '<div class="bg-info sli-name-in">'.implode(" ",$programing).'</div>';
+                    echo '<div class="bg-info sli-name-in">'.implode(", ",$programing).'</div>';
                      }
                     ?>
                      <?php if($row['networking']){
                     echo '<div>Networking</div>';
                     $networking = @unserialize(base64_decode($row['networking']));//echo '<pre>';print_r($programing) ;
-                    echo '<div class="bg-info sli-name-in">'.implode(" ",$networking).'</div>';;
+                    echo '<div class="bg-info sli-name-in">'.implode(", ",$networking).'</div>';;
                      }
                     ?>  
                      <?php if($row['webapplication']){
                     echo '<div>Webapplication</div>';
                     $webapplication = @unserialize(base64_decode($row['webapplication']));//echo '<pre>';print_r($programing) ;
-                    echo '<div class="bg-info sli-name-in">'.implode(" ",$webapplication).'</div>';;
+                    echo '<div class="bg-info sli-name-in">'.implode(", ",$webapplication).'</div>';;
                      }
                     ?>
                     <?php if($row['business']){
-                    echo '<div>business</div>';
+                    echo '<div>Business</div>';
                     $business = @unserialize(base64_decode($row['business']));//echo '<pre>';print_r($programing) ;
-                    echo '<div class="bg-info sli-name-in">'.implode(" ",$business).'</div>';;
+                    echo '<div class="bg-info sli-name-in">'.implode(", ",$business).'</div>';;
                      }
                     ?>
                     <?php if($row['professional']){
                     echo '<div>Professional</div>';
                     $professional = @unserialize(base64_decode($row['professional']));//echo '<pre>';print_r($programing) ;
-                    echo '<div class="bg-info sli-name-in">'.implode(" ",$professional).'</div>';;
+                    echo '<div class="bg-info sli-name-in">'.implode(", ",$professional).'</div>';;
                      }
                     ?>
                     </div>
@@ -549,6 +549,44 @@ LEFT JOIN skills s ON s.uid=u.user_id  WHERE u.user_level = 'a:1:{i:0;s:1:\"3\";
  
         <?php   endwhile; 
  }
-  
-  ?>
+ 
+ function get_image($uid, $level) {
+    global $query, $generic;
+    $params = array(
+       ':user_id'=> $uid
+       
+    );
+    if ($level == 3) {       
+        $sql = ("SELECT u.user_id, u.name,
+       u.lname,
+       u.email,
+       u.mobile,
+       u.image,
+       u.dob,
+       u.sex,
+       p.uid AS puid,
+       p.pname,
+       p.ptechnologies,
+       p.pdescription,
+       p.pclient,
+       p.pgroupmode,
+       p.prole,
+       s.uid AS suid,
+       s.programing,
+       s.networking,
+       s.webapplication,
+       s.business,
+       s.professional
+FROM login_users u
+LEFT JOIN projects p ON p.uid =u.user_id
+LEFT JOIN skills s ON s.uid=u.user_id  WHERE u.user_id =:user_id");
+    } else { 
+       $sql = ("SELECT * FROM login_users WHERE user_id=:user_id "); 
+    }
+    
+    $stmt = $generic->query($sql, $params);
+    $userRow   = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $userRow;
+}
+?>
         

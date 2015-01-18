@@ -12,7 +12,7 @@ class SignUp extends Generic {
 	function __construct() {
 
 		// Only allow guests to view this page
-		parent::guestOnly();
+		//parent::guestOnly();
 
 		/* Has the admin disabled user registrations? */
 		$disable = parent::getOption('disable-registrations-enable');
