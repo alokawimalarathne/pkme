@@ -632,6 +632,8 @@ class Generic extends Connect {
 	 * @source http://gravatar.com/site/implement/images/php/
 	 */
 	public function get_gravatar( $email, $img = false, $s = 80, $d = 'mm', $r = 'g', $atts = array() ) {
+                 
+                
 		$url = 'http://www.gravatar.com/avatar/';
 		$url .= md5( strtolower( trim( $email ) ) );
 		$url .= "?s=$s&d=$d&r=$r";
@@ -640,9 +642,10 @@ class Generic extends Connect {
 			foreach ( $atts as $key => $val )
 				$url .= ' ' . $key . '="' . $val . '"';
 			$url .= ' />';
-		}
+		} 
 		return $url;
 	}
+        
         
 
 

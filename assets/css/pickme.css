@@ -126,6 +126,7 @@ p.signup { margin: 2em }
 .gravatar {
     padding: 1px;
     display: inline;
+    
 }
 .dropdown.open .dropdown-toggle {
     color: #222;
@@ -294,6 +295,7 @@ p.signup { margin: 2em }
     border-right: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
     border-top: 1px solid #ddd;
+    padding: 10px;
 }
 .homesearch{
     min-height: 35px;
@@ -344,4 +346,54 @@ fieldset{
 }
 .useredit{
     display: table !important;
+}
+.ownimage{
+    height: 150px;
+width: auto;
+}
+.latestprofile{
+    height: 80px;
+    width: 80px;
+    
+}
+.latestpro{
+   color: rgb(51, 122, 183);
+font-weight: bold;
+text-align: center !important;
+}
+.latestpro img{
+    margin-bottom: 5px;
+}
+
+#myCarousel {
+  margin-top: 40px;
+}
+
+.carousel-linked-nav,
+.item img {
+  display: block; 
+  margin: 0 auto;
+}
+
+.carousel-linked-nav {
+  width: 120px;
+  margin-bottom: 20px;   
+}
+.frontslider{
+    height: 200px;
+    width: auto;
+}
+.item{
+    height: 400px;
+    margin: 10px;
+    
+}
+.carousel-control.left{
+    background-image: linear-gradient(to right,rgba(171, 171, 171, 0.5) 0,rgba(0,0,0,.0001) 100%);
+}
+.carousel-control.right {
+     background-image: linear-gradient(to right, rgba(0,0,0,.0001)  0,rgba(171, 171, 171, 0.5) 100%);
+}
+.sli-image-wra {
+ min-height: 210px;   
 }

@@ -35,7 +35,7 @@ class Edit_user extends Generic {
 		$this->id = parent::secure($_GET['uid']);
 
 		$params = array( ':user_id' => $this->id );
-		$stmt   = parent::query("SELECT user_id, user_level, restricted, username, name, email FROM login_users WHERE user_id = :user_id;", $params);
+		$stmt   = parent::query("SELECT user_id, user_level, restricted, username, name, email, image FROM login_users WHERE user_id = :user_id;", $params);
 
 		if( $stmt->rowCount() < 1 ) parent::displayMessage("<div class='alert alert-error'>"._('No such user!')."</div>");
 

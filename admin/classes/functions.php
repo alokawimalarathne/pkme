@@ -417,7 +417,7 @@ function get_news(){
                                     $limitedcontent =  string_limit_words($row['content'], 15);
                                     ?>
         <div class="col-md-12">
-            <div class="newsname col-md-8"><h4><?php echo $row['name']; ?></h></div>
+            <div class="newsname col-md-8"><h4><?php echo $row['name']; ?></h4></div>
             <div class="content col-md-12"><?php echo $limitedcontent." ..."; ?></div>
         </div>
 				
@@ -427,4 +427,97 @@ function get_news(){
                         endwhile; 
                         ?>
 			
-<?php } ?>
+<?php } 
+
+  function get_profiles( ){
+       $pagination = pagination('login_users', 'ORDER BY user_id DESC ');
+
+	global $sql, $query, $generic;
+
+	/* Check that at least one row was returned */
+	$stmt = $generic->query($sql);
+	if($stmt->rowCount() < 1) return false;
+        $count = 0;
+        ?> 
+        <div class="col-md-12">
+        <?php 
+        while($count < 16 && $row = $stmt->fetch(PDO::FETCH_ASSOC)) :
+     ?>
+            
+            <div class="latestpro col-md-3">
+                 <?php if( $row['image']){ ?>
+		<img class="gravatar thumbnail latestprofile"  src="./uploads/images/<?php echo $row['image'] ; ?>"/>
+                <?php }else{ ?>
+                
+                <?php } ?>
+                
+            <?php 
+            
+            echo $row['name']; 
+            
+            ?></div>
+            
+       
+        
+  <?php endwhile; ?>
+             </div>   
+        
+  <?php }
+  
+ function profilecard(){
+     //$pagination = pagination('login_users', 'ORDER BY user_id DESC ');
+
+	global $query, $generic;
+        $sql = ("SELECT u.name,
+       u.lname,
+       u.image,
+       p.uid AS puid,
+       p.pname,
+       p.ptechnologies,
+       s.uid AS suid,
+       s.programing,
+       s.networking,
+       s.webapplication,
+       s.business,
+       s.professional
+FROM login_users u
+LEFT JOIN projects p ON p.uid =u.user_id
+LEFT JOIN skills s ON s.uid=u.user_id  WHERE u.user_level = 'a:1:{i:0;s:1:\"3\";}' ORDER BY RAND() LIMIT 10");
+        
+	/* Check that at least one row was returned */
+	$stmt = $generic->query($sql);
+	if($stmt->rowCount() < 1) return false;
+        $count = 0;
+         ?>
+         <div class="active item">
+             <div class="sli-image-wra">
+           <img class="frontslider" src="http://placehold.it/300x200/888&text=Item 1" />
+             </div>
+           <div class="slider-contennt"></div>
+         </div>
+        <?php 
+        while($count < 3 && $row = $stmt->fetch(PDO::FETCH_ASSOC)) :
+    ?> 
+         <div class=" item">
+        <?php if( $row['image']){ ?>
+                <div class="sli-image-wra">
+		<img class="frontslider"  src="./uploads/images/<?php echo $row['image'] ; ?>"/>
+                </div>
+                <?php }else{ ?>
+                <div class="sli-image-wra">
+                <img class="  frontslider"  src="./uploads/images/default.jpg"/>
+                </div>
+                <?php } ?>
+                <div class="slider-contennt"> 
+                    <div class="sli-name"><legend>Name</legend><?php echo $row['name'].' '.$row['lname'] ; ?></div>
+                    <div class="sli-name"><legend>Skills</legend><?php print_r $row['programing'] ; ?></div>
+                    <div class="sli-name"></div>
+                </div>
+         </div>
+    
+ 
+        <?php   endwhile; 
+ }
+  
+  ?>
+        

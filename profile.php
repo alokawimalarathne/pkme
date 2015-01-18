@@ -4,8 +4,12 @@
 
 <h1>
 
-	<a href="http://gravatar.com/emails/" class="a-tooltip" data-rel="tooltip-bottom" title="<?php _e('Change your avatar at Gravatar.com'); ?>">
-		<img class="gravatar thumbnail" src="<?php echo $profile->get_gravatar($profile->getField('email'), false, 54); ?>"/>
+	<a href="http://localhost/pickme/" class="a-tooltip" data-rel="tooltip-bottom" title="<?php _e('Upload your image if you did not'); ?>">
+                <?php if( $profile->getField('image')){ ?>
+		<img class="gravatar thumbnail ownimage"  src="./uploads/images/<?php echo $profile->getField('image') ; ?>"/>
+                <?php }else{ ?>
+                <img class="gravatar thumbnail" src="<?php echo $profile->get_gravatar($profile->getField('email'), false, 54); ?>"/>
+                <?php } ?>
 	</a>
 
 	<?php echo $profile->getField('username') . ' (' . $profile->getField('name') . ')'; ?>
@@ -290,9 +294,9 @@
                                     <option value='1' <?php echo (@in_array('1', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Software Programing</option>
                                     <option value='2' <?php echo (@in_array('2', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Networking</option>
                                     <option value='3' <?php echo (@in_array('3', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Web developments</option>
-                                    <option value='3' <?php echo (@in_array('4', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Business </option>       
-                                    <option value='3' <?php echo (@in_array('5', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Accounting </option> 
-                                    <option value='3' <?php echo (@in_array('6', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Education </option> 
+                                    <option value='4' <?php echo (@in_array('4', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Business </option>       
+                                    <option value='5' <?php echo (@in_array('5', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Accounting </option> 
+                                    <option value='6' <?php echo (@in_array('6', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Education </option> 
                                 </select>
 
                             </div>

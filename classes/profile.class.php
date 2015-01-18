@@ -74,7 +74,7 @@ class Profile extends Generic {
 		$params = array( ':user_id' => $this->user_id ); 
                 $level = ($_SESSION['pickme']); //print_r( $level );
                 if( protectThis("3") ){
-                    $sql = " SELECT `user_id`, `username`, `user_level`,`name`, `lname`, `email` ";
+                    $sql = " SELECT `user_id`, `username`, `user_level`,`name`, `lname`, `email`, `image` ";
                     $stmt2 = parent::query( "SELECT * FROM projects WHERE `uid` = :user_id" , $params);
                     $stmt3 = parent::query( "SELECT * FROM skills WHERE `uid` = :user_id" , $params);
                     if ($stmt2->rowCount() >= 1){
@@ -91,6 +91,8 @@ class Profile extends Generic {
                         $sql.= " , skills s ";      
                      }
                      $sql.= " WHERE `user_id` = :user_id ";
+                     
+                     
                    if ($stmt2->rowCount() >= 1){
                      $sql.= " AND s.uid = :user_id ";
                    }
@@ -107,7 +109,7 @@ class Profile extends Generic {
                     
                 }else{
                     
-                    $stmt   = parent::query("SELECT `user_id`, `username`, `user_level`,`name`, `lname`, `email`, qualification, position, field, type, city
+                    $stmt   = parent::query("SELECT `user_id`, `username`, `user_level`,`name`, `lname`, `email`, `image`, qualification, position, field, type, city
                                          FROM `login_users`
                                          WHERE `user_id` = :user_id;", $params);
                     
@@ -433,6 +435,8 @@ class Profile extends Generic {
 		endforeach;
 
 	}
+        
+       
         
 }
 

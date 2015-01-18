@@ -1,8 +1,8 @@
 <?php include_once('admin.php'); ?>
 <?php include_once(dirname(dirname(__FILE__)) . '/classes/add_article.class.php'); ?>
 <fieldset>
-	<form method="post" class="form form-horizontal" id="level-add-form" action="page/article-create.php">
-		<div id="level-message"></div>
+	<form method="post" class="form form-horizontal" id="article-add-form" action="page/article-create.php">
+		<div id="article-message"></div>
 		<fieldset>
 			<div class="control-group">
 				<label class="control-label" for="name"><?php _e('Name'); ?></label>
@@ -50,31 +50,31 @@
 <script>
 $(document).ready(function() {
 /** Create level form */
-$("#level-add-form").validate({
+$("#article-add-form").validate({
 
 	/** admin add level form */
 	submitHandler: function() {
 
-		$('#level-add-submit').button('loading');
+		$('#article-add-submit').button('loading');
 
-		var post = $('#level-add-form').serialize();
-		var action = $("#level-add-form").attr('action');
+		var post = $('#article-add-form').serialize();
+		var action = $("#article-add-form").attr('action');
 
-		$("#level-message").slideUp(350, function () {
+		$("#article-message").slideUp(350, function () {
 
-			$('#level-message').hide();
+			$('#article-message').hide();
 
 			$.post(action, post, function (data) {
 
-				$('#level-message').html(data);
+				$('#article-message').html(data);
 
-				document.getElementById('level-message').innerHTML = data;
-				$('#level-message').slideDown('slow');
+				document.getElementById('article-message').innerHTML = data;
+				$('#article-message').slideDown('slow');
 				if (data.match('success') !== null) {
-					$('#level-add-form input').val('');
-					$('#level-add-submit').button('reset');
+					$('#article-add-form input').val('');
+					$('#article-add-submit').button('reset');
 				} else {
-					$('#level-add-submit').button('reset');
+					$('#article-add-submit').button('reset');
 				}
 			});
 		});
@@ -84,20 +84,24 @@ $("#level-add-form").validate({
 		auth: {
 			required: true,
 			remote: {
-				url: "classes/add_level.class.php",
+				url: "classes/add_article.class.php",
 				type: "post",
 				data: { checklevel: "1" }
 			}
 		}
 	},
 	messages: {
-		level: {
+		name: {
 			required: "This needs to be filled out.",
-			remote: jQuery.format("Username has been taken.")
+			//remote: jQuery.format("Username has been taken.")
 		},
-		auth: {
-			required: "An auth level is required.",
-			remote: jQuery.format("Auth level in use.")
+		category: {
+			required: "A category is required.",
+			//remote: jQuery.format("Auth level in use.")
+		},
+                content: {
+			required: "Content is required.",
+			//  remote: jQuery.format("Auth level in use.")
 		}
 	},
 	errorClass: 'error',

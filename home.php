@@ -1,6 +1,8 @@
 <?php 
 include_once('classes/signup.class.php'); 
 include_once('admin/classes/functions.php');
+
+
 ?>
 <?php include_once('header.php'); ?>
 <div><div>
@@ -24,6 +26,24 @@ include_once('admin/classes/functions.php');
                 <div class="divouter col-md-12">
                     <div class="randompro  ">
 
+                        <div id="myCarousel" class="carousel slide">
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+      
+    <?php profilecard(); ?>
+      
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+
+<!-- LINKED NAV 
+<ol class="carousel-linked-nav pagination">
+  <li class="active"><a href="#1">1</a></li>
+  <li><a href="#2">2</a></li>
+  <li><a href="#3">3</a></li>
+</ol>-->
                     </div>
                 </div>
 
@@ -363,7 +383,7 @@ include_once('admin/classes/functions.php');
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active tabpane" id="home"><?php echo get_news(); ?></div>
-                            <div role="tabpanel" class="tab-pane tabpane" id="profile">Latest profile panel</div>
+                            <div role="tabpanel" class="tab-pane tabpane" id="profile"><?php echo get_profiles(); ?></div>
                             <div role="tabpanel" class="tab-pane tabpane" id="messages">latest job posting panel</div>
 
                         </div>

@@ -5,12 +5,17 @@
 		<div id="message"></div>
 		<fieldset>
 			<div class="control-group">
-				<label class="control-label" for="name"><?php _e('Name'); ?></label>
+				<label class="control-label" for="name"><?php _e('First name'); ?></label>
 				<div class="controls">
 					<input type="text" class="input-xlarge" id="name" name="name">
 				</div>
 			</div>
-
+                        <div class="control-group">
+				<label class="control-label" for="lname"><?php _e('Last name'); ?></label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="lname" name="lname">
+				</div>
+			</div>
 			<div class="control-group" id="usrCheck">
 				<label class="control-label" for="username"><?php _e('Username'); ?></label>
 				<div class="controls">
