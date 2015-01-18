@@ -244,11 +244,11 @@ class Profile extends Generic {
 			':username' => $this->username
 		);
 		parent::query("UPDATE `login_users` SET `name` = :name, `lname`= :lname, `mobile`= :mobile WHERE `username` = :username", $params);
-                
+                $time = time();
+            $uploaddir = '/var/www/html/pickme/uploads/'; 
                 #profile image handling
                 if($_FILES['pimage']['name']) {
-            $time = time();
-            $uploaddir = '/var/www/html/pickme/uploads/';
+           
             $extimg = pathinfo($_FILES['pimage']['name'], PATHINFO_EXTENSION);
             $allowedimg = array('gif', 'png', 'jpg');
             $uniname = $time . '_' . $this->settings['user_id'] . '.' . $extimg;
