@@ -491,9 +491,9 @@ LEFT JOIN skills s ON s.uid=u.user_id  WHERE u.user_level = 'a:1:{i:0;s:1:\"3\";
          ?>
          <div class="active item">
              <div class="sli-image-wra">
-           <img class="frontslider" src="http://placehold.it/300x200/888&text=Item 1" />
+           <img style="height: 100px;" src="images/logo.png" />
              </div>
-           <div class="slider-contennt"></div>
+           <div class="slider-contennt">Welcome to 'PickMe' UCSC Job Seekers' Portal. It provides facility to the UCSC fresh graduates to find a job based on education qualifications and manage their career profiles. This Portal is also designed for the various Organization/Companies/Employer who required to recruit employees in their organization.</div>
          </div>
         <?php 
         while($count < 3 && $row = $stmt->fetch(PDO::FETCH_ASSOC)) :
@@ -505,12 +505,43 @@ LEFT JOIN skills s ON s.uid=u.user_id  WHERE u.user_level = 'a:1:{i:0;s:1:\"3\";
                 </div>
                 <?php }else{ ?>
                 <div class="sli-image-wra">
-                <img class="  frontslider"  src="./uploads/images/default.jpg"/>
+                <img class="frontslider"  src="./uploads/images/default.jpg"/>
                 </div>
                 <?php } ?>
                 <div class="slider-contennt"> 
-                    <div class="sli-name"><legend>Name</legend><?php echo $row['name'].' '.$row['lname'] ; ?></div>
-                    <div class="sli-name"><legend>Skills</legend><?php // $row['programing'] ; ?></div>
+                    <div class="sli-name"><legend>Name</legend><div class="bg-info sli-name-in"><?php echo $row['name'].' '.$row['lname'] ; ?></div></div>
+                    <div class="sli-name"><legend>Skills</legend>
+                    <?php if($row['programing']){
+                    echo '<div>Programing</div>';
+                    $programing = @unserialize(base64_decode($row['programing']));//echo '<pre>';print_r($programing) ;
+                    echo '<div class="bg-info sli-name-in">'.implode(" ",$programing).'</div>';
+                     }
+                    ?>
+                     <?php if($row['networking']){
+                    echo '<div>Networking</div>';
+                    $networking = @unserialize(base64_decode($row['networking']));//echo '<pre>';print_r($programing) ;
+                    echo '<div class="bg-info sli-name-in">'.implode(" ",$networking).'</div>';;
+                     }
+                    ?>  
+                     <?php if($row['webapplication']){
+                    echo '<div>Webapplication</div>';
+                    $webapplication = @unserialize(base64_decode($row['webapplication']));//echo '<pre>';print_r($programing) ;
+                    echo '<div class="bg-info sli-name-in">'.implode(" ",$webapplication).'</div>';;
+                     }
+                    ?>
+                    <?php if($row['business']){
+                    echo '<div>business</div>';
+                    $business = @unserialize(base64_decode($row['business']));//echo '<pre>';print_r($programing) ;
+                    echo '<div class="bg-info sli-name-in">'.implode(" ",$business).'</div>';;
+                     }
+                    ?>
+                    <?php if($row['professional']){
+                    echo '<div>Professional</div>';
+                    $professional = @unserialize(base64_decode($row['professional']));//echo '<pre>';print_r($programing) ;
+                    echo '<div class="bg-info sli-name-in">'.implode(" ",$professional).'</div>';;
+                     }
+                    ?>
+                    </div>
                     <div class="sli-name"></div>
                 </div>
          </div>

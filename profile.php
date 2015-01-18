@@ -108,82 +108,78 @@
                             <div class="form-group col-xs-4">
                                 <label class="" for="programing"><?php _e('Software programing'); 
                                /// $data = ($profile->getField('programing'));
-                              // echo '<pre>'; print_r(unserialize(base64_decode($data)));?>
+                             //  echo '<pre>'; print_r(unserialize(base64_decode($profile->getField('programing'))));
+                                ?>
                                 
                                 </label>
                                 <select multiple class="form-control" id="programing" name="programing[]">
-                                    <option value='1' <?php echo (in_array('1', unserialize(base64_decode($profile->getField('programing'))))) ?  "selected" : "" ;  ?>>Java</option>
-                                    <option value='2' <?php echo (in_array('2', unserialize(base64_decode($profile->getField('programing'))))) ?  "selected" : "" ;  ?>>.NET</option>
-                                    <option value='3' <?php echo (in_array('3', unserialize(base64_decode($profile->getField('programing'))))) ?  "selected" : "" ;  ?>>C/C++</option>                                                
-                                    <option value='4' <?php echo (in_array('4', unserialize(base64_decode($profile->getField('programing'))))) ?  "selected" : "" ;  ?>>Objective-C</option>
-                                    <option value='5' <?php echo (in_array('5', unserialize(base64_decode($profile->getField('programing'))))) ?  "selected" : "" ;  ?>>Python</option>
-                                    <option value='6' <?php echo (in_array('6', unserialize(base64_decode($profile->getField('programing'))))) ?  "selected" : "" ;  ?>>Scala</option>
+                                    <option value='Java' <?php echo (in_array('Java', unserialize(base64_decode($profile->getField('programing'))))) ?  "selected" : "" ;  ?>>Java</option>
+                                    <option value='.NET' <?php echo (in_array('.NET', unserialize(base64_decode($profile->getField('programing'))))) ?  "selected" : "" ;  ?>>.NET</option>
+                                    <option value='C/C++' <?php echo (in_array('C/C++', unserialize(base64_decode($profile->getField('programing'))))) ?  "selected" : "" ;  ?>>C/C++</option>                                                
+                                    <option value='Objective-C' <?php echo (in_array('Objective-C', unserialize(base64_decode($profile->getField('programing'))))) ?  "selected" : "" ;  ?>>Objective-C</option>
+                                    <option value='Python' <?php echo (in_array('Python', unserialize(base64_decode($profile->getField('programing'))))) ?  "selected" : "" ;  ?>>Python</option>
+                                    <option value='Scala' <?php echo (in_array('Scala', unserialize(base64_decode($profile->getField('programing'))))) ?  "selected" : "" ;  ?>>Scala</option>
                                 </select>
 
                             </div>
                             <div class="form-group col-xs-4">
                                 <label class="" for="CurrentPass"><?php _e('Networking'); ?></label>
                                 <select multiple class="form-control" id="networking" name="networking[]">
-                                    <option value='1' <?php echo (in_array('1', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>Wireless</option>
-                                    <option value='2' <?php echo (in_array('1', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>Routing</option>
-                                    <option value='3' <?php echo (in_array('1', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>Switching</option>                                                
-                                    <option value='4' <?php echo (in_array('1', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>TCP/IP</option>
-                                    <option value='5' <?php echo (in_array('1', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>Virtualization<option>
-                                    <option value='6' <?php echo (in_array('1', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>DHCP</option>
-                                    <option value='7' <?php echo (in_array('1', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>LDAP</option>
-                                    <option value='8' <?php echo (in_array('1', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>Unix/Linux servers</option>
-                                    <option value='9' <?php echo (in_array('1', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>Windows servers</option>                                                
+                                    <option value='Wireless' <?php echo (in_array('Wireless', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>Wireless</option>
+                                    <option value='Routing' <?php echo (in_array('Routing', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>Routing</option>
+                                    <option value='Switching' <?php echo (in_array('Switching', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>Switching</option>                                                
+                                    <option value='TCP/IP' <?php echo (in_array('TCP/IP', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>TCP/IP</option>
+                                    <option value='Virtualization' <?php echo (in_array('Virtualization', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>Virtualization</option>
+                                    
+                                    <option value='DHCP' <?php echo (in_array('DHCP', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>DHCP</option>
+                                    <option value='LDAP' <?php echo (in_array('LDAP', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>LDAP</option>
+                                    <option value='Unix/Linux servers' <?php echo (in_array('Unix/Linux servers', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>Unix/Linux servers</option>
+                                    <option value='Windows servers' <?php echo (in_array('9', unserialize(base64_decode($profile->getField('networking'))))) ?  "selected" : "" ;  ?>>Windows servers</option>                                                
                                 </select>
 
                             </div>
                             <div class="form-group col-xs-4">
                                 <label class="" for="CurrentPass"><?php _e('Web applications'); ?></label>
                                 <select multiple class="form-control" id="webapplication" name="webapplication[]">
-                                    <option value='1' <?php echo (in_array('1', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>PHP</option>
-                                    <option value='2' <?php echo (in_array('2', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>Java</option>
-                                    <option value='3' <?php echo (in_array('3', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>Python</option>
-                                    <option value='3' <?php echo (in_array('4', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>Ruby</option>       
-                                    <option value='4' <?php echo (in_array('5', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>SQL/MySql</option>
-                                    <option value='5' <?php echo (in_array('6', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>Javascript</option>
-                                    <option value='6' <?php echo (in_array('7', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>HTML4/HTML5</option>
-                                    <option value='7' <?php echo (in_array('8', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>Joomla</option>
-                                    <option value='8' <?php echo (in_array('9', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>Wordpress</option>
-                                    <option value='9' <?php echo (in_array('10', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>Drupal</option>
-                                    <option value='10' <?php echo (in_array('11', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>eCommerce</option>
+                                    <option value='PHP' <?php echo (in_array('PHP', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>PHP</option>
+                                    <option value='Java' <?php echo (in_array('Java', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>Java</option>
+                                    <option value='Python' <?php echo (in_array('Python', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>Python</option>
+                                    <option value='Ruby' <?php echo (in_array('Ruby', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>Ruby</option>       
+                                    <option value='SQL/MySql' <?php echo (in_array('SQL/MySql', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>SQL/MySql</option>
+                                    <option value='Javascript' <?php echo (in_array('Javascript', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>Javascript</option>
+                                    <option value='HTML4/HTML5' <?php echo (in_array('HTML4/HTML5', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>HTML4/HTML5</option>
+                                    <option value='Joomla' <?php echo (in_array('Joomla', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>Joomla</option>
+                                    <option value='Wordpress' <?php echo (in_array('Wordpress', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>Wordpress</option>
+                                    <option value='Drupal' <?php echo (in_array('Drupal', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>Drupal</option>
+                                    <option value='eCommerce' <?php echo (in_array('11', unserialize(base64_decode($profile->getField('webapplication'))))) ?  "selected" : "" ;  ?>>eCommerce</option>
                                 </select>
 
                             </div>
                             <div class="form-group col-xs-4">
                                 <label class="" for="CurrentPass"><?php _e('Business'); ?></label>
                                 <select multiple class="form-control" id="business" name="business[]">
-                                    <option value='1' <?php echo (in_array('1', unserialize(base64_decode($profile->getField('business'))))) ?  "selected" : "" ;  ?>>PHP</option>
-                                    <option value='2' <?php echo (in_array('2', unserialize(base64_decode($profile->getField('business'))))) ?  "selected" : "" ;  ?>>Java</option>
-                                    <option value='3' <?php echo (in_array('2', unserialize(base64_decode($profile->getField('business'))))) ?  "selected" : "" ;  ?>>Python</option>
-                                    <option value='3' <?php echo (in_array('3', unserialize(base64_decode($profile->getField('business'))))) ?  "selected" : "" ;  ?>>Ruby</option>       
-                                    <option value='4' <?php echo (in_array('4', unserialize(base64_decode($profile->getField('business'))))) ?  "selected" : "" ;  ?>>SQL/MySql</option>
-                                    <option value='5' <?php echo (in_array('5', unserialize(base64_decode($profile->getField('business'))))) ?  "selected" : "" ;  ?>>Javascript</option>
-                                    <option value='6' <?php echo (in_array('6', unserialize(base64_decode($profile->getField('business'))))) ?  "selected" : "" ;  ?>>HTML4/HTML5</option>
-                                    <option value='7' <?php echo (in_array('7', unserialize(base64_decode($profile->getField('business'))))) ?  "selected" : "" ;  ?>>Joomla</option>
-                                    <option value='8' <?php echo (in_array('8', unserialize(base64_decode($profile->getField('business'))))) ?  "selected" : "" ;  ?>>Wordpress</option>
-                                    <option value='9' <?php echo (in_array('9', unserialize(base64_decode($profile->getField('business'))))) ?  "selected" : "" ;  ?>>Drupal</option>
-                                    <option value='10' <?php echo (in_array('10', unserialize(base64_decode($profile->getField('business'))))) ?  "selected" : "" ;  ?>>eCommerce</option>
+                                    <option value='Business process MGT' <?php echo (in_array('Business process MGT', unserialize(base64_decode($profile->getField('business'))))) ?  "selected" : "" ;  ?>>Business process MGT</option>
+                                    <option value='Information systems MGT' <?php echo (in_array('Information systems MGT', unserialize(base64_decode($profile->getField('business'))))) ?  "selected" : "" ;  ?>>Information systems MGT</option>
+                                    <option value='Marketing' <?php echo (in_array('Marketing', unserialize(base64_decode($profile->getField('business'))))) ?  "selected" : "" ;  ?>>Marketing</option>
+                                    <option value='Planning and monitoring' <?php echo (in_array('Planning and monitoring', unserialize(base64_decode($profile->getField('business'))))) ?  "selected" : "" ;  ?>>Planning and monitoring</option>       
+                                    <option value='Project MGT' <?php echo (in_array('Project MGT', unserialize(base64_decode($profile->getField('business'))))) ?  "selected" : "" ;  ?>>Project MGT</option>
+                                    <option value='Requirements analysis' <?php echo (in_array('Requirements analysis', unserialize(base64_decode($profile->getField('business'))))) ?  "selected" : "" ;  ?>>Requirements analysis</option>
+                                   
                                 </select>
 
                             </div>
                             <div class="form-group col-xs-4">
                                 <label class="" for="CurrentPass"><?php _e('Professional'); ?></label>
                                 <select multiple class="form-control" id="professional" name="professional[]">
-                                    <option value='1' <?php echo (in_array('1', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>CIMA</option>
-                                    <option value='2' <?php echo (in_array('2', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>CIM</option>
-                                    <option value='3' <?php echo (in_array('3', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>Charted</option>
-                                    <option value='3' <?php echo (in_array('4', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>AAT</option>       
-                                    <option value='4' <?php echo (in_array('5', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>CCNA</option>
-                                    <option value='5' <?php echo (in_array('6', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>CCNP</option>
-                                    <option value='6' <?php echo (in_array('7', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>Java certification</option>
-                                    <option value='7' <?php echo (in_array('8', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>Zend Certificate</option>
-                                    <option value='8' <?php echo (in_array('9', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>Wordpress</option>
-                                    <option value='9' <?php echo (in_array('10', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>Drupal</option>
-                                    <option value='10' <?php echo (in_array('11', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>eCommerce</option>
+                                    <option value='CIMA' <?php echo (in_array('CIMA', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>CIMA</option>
+                                    <option value='CIM' <?php echo (in_array('CIM', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>CIM</option>
+                                    <option value='Charted' <?php echo (in_array('Charted', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>Charted</option>
+                                    <option value='AAT' <?php echo (in_array('AAT', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>AAT</option>       
+                                    <option value='CCNA' <?php echo (in_array('CCNA', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>CCNA</option>
+                                    <option value='CCNP' <?php echo (in_array('CCNP', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>CCNP</option>
+                                    <option value='Java certification' <?php echo (in_array('Java certification', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>Java certification</option>
+                                    <option value='Zend Certificate' <?php echo (in_array('8', unserialize(base64_decode($profile->getField('professional'))))) ?  "selected" : "" ;  ?>>Zend Certificate</option>
+                                  
                                 </select>
 
                             </div>

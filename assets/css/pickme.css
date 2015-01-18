@@ -290,7 +290,7 @@ p.signup { margin: 2em }
     min-width: 205px;
 }
 .randompro{
-    min-height: 485px;
+    
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
@@ -365,9 +365,6 @@ text-align: center !important;
     margin-bottom: 5px;
 }
 
-#myCarousel {
-  margin-top: 40px;
-}
 
 .carousel-linked-nav,
 .item img {
@@ -384,8 +381,10 @@ text-align: center !important;
     width: auto;
 }
 .item{
-    height: 400px;
+    height: auto;
     margin: 10px;
+    padding: 10px;
+    padding-bottom: 20px;
     
 }
 .carousel-control.left{
@@ -396,4 +395,12 @@ text-align: center !important;
 }
 .sli-image-wra {
  min-height: 210px;   
+}
+.sli-name legend{
+    height: 40px !important;
+    margin-bottom: 10px !important;
+}
+.sli-name-in{
+    padding: 10px;
+    margin-bottom: 10px;
 }

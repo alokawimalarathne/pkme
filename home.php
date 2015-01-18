@@ -25,11 +25,11 @@ include_once('admin/classes/functions.php');
                 </div>
                 <div class="divouter col-md-12">
                     <div class="randompro  ">
-
+                        <div style="margin:10px">Random Profile Cards</div>
                         <div id="myCarousel" class="carousel slide">
   <!-- Carousel items -->
   <div class="carousel-inner">
-      
+     
     <?php profilecard(); ?>
       
   </div>
