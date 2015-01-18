@@ -44,7 +44,7 @@
 
                         <legend><?php _e('General'); ?></legend>
 
-
+                        <?php if(!protectThis("4")){?>       
                         <div class="form-group col-xs-4">
                             <label class="" for="name" ><?php _e('First Name'); ?></label>
 
@@ -53,14 +53,20 @@
                         </div>
 
 
-
-
                         <div class="form-group col-xs-4">
                             <label class="" for="lname"><?php _e('Last Name'); ?></label>
 
                             <input type="text" class="form-control" id="lname" name="lname" value="<?php echo $profile->getField('lname'); ?>">
 
                         </div>
+                        <?php }else{ ?>
+                         <div class="form-group col-xs-4">
+                            <label class="" for="name" ><?php _e('Company Name'); ?></label>
+
+                            <input type="text" class="form-control" placeholder="" id="name" name="name" value="<?php echo $profile->getField('name'); ?>">
+
+                        </div>
+                        <?php }?>
                         <div class="form-group col-xs-4">
                             <label class="" for="email"><?php _e('Email'); ?></label>
 
@@ -87,7 +93,7 @@
 
                         </div>
                         <div class="form-group col-xs-4">
-                            <label class="" for="mobile"><?php _e('Mobile'); ?></label>
+                            <label class="" for="mobile"><?php _e('Telephone'); ?></label>
 
                             <input type="number" min="0700000000"  autocomplete="off" class="form-control" id="confirm" name="mobile" placeholder="<?php _e('Mobile'); ?>" value="<?php echo $profile->getField('mobile'); ?>">
 
@@ -272,10 +278,53 @@
                                 <label class="" for="pimage" ><?php _e('Image'); ?></label>
                                 <input type="file" class="form-control" placeholder="" id="pimage" name="pimage" value="">
 
-                            </div>
-                    <?php }elseif(protectThis("2")){ ?> 
-                    <?php }elseif(protectThis("4")){ ?>    
+                            </div>     
                             
+                    <?php }elseif(protectThis("4")){ ?>  
+                            <legend><?php _e('Other'); ?></legend>
+                            
+                           
+                             <div class="form-group col-xs-4">
+                                    <label class="" for="field"><?php _e('Technologies');?></label>
+                                <select multiple class="form-control" id="field" name="field[]">
+                                    <option value='1' <?php echo (@in_array('1', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Software Programing</option>
+                                    <option value='2' <?php echo (@in_array('2', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Networking</option>
+                                    <option value='3' <?php echo (@in_array('3', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Web developments</option>
+                                    <option value='3' <?php echo (@in_array('4', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Business </option>       
+                                    <option value='3' <?php echo (@in_array('5', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Accounting </option> 
+                                    <option value='3' <?php echo (@in_array('6', unserialize(base64_decode($profile->getField('field'))))) ?  "selected" : "" ;  ?>>Education </option> 
+                                </select>
+
+                            </div>
+                             <div class="form-group col-xs-4">
+                                    <label class="" for="type"><?php _e('Type');?></label>
+                                <select  class="form-control" id="type" name="type">
+                                    <option value='1' <?php echo ($profile->getField('type') == 1  ? "selected" : "") ?>>Government</option>
+                                    <option value='2' <?php echo ($profile->getField('type') == 2  ? "selected" : "") ?>>Private</option>
+                                    <option value='3' <?php echo ($profile->getField('type') == 3  ? "selected" : "") ?>>Semi government</option>
+                                    <option value='4' <?php echo ($profile->getField('type') == 4  ? "selected" : "") ?>>Multi national</option>
+                                </select>
+
+                            </div>
+                            <div class="form-group col-xs-4">
+                                    <label class="" for="city"><?php _e('City');?></label>
+                                <select  class="form-control" id="city" name="city">
+                                    <option value='1' <?php echo ($profile->getField('city') == 1  ? "selected" : "") ?>>Colombo</option>
+                                    <option value='2' <?php echo ($profile->getField('city') == 2  ? "selected" : "") ?>>Kandy</option>
+                                    <option value='3' <?php echo ($profile->getField('city') == 3  ? "selected" : "") ?>>Kurunegala</option>
+                                    <option value='4' <?php echo ($profile->getField('city') == 4  ? "selected" : "") ?>>Galle</option>
+                                    <option value='5' <?php echo ($profile->getField('city') == 5  ? "selected" : "") ?>>Matara</option>
+                                </select>
+
+                            </div>
+                             <legend><?php _e('Attachments'); ?></legend>
+                            <div class="form-group col-xs-4">
+                                <label class="" for="pimage" ><?php _e('Image'); ?></label>
+                                <input type="file" class="form-control" placeholder="" id="pimage" name="pimage" value="">
+
+                            </div> 
+                            
+                     <?php } ?>            
                     <?php if ($profile->getOption('profile-public-enable')) : ?>
                         <div class="form-group col-xs-4">
                             <label class="" for="confirm"><?php _e('Your public link'); ?></label>

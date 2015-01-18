@@ -107,7 +107,7 @@ class Profile extends Generic {
                     
                 }else{
                     
-                    $stmt   = parent::query("SELECT `user_id`, `username`, `user_level`,`name`, `lname`, `email`, qualification, position, field
+                    $stmt   = parent::query("SELECT `user_id`, `username`, `user_level`,`name`, `lname`, `email`, qualification, position, field, type, city
                                          FROM `login_users`
                                          WHERE `user_id` = :user_id;", $params);
                     
@@ -366,15 +366,24 @@ class Profile extends Generic {
             }
         }
         
-         if(protectThis(2)){
+         if(protectThis(4)){ print_r($this->settings['type']);
              $params = array (
+			':field' => (is_array($this->settings['field'])) ? base64_encode(serialize($this->settings['field'])) : "",
+                        ':type'     => $this->settings['type'],
+                        ':city'     => $this->settings['city'],
+                        ':username' => $this->username
+		);
+		parent::query("UPDATE `login_users` SET `field` = :field, `type`= :type, `city`= :city WHERE `username` = :username", $params);
+         }
+         
+         if(protectThis(2)){
+            $params = array (
 			':qualification' => (is_array($this->settings['qualification'])) ? base64_encode(serialize($this->settings['qualification'])) : "",
                         ':field'     => (is_array($this->settings['field'])) ? base64_encode(serialize($this->settings['field'])) : "",
                         ':username' => $this->username
 		);
-		parent::query("UPDATE `login_users` SET `qualification` = :qualification, `field`= :field WHERE `username` = :username", $params);
+		parent::query("UPDATE `login_users` SET `qualification` = :qualification, `field`= :field WHERE `username` = :username", $params); 
          }
-
 
         $this->error .= "<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert'>&times;</a>"._('User information updated for')." <b>".$this->settings['name']."</b> ($this->username).</div>";
 
