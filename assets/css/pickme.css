@@ -283,6 +283,7 @@ p.signup { margin: 2em }
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
+    
 }
 .username{
     min-width: 205px;
@@ -340,4 +341,7 @@ fieldset{
 }
 .form-actions{
     margin-top: 15px;
+}
+.useredit{
+    display: table !important;
 }

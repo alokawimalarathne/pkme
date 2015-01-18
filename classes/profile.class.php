@@ -71,9 +71,48 @@ class Profile extends Generic {
 	// Retrieve name, email, user_id
 	private function retrieveFields() {
 
-		$params = array( ':user_id' => $this->user_id );
-		$stmt   = parent::query("SELECT `user_id`, `username`, `user_level`,`name`, `lname`, `email` FROM `login_users` WHERE `user_id` = :user_id;", $params);
-
+		$params = array( ':user_id' => $this->user_id ); 
+                $level = ($_SESSION['pickme']); //print_r( $level );
+                if( protectThis("3") ){
+                    $sql = " SELECT `user_id`, `username`, `user_level`,`name`, `lname`, `email` ";
+                    $stmt2 = parent::query( "SELECT * FROM projects WHERE `uid` = :user_id" , $params);
+                    $stmt3 = parent::query( "SELECT * FROM skills WHERE `uid` = :user_id" , $params);
+                    if ($stmt2->rowCount() >= 1){
+                     $sql.= " ,pname,pdescription,ptechnologies,pclient,pgroupmode,prole, p.uid  ";   
+                    }
+                    if ($stmt3->rowCount() >= 1){
+                        $sql.= " ,programing, networking,webapplication,business,professional, s.uid  ";   
+                    }
+                     $sql.= " FROM login_users ";
+                    if ($stmt2->rowCount() >= 1){
+                     $sql.= " , projects p ";    
+                    }
+                     if ($stmt2->rowCount() >= 1){
+                        $sql.= " , skills s ";      
+                     }
+                     $sql.= " WHERE `user_id` = :user_id ";
+                   if ($stmt2->rowCount() >= 1){
+                     $sql.= " AND s.uid = :user_id ";
+                   }
+                    if ($stmt2->rowCount() >= 1){
+                        
+                    }
+                    
+                    $stmt   = parent::query($sql, $params);
+                    
+//                     $stmt   = parent::query("SELECT `user_id`, `username`, `user_level`,`name`, `lname`, `email`, pname,pdescription,ptechnologies,pclient,pgroupmode,prole, 
+//                                         programing, networking,webapplication,business,professional
+//                                         FROM `login_users`, `projects`, `skills`
+//                                         WHERE `user_id` = :user_id;", $params);
+                    
+                }else{
+                    
+                    $stmt   = parent::query("SELECT `user_id`, `username`, `user_level`,`name`, `lname`, `email`, qualification, position, field
+                                         FROM `login_users`
+                                         WHERE `user_id` = :user_id;", $params);
+                    
+                }
+               
 		if ( $stmt->rowCount() < 1 ) {
 			$this->error = sprintf('<div class="alert alert-warning">%s</div>', _('Sorry, that user does not exist.') );
 			parent::displayMessage($this->error, true);
@@ -194,14 +233,150 @@ class Profile extends Generic {
 	}
 
 	private function process() {
-
+               
+                   
 		$params = array (
 			':name'     => $this->settings['name'],
+                        ':lname'     => $this->settings['lname'],
+                        ':mobile'     => $this->settings['mobile'],
 			':username' => $this->username
 		);
-		parent::query("UPDATE `login_users` SET `name` = :name WHERE `username` = :username", $params);
+		parent::query("UPDATE `login_users` SET `name` = :name, `lname`= :lname, `mobile`= :mobile WHERE `username` = :username", $params);
+                
+                #profile image handling
+                if($_FILES['pimage']['name']) {
+            $time = time();
+            $uploaddir = '/var/www/html/pickme/uploads/';
+            $extimg = pathinfo($_FILES['pimage']['name'], PATHINFO_EXTENSION);
+            $allowedimg = array('gif', 'png', 'jpg');
+            $uniname = $time . '_' . $this->settings['user_id'] . '.' . $extimg;
+            $uploadimagefile = $uploaddir . 'images/' . $uniname;
 
-		$this->error = "<div class='alert alert-success'>"._('User information updated for')." <b>".$this->settings['name']."</b> ($this->username).</div>";
+            if (in_array($extimg, $allowedimg)) {
+                if (move_uploaded_file($_FILES["pimage"]["tmp_name"], $uploadimagefile)) {
+                    // echo "File is valid, and was successfully uploaded.\n";
+                    $params = array(
+                        ':image' => $uniname,
+                        ':username' => $this->username
+                    );
+                    parent::query("UPDATE `login_users` SET `image`=:image WHERE `username` = :username", $params);
+                } else {
+                    
+                }
+            } else {
+                $this->error = "<div class='alert alert-warning'><a href='#' class='close' data-dismiss='alert'>&times;</a>" . _('Please upload GIF, JPG or PNG images for the profile picture') . ".</div>";
+            }
+        }
+
+        #students editing
+                
+         if (protectThis(3)) {
+
+            
+            #transcript handling
+
+            $exttr = pathinfo($_FILES['transcript']['name'], PATHINFO_EXTENSION);
+            $allowedtra = array('pdf', 'doc', 'docx');
+            $uniname = $time . '_' . $this->settings['user_id'] . '.' . $exttr;
+            $uploadtrafile = $uploaddir . 'transcripts/' . $uniname;
+
+            if (in_array($exttr, $allowedtra)) {
+                if (move_uploaded_file($_FILES["transcript"]["tmp_name"], $uploadtrafile)) {
+                    // echo "File is valid, and was successfully uploaded.\n";
+                    $params = array(
+                        ':transcript' => $uniname,
+                        ':uid' => $this->settings['user_id']
+                    );
+                    parent::query("UPDATE `skills` SET `transcript`=:transcript WHERE `uid` = :uid", $params);
+                } else {
+                    
+                }
+            } else {
+                $this->error = "<div class='alert alert-warning'> <a href='#' class='close' data-dismiss='alert'>&times;</a>" . _('Please upload PDF, DOC, DOCX fils for transcript.') . ".</div>";
+            }
+
+            #cv handling
+
+            $extcv = pathinfo($_FILES['cv']['name'], PATHINFO_EXTENSION);
+            $allowedcv = array('pdf', 'doc', 'docx');
+            $uniname = $time . '_' . $this->settings['user_id'] . '.' . $extcv;
+            $uploadtrafile = $uploaddir . 'cvs/' . $uniname;
+
+            if (in_array($extcv, $allowedcv)) {
+                if (move_uploaded_file($_FILES["cv"]["tmp_name"], $uploadtrafile)) {
+                    // echo "File is valid, and was successfully uploaded.\n";
+                    $params = array(
+                        ':cv' => $uniname,
+                        ':uid' => $this->settings['user_id']
+                    );
+                    parent::query("UPDATE `skills` SET `cv`=:cv WHERE `uid` = :uid", $params);
+                } else {
+                    
+                }
+            } else {
+                $this->error = "<div class='alert alert-warning'> <a href='#' class='close' data-dismiss='alert'>&times;</a>" . _('Please upload PDF, DOC, DOCX fils for transcript.') . ".</div>";
+            }
+
+
+
+            $params = array(':uid' => $this->settings['user_id']);
+            $sql = "SELECT * FROM `skills` WHERE `uid` = :uid;";
+            $stmt1 = parent::query($sql, $params);
+
+            $params2 = array(
+                ':uid' => $this->user_id,
+                ':programing' => (is_array($this->settings['programing'])) ? base64_encode(serialize($this->settings['programing'])) : "",
+                ':networking' => (is_array($this->settings['networking'])) ? base64_encode(serialize($this->settings['networking'])) : "",
+                ':webapplication' => (is_array($this->settings['webapplication'])) ? base64_encode(serialize($this->settings['webapplication'])) : "",
+                ':business' => (is_array($this->settings['business'])) ? base64_encode(serialize($this->settings['business'])) : "",
+                ':professional' => (is_array($this->settings['professional'])) ? base64_encode(serialize($this->settings['professional'])) : ""
+            );
+            //echo '<pre>';print_r(serialize($this->settings['programing'])); print_r( unserialize('a:4:{i:0;s:1:"1";i:1;s:1:"2";i:2;s:1:"3";i:3;s:1:"5";}'));die;
+            if ($stmt1->rowCount() >= 1) {
+                $sql2 = "UPDATE `skills` SET `programing` = :programing, `networking`= :networking, `webapplication`=:webapplication, `business`= :business, `professional`=:professional  WHERE `uid` = :uid;";
+                parent::query($sql2, $params2);
+            } else {
+                $sql2 = "INSERT INTO `skills` (`uid`, `programing`, `networking`, `webapplication`, `business`, `professional`)
+				VALUES (:uid, :programing, :networking, :webapplication, :business, :professional);";
+                parent::query($sql2, $params2);
+            }
+
+
+            $params = array(':uid' => $this->settings['user_id']);
+            $sql = "SELECT * FROM `projects` WHERE `uid` = :uid;";
+            $stmt2 = parent::query($sql, $params);
+
+            $params3 = array(
+                ':uid' => $this->user_id,
+                ':pname' => $this->settings['pname'],
+                ':pdescription' => $this->settings['pdescription'],
+                ':ptechnologies' => $this->settings['ptechnologies'],
+                ':pclient' => $this->settings['pclient'],
+                ':pgroupmode' => $this->settings['pgroupmode'],
+                ':prole' => $this->settings['prole']
+            );
+            // echo '<pre>';print_r($this); print_r( unserialize('a:4:{i:0;s:1:"1";i:1;s:1:"2";i:2;s:1:"3";i:3;s:1:"5";}'));die;
+            if ($stmt2->rowCount() >= 1) {
+                $sql3 = "UPDATE `projects` SET `pname` = :pname, `pdescription`= :pdescription, `ptechnologies`=:ptechnologies, `pclient`= :pclient, `pgroupmode`=:pgroupmode, `prole`=:prole  WHERE `uid` = :uid;";
+                parent::query($sql3, $params3);
+            } else {
+                $sql3 = "INSERT INTO `projects` (`uid`, `pname`, `pdescription`, `ptechnologies`, `pclient`, `pgroupmode`, `prole`)
+				VALUES (:uid, :pname, :pdescription, :ptechnologies, :pclient, :pgroupmode, :prole);";
+                parent::query($sql3, $params3);
+            }
+        }
+        
+         if(protectThis(2)){
+             $params = array (
+			':qualification' => (is_array($this->settings['qualification'])) ? base64_encode(serialize($this->settings['qualification'])) : "",
+                        ':field'     => (is_array($this->settings['field'])) ? base64_encode(serialize($this->settings['field'])) : "",
+                        ':username' => $this->username
+		);
+		parent::query("UPDATE `login_users` SET `qualification` = :qualification, `field`= :field WHERE `username` = :username", $params);
+         }
+
+
+        $this->error .= "<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert'>&times;</a>"._('User information updated for')." <b>".$this->settings['name']."</b> ($this->username).</div>";
 
 		$params = array( ':username' => $this->username );
 		$stmt = parent::query("SELECT `email` FROM `login_users` WHERE `username` = :username;", $params);

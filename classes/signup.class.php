@@ -1,6 +1,7 @@
 <?php
 include_once( 'generic.class.php' );
 
+
 class SignUp extends Generic {
 
 	private $token;

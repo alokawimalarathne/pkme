@@ -85,7 +85,7 @@ class Edit_user extends Generic {
 
 		// Setting a default user_level if one wasn't selected
 		$this->options['user_level'] = empty($_POST['user_level']) ? parent::getOption('default-level') : serialize($this->options['user_level']);
-
+                $this->sendWelcome = '';
 		if ( $this->options['user_level'] != $this->original_level ) {
 
 			$new_level = unserialize($this->options['user_level']);
@@ -157,8 +157,8 @@ class Edit_user extends Generic {
 				':level'    => $this->options['user_level'],
 				':id'       => $this->id
 			);
-			$sql = "UPDATE `login_users` SET `restricted` = :restrict, `name` = :name, `email` = :email, `user_level` = :level WHERE `user_id` = :id;";
-			parent::query($sql, $params);
+			$sql = " UPDATE `login_users` SET `restricted` = :restrict, `name` = :name, `email` = :email, `user_level` = :level WHERE `user_id` = :id;";
+			parent::query( $sql, $params );
 			$result = sprintf("<div class='alert alert-success'>"._('User information updated for')." <b>%s</b> (%s).</div>",$this->options['name'], $this->options['username']);
 		}
 
