@@ -510,7 +510,7 @@ LEFT JOIN skills s ON s.uid=u.user_id  WHERE u.user_level = 'a:1:{i:0;s:1:\"3\";
                 <?php } ?>
                 <div class="slider-contennt"> 
                     <div class="sli-name"><legend>Name</legend><?php echo $row['name'].' '.$row['lname'] ; ?></div>
-                    <div class="sli-name"><legend>Skills</legend><?php print_r $row['programing'] ; ?></div>
+                    <div class="sli-name"><legend>Skills</legend><?php // $row['programing'] ; ?></div>
                     <div class="sli-name"></div>
                 </div>
          </div>
