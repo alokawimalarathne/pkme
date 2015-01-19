@@ -669,5 +669,20 @@ function get_article($id){
      
      return $userRow;
 }
+
+function get_search_results($query){
+    global $query, $generic;
+     $params = array(
+       ':searchQ'  => $query . '%',
+	':searchQ2' => '%' . $query . '%'
+       
+    );
+     
+     $sql = ("SELECT * FROM login_users where name LIKE :searchQ OR  name LIKE :searchQ ");
+     $stmt = $generic->query($sql, $params);
+     $userRow   = $stmt->fetch(PDO::FETCH_ASSOC);
+     
+     return $userRow;
+}
 ?>
         

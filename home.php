@@ -10,12 +10,12 @@ include_once('admin/classes/functions.php');
 
             <div class="col-md-6">
                 <div class="homesearch">
-                    <form class="form-inline col-md-8" role="form">
+                    <form class="form-inline col-md-8" id="searchform" method="POST" action="" role="form">
                         <div class="form-group">
                             <div class="input-group">
                                 <label class="sr-only" for="homesearch">Email address</label>
 
-                                <input type="text" class="form-control searchinput" id="homesearch" placeholder="Search..">
+                                <input type="text" name="fsearch" class="form-control searchinput" id="homesearch" placeholder="Search..">
                             </div>
                         </div>
 
@@ -23,6 +23,7 @@ include_once('admin/classes/functions.php');
                     </form>
                     <div class="advancedsearch col-md-4"><input type="checkbox"/>Advanced Search</div>
                 </div>
+                <div class="col-md-12" id="success"></div>
                 <div class="divouter col-md-12">
                     <div class="randompro  ">
                         <div style="margin:10px">Random Profile Cards</div>
