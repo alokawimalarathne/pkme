@@ -442,20 +442,24 @@ function get_news(){
         <div class="col-md-12">
         <?php 
         while($count < 16 && $row = $stmt->fetch(PDO::FETCH_ASSOC)) :
-     ?>
+        ?>
             
             <div class="latestpro col-md-3">
                  <?php if( $row['image']){ ?>
+                 <a href="./profileview.php?id=<?php echo $row['user_id'] ?>">
 		<img class="gravatar thumbnail latestprofile"  src="./uploads/images/<?php echo $row['image'] ; ?>"/>
+                 </a>
                 <?php }else{ ?>
-                
+                 <a href="./profileview.php?id=<?php echo $row['user_id'] ?>">
+                <img class="gravatar thumbnail latestprofile"  src="./uploads/images/default.jpg"/>
+                 </a>
                 <?php } ?>
                 
-            <?php 
             
-            echo $row['name']; 
             
-            ?></div>
+                <a href="./profileview.php?id=<?php echo $row['user_id'] ?>"><?php echo $row['name'];  ?></a>
+            
+           </div>
             
        
         
@@ -468,7 +472,7 @@ function get_news(){
      //$pagination = pagination('login_users', 'ORDER BY user_id DESC ');
 
 	global $query, $generic;
-        $sql = ("SELECT u.name,
+        $sql = ("SELECT u.user_id, u.name,
        u.lname,
        u.image,
        p.uid AS puid,
@@ -501,11 +505,15 @@ LEFT JOIN skills s ON s.uid=u.user_id  WHERE u.user_level = 'a:1:{i:0;s:1:\"3\";
          <div class=" item">
         <?php if( $row['image']){ ?>
                 <div class="sli-image-wra">
+                <a href="./profileview.php?id=<?php echo $row['user_id'] ?>">
 		<img class="frontslider"  src="./uploads/images/<?php echo $row['image'] ; ?>"/>
+                </a>
                 </div>
                 <?php }else{ ?>
                 <div class="sli-image-wra">
+                     <a href="./profileview.php?id=<?php echo $row['user_id'] ?>">
                 <img class="frontslider"  src="./uploads/images/default.jpg"/>
+                     </a>
                 </div>
                 <?php } ?>
                 <div class="slider-contennt"> 
@@ -549,7 +557,18 @@ LEFT JOIN skills s ON s.uid=u.user_id  WHERE u.user_level = 'a:1:{i:0;s:1:\"3\";
  
         <?php   endwhile; 
  }
- 
+ function get_level($uid){
+     global $query, $generic;
+     $params = array(
+       ':user_id'=> $uid
+       
+    );
+     $sql = ("SELECT user_level FROM login_users where user_id =:user_id ");
+     $stmt = $generic->query($sql, $params);
+     $userRow   = $stmt->fetch(PDO::FETCH_ASSOC);
+     $userRow = unserialize($userRow['user_level']);
+     return $userRow;
+ }
  function get_image($uid, $level) {
     global $query, $generic;
     $params = array(

@@ -4,11 +4,16 @@ include_once('admin/classes/functions.php');
 include_once ('header.php');
 
 protect('*');
-if(isset($_SESSION['pickme']['user_id'])){
-$uid = $_SESSION['pickme']['user_id']; 
+if(isset($_GET['id'])){
+$uid = $_GET['id']; 
+}else{
+    
 }
+
+$level = min(get_level($uid));
+
 //print_r($_SESSION['pickme']['user_level']);
-$level = min($_SESSION['pickme']['user_level']);
+
 $profile = get_image($uid, $level);//echo '<pre>';print_r($profile );echo '</pre>';
 ?>
 <div class="container">
@@ -105,9 +110,12 @@ $profile = get_image($uid, $level);//echo '<pre>';print_r($profile );echo '</pre
                                 
                             </dl>
                         </div>
-                   
+                        <?php if($profile['image']){ ?>
                          <div class="col-md-4"><img class="img-responsive img-thumbnail" src="./uploads/images/<?php echo $profile['image'];?> "/></div>
-                          </div>
+                        <?php }else{ ?>
+                         <div class="col-md-4"><img class="img-responsive img-thumbnail" src="./uploads/images/default.jpg"/></div>
+                        <?php } ?>
+                    </div>
                     </div>
 
                 </div>
@@ -157,9 +165,11 @@ $profile = get_image($uid, $level);//echo '<pre>';print_r($profile );echo '</pre
                                 echo implode(", ",$field);?></dd>
                                 <?php } ?>
                         </div>
-                        <div class="col-md-4">
-                            <img class="img-responsive img-thumbnail" src="./uploads/images/<?php echo $profile['image'];?> "/>
-                        </div>
+                        <?php if($profile['image']){ ?>
+                         <div class="col-md-4"><img class="img-responsive img-thumbnail" src="./uploads/images/<?php echo $profile['image'];?> "/></div>
+                        <?php }else{ ?>
+                         <div class="col-md-4"><img class="img-responsive img-thumbnail" src="./uploads/images/default.jpg"/></div>
+                        <?php } ?>
                 </div>
                 
                         
@@ -208,9 +218,11 @@ $profile = get_image($uid, $level);//echo '<pre>';print_r($profile );echo '</pre
                                 echo $description;?></dd>
                                 <?php } ?>
                         </div>
-                        <div class="col-md-4">
-                            <img class="img-responsive img-thumbnail" src="./uploads/images/<?php echo $profile['image'];?> "/>
-                        </div>
+                         <?php if($profile['image']){ ?>
+                         <div class="col-md-4"><img class="img-responsive img-thumbnail" src="./uploads/images/<?php echo $profile['image'];?> "/></div>
+                        <?php }else{ ?>
+                         <div class="col-md-4"><img class="img-responsive img-thumbnail" src="./uploads/images/default.jpg"/></div>
+                        <?php } ?>
                 </div>      
                 <?php }else{  ?>
                 You are admin.

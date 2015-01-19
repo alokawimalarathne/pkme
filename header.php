@@ -43,12 +43,12 @@
                             <ul class="nav nav-pills col-md-8">
                                 <li  role="presentation" class="active"><a href="home.php"><?php _e('HOME'); ?></a></li>
                                 <?php if (isset($_SESSION['pickme']['username'])){?>
-                                 <li role="presentation"><a href="profileview.php"><?php _e('PROFILE'); ?></a></li>
+                                <li role="presentation"><a href="profileview.php?id=<?php echo $_SESSION['pickme']['user_id'] ?>"><?php _e('PROFILE'); ?></a></li>
                                   <?php } ?>
                                 <li role="presentation"><a href="about_us.php"><?php _e('ABOUT US'); ?></a></li>
                                 <li role="presentation"><a href="resources.php"><?php _e('RESOURCES'); ?></a></li>
                                 <li role="presentation"><a href="contact_us.php"><?php _e('CONTACT US'); ?></a></li>
-                                <li role="presentation"><a href="protected.php"><?php _e('TEST PAGE'); ?></a></li>
+                               
                                 <?php if (isset($_SESSION['pickme']['user_level']) && in_array(1, $_SESSION['pickme']['user_level'])) { ?>
                                     <li role="presentation"><a href="admin/"><?php _e('ADMIN PANEL'); ?></a></li>
                                 <?php } ?>
