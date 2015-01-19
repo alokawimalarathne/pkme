@@ -415,8 +415,9 @@ function get_news(){
 				while($count < 5 && $row = $stmt->fetch(PDO::FETCH_ASSOC)) :
                                 
                                     $limitedcontent =  string_limit_words($row['content'], 15);
-                                    ?>
-        <div class="col-md-12">
+                                 ?>
+        
+      
             <div class="newsname col-md-12">
                 <h5><a href="./articleview.php?id=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a></h5>
                 
@@ -424,7 +425,7 @@ function get_news(){
             <div class="content col-md-12"><?php echo $limitedcontent." ..."; ?></div>
             <div class="col-md-12 pdate">Date: <?php echo date('Y-m-d H:i:s', $row['date']);  ?> </div>
             
-        </div>
+       
 				
 
 			<?php 
@@ -673,16 +674,191 @@ function get_article($id){
 function get_search_results($query){
     global $query, $generic;
      $params = array(
-       ':searchQ'  => $query . '%',
-	':searchQ2' => '%' . $query . '%'
+        ':searchQ'  =>      $query . '%',
+        ':searchQ2' => '%' . $query . '%'
+         
        
     );
      
-     $sql = ("SELECT * FROM login_users where name LIKE :searchQ OR  name LIKE :searchQ ");
+     $sql = ("SELECT * FROM login_users where name LIKE :searchQ OR  name LIKE :searchQ2 ");
      $stmt = $generic->query($sql, $params);
-     $userRow   = $stmt->fetch(PDO::FETCH_ASSOC);
+     $userRow = $stmt->fetchALL(PDO::FETCH_ASSOC);
+     //echo'<pre>';print_r($userRow);
+?>
      
-     return $userRow;
+     <div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#students" aria-controls="home" role="tab" data-toggle="tab">Students</a></li>
+    <li role="presentation"><a href="#staff" aria-controls="profile" role="tab" data-toggle="tab">Staff</a></li>
+    <li role="presentation"><a href="#companies" aria-controls="messages" role="tab" data-toggle="tab">Companies</a></li>
+   
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active search-tab" id="students">
+        
+        <?php
+            foreach ($userRow as $ur) {
+                $level = min(unserialize($ur['user_level']));
+                if ($level == 3) {
+                    ?>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-12 search-profile">
+                                <div class="col-md-3">
+                                    <a href="./profileview.php?id=<?php echo $ur['user_id'] ?>">
+                                        <?php if ($ur['image']) { ?>
+                                            <img class="img-thumbnail img-responsive" style="max-height: 80px;" src="./uploads/images/<?php echo $ur['image'] ?>"/>
+                                        <?php } else { ?>
+                                            <img class="img-thumbnail img-responsive" style="max-height: 80px;" src="./uploads/images/default.jpg"/>
+                                        <?php } ?>
+                                    </a>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>
+                                        <b> Name:</b>
+                                        <a href="./profileview.php?id=<?php echo $ur['user_id'] ?>">
+                                            <?php echo $ur['name'] . ' ' . $ur['lname']; ?>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <b>Date of Birth:</b>
+                                        <?php echo $ur['dob']; ?>
+                                    </div>
+                                    <div>
+                                        <b>Gender:</b>
+                                        <?php echo $ur['sex']; ?>
+                                    </div>
+                                    <div>
+                                        <b>Skills:</b>
+                                        <?php echo $ur['sex']; ?>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <?php
+                    //echo $ur['name'];
+                }
+            }
+            ?>
+     
+    </div>
+    <div role="tabpanel" class="tab-pane search-tab" id="staff">
+     <?php
+            foreach ($userRow as $ur) {
+                $level = min(unserialize($ur['user_level']));
+                if ($level == 2) {
+                    ?>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-12 search-profile">
+                                <div class="col-md-3">
+                                    <a href="./profileview.php?id=<?php echo $ur['user_id'] ?>">
+                                        <?php if ($ur['image']) { ?>
+                                            <img class="img-thumbnail img-responsive" style="max-height: 80px;" src="./uploads/images/<?php echo $ur['image'] ?>"/>
+                                        <?php } else { ?>
+                                            <img class="img-thumbnail img-responsive" style="max-height: 80px;" src="./uploads/images/default.jpg"/>
+                                        <?php } ?>
+                                    </a>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>
+                                        <b> Name:</b>
+                                        <a href="./profileview.php?id=<?php echo $ur['user_id'] ?>">
+                                            <?php echo $ur['name'] . ' ' . $ur['lname']; ?>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <b>Date of Birth:</b>
+                                        <?php echo $ur['dob']; ?>
+                                    </div>
+                                    <div>
+                                        <b>Gender:</b>
+                                        <?php echo $ur['sex']; ?>
+                                    </div>
+                                    <div>
+                                        <b>Skills:</b>
+                                        <?php echo $ur['sex']; ?>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <?php
+                    //echo $ur['name'];
+                }
+            }
+            ?>
+    </div>
+    <div role="tabpanel" class="tab-pane search-tab" id="companies">
+     <?php
+            foreach ($userRow as $ur) {
+                $level = min(unserialize($ur['user_level']));
+                if ($level == 4) {
+                    ?>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-12 search-profile">
+                                <div class="col-md-3">
+                                    <a href="./profileview.php?id=<?php echo $ur['user_id'] ?>">
+                                        <?php if ($ur['image']) { ?>
+                                            <img class="img-thumbnail img-responsive" style="max-height: 80px;" src="./uploads/images/<?php echo $ur['image'] ?>"/>
+                                        <?php } else { ?>
+                                            <img class="img-thumbnail img-responsive" style="max-height: 80px;" src="./uploads/images/default.jpg"/>
+                                        <?php } ?>
+                                    </a>
+                                </div>
+                                <div class="col-md-9">
+                                    <div>
+                                        <b> Name:</b>
+                                        <a href="./profileview.php?id=<?php echo $ur['user_id'] ?>">
+                                            <?php echo $ur['name'] . ' ' . $ur['lname']; ?>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <b>Date of Birth:</b>
+                                        <?php echo $ur['dob']; ?>
+                                    </div>
+                                    <div>
+                                        <b>Gender:</b>
+                                        <?php echo $ur['sex']; ?>
+                                    </div>
+                                    <div>
+                                        <b>Skills:</b>
+                                        <?php echo $ur['sex']; ?>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <?php
+                    //echo $ur['name'];
+                }
+            }
+            ?>
+    </div>
+
+  </div>
+
+</div>
+
+<?php
 }
+
+
+
+
+
+
 ?>
         

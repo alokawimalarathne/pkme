@@ -225,7 +225,7 @@ $profile = get_image($uid, $level);//echo '<pre>';print_r($profile );echo '</pre
                         <?php } ?>
                 </div>      
                 <?php }else{  ?>
-                You are admin.
+                This is admin profile page;
                 <?php  } ?>
             </div>
             

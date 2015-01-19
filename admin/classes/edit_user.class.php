@@ -56,7 +56,7 @@ class Edit_user extends Generic {
 		$stmt3 = parent::query($sql, $ids);
 
 		?>
-		<select class="medium chzn-select" multiple="multiple" id="user_level" name="user_level[]">
+		<select class="medium chzn-select"  id="user_level" name="user_level[]">
 			<?php while($level = $stmt3->fetch()) : ?>
 			<?php echo $level['level_level'];  ?>
 			<option selected="selected" value="<?php echo $level['level_level']; ?>"><?php echo $level['level_name']; ?></option>
