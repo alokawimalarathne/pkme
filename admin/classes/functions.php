@@ -266,7 +266,7 @@ function pagination($table, $args = '',$total_pages = '') {
 	$paginate = '';
 	if($lastPage > 0) :
 
-		$paginate = '<div class="pagination"><ul>';
+		$paginate = '<div class="pagination"><ul class="list-inline">';
 
 		// Previous.
 		$paginate .= ($page > 1) ? '<li class="prev"><a href="?' . http_build_query(array_merge($_GET, array('info' => $table, "page" => "$previous"))) . $hash . '">&larr; '._('Previous').'</a></li>' : '<li class="prev disabled"><a href="#">&larr; '._('Previous').'</a></li>';
@@ -417,8 +417,13 @@ function get_news(){
                                     $limitedcontent =  string_limit_words($row['content'], 15);
                                     ?>
         <div class="col-md-12">
-            <div class="newsname col-md-8"><h5><?php echo $row['name']; ?></h5></div>
+            <div class="newsname col-md-12">
+                <h5><a href="./articleview.php?id=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a></h5>
+                
+            </div>
             <div class="content col-md-12"><?php echo $limitedcontent." ..."; ?></div>
+            <div class="col-md-12 pdate">Date: <?php echo date('Y-m-d H:i:s', $row['date']);  ?> </div>
+            
         </div>
 				
 
@@ -428,6 +433,49 @@ function get_news(){
                         ?>
 			
 <?php } 
+
+function get_resources($cat){
+    $pagination = pagination('articles', 'ORDER BY id DESC');
+
+	global $query, $generic;
+     $params = array(
+       ':category'=> $cat
+       
+    );
+     $sql = ("SELECT * FROM articles where category=:category");
+     $stmt = $generic->query($sql, $params);
+     //$userRow   = $stmt->fetch(PDO::FETCH_ASSOC);
+	if($stmt->rowCount() < 1) return false;
+
+	/* Manage levels */
+	?>
+
+			<?php
+                                $count = 0;
+				while($count < 5 && $row = $stmt->fetch(PDO::FETCH_ASSOC)) :
+                                
+                                    $limitedcontent =  string_limit_words($row['content'], 15);
+                                    ?>
+        <div class="col-md-12">
+            <div class="newsname col-md-12">
+                <h5><a href="./articleview.php?id=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a></h5>
+                
+            </div>
+            <div class="content col-md-12"><?php echo $limitedcontent." ..."; ?></div>
+            <div class="col-md-12 pdate">Date: <?php echo date('Y-m-d H:i:s', $row['date']);  ?> </div>
+            
+        </div>
+				
+
+			<?php 
+                         $count ++;
+                        endwhile; 
+                        ?>
+			
+<?php 
+echo $pagination;
+} 
+
 
   function get_profiles( ){
        $pagination = pagination('login_users', 'ORDER BY user_id DESC ');
@@ -606,6 +654,20 @@ LEFT JOIN skills s ON s.uid=u.user_id  WHERE u.user_id =:user_id");
     $stmt = $generic->query($sql, $params);
     $userRow   = $stmt->fetch(PDO::FETCH_ASSOC);
     return $userRow;
+}
+
+
+function get_article($id){
+     global $query, $generic;
+     $params = array(
+       ':id'=> $id
+       
+    );
+     $sql = ("SELECT * FROM articles where id =:id ");
+     $stmt = $generic->query($sql, $params);
+     $userRow   = $stmt->fetch(PDO::FETCH_ASSOC);
+     
+     return $userRow;
 }
 ?>
         

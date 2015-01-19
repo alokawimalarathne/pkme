@@ -430,3 +430,10 @@ overflow-x: hidden;
 .profilepic{
     max-width: 170px;
 }
+.pdate{
+    font-size: 11px;
+    color: rgb(178, 178, 178);
+}
+.article-content{
+    margin-top: 25px;
+}

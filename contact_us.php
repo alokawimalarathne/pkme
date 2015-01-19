@@ -9,7 +9,7 @@
             <div class="clr"></div>
             
             <div class="col-md-4">
-                <img src="images/contactus.png">
+                <img  class="img-thumbnail"  src="images/contactus.png">
                 <!--          <hr class="noscreen" />  -->
                 <address>
                     <h2>Office Location</h2>
