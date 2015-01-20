@@ -749,14 +749,21 @@ function get_search_results($query){
          
        
     );
-     
-     $sql = ("SELECT u.* FROM login_users u
-              WHERE u.name LIKE :searchQ OR  u.name LIKE :searchQ2 
-             
-              ");
+    $sql = ("select u. *, b.* from login_users u left join (SELEct distinct (GROUP_CONCAT(DISTINCT(su.uid))) as uid ,
+         
+         GROUP_CONCAT(su.skills) as skills
+ FROM   skills_user su  group by su.uid) as b on b.uid = u.user_id
+ WHERE u.name LIKE :searchQ OR  u.name LIKE :searchQ2  
+OR b.skills LIKE :searchQ OR  b.skills LIKE :searchQ2 
+");
+    
+//     $sql = ("SELECT u.*, (select * from skills_user where skills = :searchQ2 ) as sk FROM login_users u
+//              WHERE u.name LIKE :searchQ OR  u.name LIKE :searchQ2 
+//             
+//              ");
      $stmt = $generic->query($sql, $params);
      $userRow = $stmt->fetchALL(PDO::FETCH_ASSOC);
-     //echo'<pre>';print_r($userRow);
+     //echo'<pre>';print_r($userRow);echo '</pre>';
 ?>
      
      <div role="tabpanel">

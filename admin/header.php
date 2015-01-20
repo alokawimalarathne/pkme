@@ -50,7 +50,7 @@
                          <div class="nav-collapse">
                             <ul class="nav nav-pills col-md-8">
 				<li  role="presentation" class="active"><a href="home.php"><?php _e('HOME'); ?></a></li>
-						<li><a href="../protected.php"><?php _e('Secure page'); ?></a></li>
+						
 						<li><a href="index.php"><?php _e('Admin panel'); ?></a></li>
 					</ul>
 		<?php if(isset($_SESSION['pickme']['username'])) { ?>

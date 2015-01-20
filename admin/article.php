@@ -68,7 +68,15 @@ include_once('header.php');
 	</form>
 
 </div>
+<!--<script>
+$('#delete').click(function(e) {
 
+	e.preventDefault();
+	confirm('Please click OK to delete this article');
+        return true;
+
+});
+</script>-->
 
 
 <?php include_once('footer.php'); ?>
