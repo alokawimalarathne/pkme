@@ -189,7 +189,7 @@ $profile = get_image($uid, $level);
                                 <div class="pro-details"><?php echo $profile['email'];?></div>
                                 <div>Mobile/Telephone</div>
                                 <div class="pro-details"><?php echo $profile['mobile'];?></div>
-                                <div>Start Date/dt>
+                                <div>Start Date</div>
                                 <div class="pro-details"><?php echo $profile['dob'];?></div>                                
                                                       
                                 <?php if($profile['field']){  ?>
@@ -199,7 +199,7 @@ $profile = get_image($uid, $level);
                                 <?php } ?>
                                 
                                  <?php if($profile['description']){  ?>
-                                <div>Field</div>
+                                <div>Description</div>
                                 <div><?php  $description= $profile['description'];//echo '<pre>';print_r($programing) ;
                                 echo $description;?></div>
                                 <?php } ?>

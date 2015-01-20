@@ -755,6 +755,7 @@ function get_search_results($query){
  FROM   skills_user su  group by su.uid) as b on b.uid = u.user_id
  WHERE u.name LIKE :searchQ OR  u.name LIKE :searchQ2  
 OR b.skills LIKE :searchQ OR  b.skills LIKE :searchQ2 
+
 ");
     
 //     $sql = ("SELECT u.*, (select * from skills_user where skills = :searchQ2 ) as sk FROM login_users u
