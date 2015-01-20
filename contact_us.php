@@ -16,7 +16,7 @@
                     <p>
                         <b>Telephone:</b> 0094-112-581245<br />
                         <b>Fax:</b> 0094-112-2587239<br />
-                        <b>Address:</b> Carrer Guidance Unit, University of Colombo School of Computing,35, Philip Gunewardena Mawatha, Colombo 7,
+                        <b>Address:</b> Professional Development Center, University of Colombo School of Computing,35, Philip Gunewardena Mawatha, Colombo 7,
                         SRI LANKA<br />
                         <b>Email:</b> <a mailto:info@pickme.ucsc.ac.lk>info@pickme.ucsc.ac.lk</a>
                     </p>

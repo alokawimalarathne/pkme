@@ -69,7 +69,7 @@ class Add_article extends Generic {
 		echo '<h2>' . _('Suggestions') . '</h2>';
 
 		while($suggest = $stmt->fetch(PDO::FETCH_ASSOC))
-			echo "<p><a href='levels.php?lid=" . $suggest['id'] . "'>" . $suggest['suggest'] . "</a></p>\n";
+			echo "<p><a href='articles.php?lid=" . $suggest['id'] . "'>" . $suggest['suggest'] . "</a></p>\n";
 
 	}
 

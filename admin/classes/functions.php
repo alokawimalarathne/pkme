@@ -397,6 +397,56 @@ function articles() {
 	<?php echo $pagination;
 }
 
+
+function jobs() {
+    
+   $pagination = pagination('jobs');
+
+	global $sql, $query, $generic;
+
+	/* Check that at least one row was returned */
+	$stmt = $generic->query($sql);
+	if($stmt->rowCount() < 1) return false;
+
+	/* Manage levels */
+	?><table class='table'>
+			<thead>
+				<tr>
+					<th><?php echo _('Name'); ?></th>
+					<th><?php echo _('description'); ?></th>
+					<th><?php echo _('salary'); ?></th>					
+                                        <th><?php echo _('experience'); ?></th>
+                                        <th><?php echo _('period'); ?></th>
+                                        <th><?php echo _('published'); ?></th>
+				</tr>
+			</thead>
+			<tbody>
+
+			<?php
+
+				while($row = $stmt->fetch(PDO::FETCH_ASSOC)) :
+                                   
+		
+                                    $limitedcontent =  string_limit_words($row['description'], 15);
+                                    ?>
+
+				<tr>
+					<td><a href="jobs.php?id=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a></td>
+					
+					<td width="60%"><?php echo $limitedcontent." ..."; ?></td>
+                                        <td width="5%"><?php echo $row['salary']; ?></td>
+					<td width="5%"><?php echo $row['experience']; ?></a></td>
+                                        <td width="5%"><?php echo $row['period']; ?></a></td>
+                                        <td width="5%"><?php echo $row['published']; ?></a></td>
+				</tr>
+
+			<?php endwhile; ?>
+			</tbody>
+			</table>
+
+	<?php echo $pagination;
+}
+
 function skills(){
     $pagination = pagination('skills_list');
 
@@ -481,7 +531,42 @@ function get_news(){
                         ?>
 			
 <?php } 
+function get_jobs(){
+    $pagination = pagination('jobs', 'ORDER BY id DESC');
 
+	global $sql, $query, $generic;
+
+	/* Check that at least one row was returned */
+	$stmt = $generic->query($sql);
+	if($stmt->rowCount() < 1) return false;
+
+	/* Manage levels */
+	?>
+
+			<?php
+                                $count = 0;
+				while($count < 5 && $row = $stmt->fetch(PDO::FETCH_ASSOC)) :
+                                
+                                    $limitedcontent =  string_limit_words($row['description'], 15);
+                                 ?>
+        
+      
+            <div class="newsname col-md-12">
+                <h5><a href="./jobview.php?id=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a></h5>
+                
+            </div>
+            <div class="content col-md-12"><?php echo $limitedcontent." ..."; ?></div>
+            <div class="col-md-12 pdate">Date: <?php echo date('Y-m-d H:i:s', $row['date']);  ?> </div>
+            
+       
+				
+
+			<?php 
+                         $count ++;
+                        endwhile; 
+                        ?>
+			
+<?php } 
 function get_resources($cat){
     $pagination = pagination('articles', 'ORDER BY id DESC');
 
@@ -735,6 +820,19 @@ function get_article($id){
        
     );
      $sql = ("SELECT * FROM articles where id =:id ");
+     $stmt = $generic->query($sql, $params);
+     $userRow   = $stmt->fetch(PDO::FETCH_ASSOC);
+     
+     return $userRow;
+}
+
+function get_job($id){
+     global $query, $generic;
+     $params = array(
+       ':id'=> $id
+       
+    );
+     $sql = ("SELECT * FROM jobs where id =:id ");
      $stmt = $generic->query($sql, $params);
      $userRow   = $stmt->fetch(PDO::FETCH_ASSOC);
      

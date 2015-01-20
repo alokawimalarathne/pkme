@@ -44,7 +44,8 @@
                     ?>
             
             <div class="tab-pane fade useredit in active" id="usr-control">
-                    <div class="col-md-12">	
+                <div class="row"  >  
+                <div class="col-md-12">	
 
                         <legend><?php _e('General'); ?></legend>
 
@@ -376,7 +377,7 @@
                     <?php endif; ?>
 
 
-                </div>
+                </div></div>
 		</div>
 		<?php endif; ?>
 
@@ -384,10 +385,10 @@
 
 		<?php if (!$profile->guest && !$profile->denyAccessLogs()) : ?>
 		<div class="tab-pane fade" id="usr-access-logs">
-			<fieldset>
+			<div class="row useredit">
 				<legend><?php _e('Access Logs'); ?></legend>
 				<?php $profile->generateAccessLogs(); ?>
-			</fieldset>
+                        </div>
 		</div>
 		<?php endif; ?>
 

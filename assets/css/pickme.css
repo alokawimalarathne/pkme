@@ -339,7 +339,7 @@ fieldset{
     margin-top: 15px;
 }
 .useredit{
-    display: table !important;
+    padding: 30px;;
 }
 .ownimage{
     height: 150px;

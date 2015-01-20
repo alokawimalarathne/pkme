@@ -391,7 +391,7 @@ include_once('admin/classes/functions.php');
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active tabpane" id="home"><?php echo get_news(); ?></div>
                             <div role="tabpanel" class="tab-pane tabpane" id="profile"><?php echo get_profiles(); ?></div>
-                            <div role="tabpanel" class="tab-pane tabpane" id="messages">latest job posting panel</div>
+                            <div role="tabpanel" class="tab-pane tabpane" id="messages"><?php echo get_jobs(); ?></div>
 
                         </div>
 

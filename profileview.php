@@ -121,7 +121,7 @@ $profile = get_image($uid, $level);
                         <legend>Settings</legend>
                         <div>Messages</div>
                         <div>Endorse Requests</div>                       
-                        <div>Edit profile</div>
+                        <div><a  href='./profile.php<?php  ?>'>Edit profile</a></div>
                        
                     </div>
                 </div>
@@ -176,7 +176,7 @@ $profile = get_image($uid, $level);
                     <div class="profile-left ">
                         <legend>Settings</legend>
                                          
-                        <div>Edit profile</div>
+                        <div><a  href='./profile.php<?php  ?>'>Edit profile</a></div>
                        
                     </div>
                 </div>
