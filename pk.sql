@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 19, 2015 at 03:11 AM
+-- Generation Time: Jan 20, 2015 at 03:03 PM
 -- Server version: 5.5.40-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.5
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `content` longtext,
   `date` int(11) NOT NULL,
   `published` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `articles`
@@ -42,7 +42,8 @@ CREATE TABLE IF NOT EXISTS `articles` (
 INSERT INTO `articles` (`id`, `name`, `category`, `content`, `date`, `published`) VALUES
 (12, 'Introduction to PickMe', 'news', 'There will be introduction session about our newly launched PICKME me UCSC job portal.', 1421566195, 1),
 (13, 'this is second news', 'news', 'this is out second news about our website', 1421567140, 1),
-(14, 'our third article', 'news', 'This is our third article.', 1421577690, 1);
+(14, 'our third article', 'news', 'This is our third article.', 1421577690, 1),
+(15, 'aasA', 'news', 'AsAS', 1421696960, 1);
 
 -- --------------------------------------------------------
 
@@ -57,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `login_confirm` (
   `email` varchar(255) NOT NULL,
   `key` varchar(255) NOT NULL,
   `type` varchar(25) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `login_confirm`
@@ -216,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `login_timestamps` (
   `user_id` int(11) NOT NULL,
   `ip` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `login_timestamps`
@@ -331,7 +332,29 @@ INSERT INTO `login_timestamps` (`id`, `user_id`, `ip`, `timestamp`) VALUES
 (106, 17, '127.0.0.1', '2015-01-18 17:54:37'),
 (107, 18, '127.0.0.1', '2015-01-18 17:55:39'),
 (108, 18, '127.0.0.1', '2015-01-18 18:01:01'),
-(109, 18, '127.0.0.1', '2015-01-18 18:07:05');
+(109, 18, '127.0.0.1', '2015-01-18 18:07:05'),
+(110, 18, '127.0.0.1', '2015-01-19 10:44:12'),
+(111, 4, '127.0.0.1', '2015-01-19 10:48:20'),
+(112, 4, '127.0.0.1', '2015-01-19 10:48:26'),
+(113, 22, '127.0.0.1', '2015-01-19 10:49:26'),
+(114, 4, '127.0.0.1', '2015-01-19 14:39:30'),
+(115, 1, '127.0.0.1', '2015-01-19 17:31:47'),
+(116, 4, '127.0.0.1', '2015-01-19 17:55:20'),
+(117, 18, '127.0.0.1', '2015-01-19 18:03:25'),
+(118, 17, '127.0.0.1', '2015-01-19 18:04:52'),
+(119, 1, '127.0.0.1', '2015-01-19 18:35:51'),
+(120, 1, '127.0.0.1', '2015-01-19 19:15:04'),
+(121, 1, '127.0.0.1', '2015-01-19 20:24:07'),
+(122, 4, '127.0.0.1', '2015-01-19 20:51:50'),
+(123, 1, '127.0.0.1', '2015-01-19 20:52:29'),
+(124, 4, '127.0.0.1', '2015-01-19 21:02:51'),
+(125, 4, '127.0.0.1', '2015-01-19 23:29:22'),
+(126, 4, '127.0.0.1', '2015-01-19 23:37:33'),
+(127, 4, '127.0.0.1', '2015-01-19 23:39:11'),
+(128, 4, '127.0.0.1', '2015-01-19 23:52:24'),
+(129, 4, '127.0.0.1', '2015-01-20 02:41:31'),
+(130, 4, '127.0.0.1', '2015-01-20 02:44:40'),
+(131, 4, '127.0.0.1', '2015-01-20 04:42:30');
 
 -- --------------------------------------------------------
 
@@ -352,6 +375,8 @@ CREATE TABLE IF NOT EXISTS `login_users` (
   `password` varchar(128) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `image` varchar(30) DEFAULT NULL,
+  `cv` varchar(25) DEFAULT NULL,
+  `transcript` varchar(25) DEFAULT NULL,
   `qualification` varchar(200) DEFAULT NULL,
   `position` varchar(200) DEFAULT NULL,
   `field` varchar(200) DEFAULT NULL,
@@ -360,30 +385,31 @@ CREATE TABLE IF NOT EXISTS `login_users` (
   `sex` varchar(10) DEFAULT NULL,
   `dob` varchar(20) DEFAULT NULL,
   `description` longtext
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `login_users`
 --
 
-INSERT INTO `login_users` (`user_id`, `registered_number`, `user_level`, `restricted`, `username`, `name`, `lname`, `email`, `mobile`, `password`, `timestamp`, `image`, `qualification`, `position`, `field`, `type`, `city`, `sex`, `dob`, `description`) VALUES
-(1, NULL, 'a:1:{i:0;s:1:"1";}', 0, 'admin', 'Demo Admin', '', 'admin@localhost.com', NULL, '21232f297a57a5a743894a0e4a801fc3', '2014-09-20 08:28:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, NULL, 'a:2:{i:0;s:1:"2";i:1;s:1:"3";}', 0, 'special', 'Demo Special', '', 'test.special@mail.com', NULL, '0bd6506986ec42e732ffb866d33bb14e', '2014-09-20 08:28:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'user', 'Demo User', '', 'test.user@mail.com', NULL, 'ee11cbb19052e40b07aac0ca060c23ee', '2014-09-20 08:28:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'aloka', 'aloka', 'Wimalarathne', 'aloka.wimalarathne@gmail.com', 0, '3714fdc4dd2a94263753108dec3d4960', '2014-09-22 14:35:23', '1421569164_4.png', NULL, NULL, NULL, NULL, NULL, 'Female', '2015-01-07', NULL),
-(8, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'aasdasd', 'asdas', '', '1231@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-09-22 15:29:53', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'asdasda', 'sadas', '', '1231a@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-09-22 15:31:06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'asadsa', 'asdasq', 'asdasd', '1213@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-09-22 15:36:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'aloka2', 'aloka2', 'aloka2', '12312312@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-09-23 14:35:49', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(12, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'qweqwe', 'weqw', 'eqweqwe', 'dada@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-10-13 06:27:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(13, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'asdasdasd', 'adasd', 'asdasd', 'abc@mail.com', NULL, 'efe6398127928f1b2e9ef3207fb82663', '2014-12-08 15:19:36', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(14, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'sd21212', '11123123', 'sdadasda', 'asdasd@mail.com', NULL, 'efe6398127928f1b2e9ef3207fb82663', '2014-12-08 15:23:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(15, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'klansldnals', 'dasdasd', 'sdasdasda', 'adnasldad@mail.com', NULL, 'efe6398127928f1b2e9ef3207fb82663', '2014-12-08 15:32:51', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(16, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'isankast', 'isankast', 'isanka', 'isankadn@yahoo.com', NULL, 'efe6398127928f1b2e9ef3207fb82663', '2014-12-08 16:36:45', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17, NULL, 'a:1:{i:0;s:1:"2";}', 0, 'asanka', 'asanka', 'dada', 'asnak@mail.com', 0, '03810a2293e9e65125db68fb54967be2', '2014-12-08 17:18:13', '1421601694_17.jpg', 'YToxOntpOjA7czoxMzoiUHJvZmVzc29yc2hpcCI7fQ==', NULL, 'YTozOntpOjA7czoxMDoiTmV0d29ya2luZyI7aToxO3M6MTY6IldlYiBkZXZlbG9wbWVudHMiO2k6MjtzOjg6IkJ1c2luZXNzIjt9', NULL, NULL, 'Male', '2015-01-08', NULL),
-(18, 'isankacom', 'a:1:{i:0;s:1:"4";}', 0, 'isankacom', 'isanka com', '', 'isankacom@mail.com', 112256145, '03810a2293e9e65125db68fb54967be2', '2014-12-08 17:38:43', '1421571335_18.jpg', NULL, NULL, 'YToyOntpOjA7czoxOToiU29mdHdhcmUgUHJvZ3JhbWluZyI7aToxO3M6MTY6IldlYiBkZXZlbG9wbWVudHMiO30=', 'Semi government', 'Kurunegala', NULL, '2015-01-06', 'This is my company description'),
-(19, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'abc123', 'abac123', '', 'abcqwe@mail.com', NULL, '9a457976f74ec063120c79b89eed87d8', '2015-01-18 07:32:20', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(20, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'abc1234', 'abc123', 'abc123', 'aasda@mail.com', NULL, '2388d563676d07c101ce19164620d96a', '2015-01-18 07:34:04', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `login_users` (`user_id`, `registered_number`, `user_level`, `restricted`, `username`, `name`, `lname`, `email`, `mobile`, `password`, `timestamp`, `image`, `cv`, `transcript`, `qualification`, `position`, `field`, `type`, `city`, `sex`, `dob`, `description`) VALUES
+(1, NULL, 'a:1:{i:0;s:1:"1";}', 0, 'admin', 'Demo Admin', '', 'admin@localhost.com', NULL, '21232f297a57a5a743894a0e4a801fc3', '2014-09-20 08:28:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, NULL, 'a:1:{i:0;s:1:"2";}', 1, 'special', 'Demo Special', '', 'test.special@mail.com', NULL, '0bd6506986ec42e732ffb866d33bb14e', '2014-09-20 08:28:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'user', 'Demo User', '', 'test.user@mail.com', NULL, 'ee11cbb19052e40b07aac0ca060c23ee', '2014-09-20 08:28:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'aloka', 'aloka', 'Wimalarathne', 'aloka.wimalarathne@gmail.com', 0, '3714fdc4dd2a94263753108dec3d4960', '2014-09-22 14:35:23', '1421569164_4.png', '1421721817_4.pdf', '1421721853_4.pdf', NULL, NULL, NULL, NULL, NULL, 'Female', '2015-01-07', NULL),
+(8, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'aasdasd', 'asdas', '', '1231@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-09-22 15:29:53', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'asdasda', 'sadas', '', '1231a@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-09-22 15:31:06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'asadsa', 'asdasq', 'asdasd', '1213@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-09-22 15:36:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'aloka2', 'aloka2', 'aloka2', '12312312@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-09-23 14:35:49', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(12, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'qweqwe', 'weqw', 'eqweqwe', 'dada@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-10-13 06:27:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(13, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'asdasdasd', 'adasd', 'asdasd', 'abc@mail.com', NULL, 'efe6398127928f1b2e9ef3207fb82663', '2014-12-08 15:19:36', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(14, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'sd21212', '11123123', 'sdadasda', 'asdasd@mail.com', NULL, 'efe6398127928f1b2e9ef3207fb82663', '2014-12-08 15:23:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(15, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'klansldnals', 'dasdasd', 'sdasdasda', 'adnasldad@mail.com', NULL, 'efe6398127928f1b2e9ef3207fb82663', '2014-12-08 15:32:51', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(16, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'isankast', 'isankast', 'isanka', 'isankadn@yahoo.com', NULL, 'efe6398127928f1b2e9ef3207fb82663', '2014-12-08 16:36:45', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, NULL, 'a:1:{i:0;s:1:"2";}', 0, 'asanka', 'asanka', 'dada', 'asnak@mail.com', 0, '03810a2293e9e65125db68fb54967be2', '2014-12-08 17:18:13', '1421601694_17.jpg', NULL, NULL, 'YToxOntpOjA7czoxMzoiUHJvZmVzc29yc2hpcCI7fQ==', NULL, 'YTozOntpOjA7czoxMDoiTmV0d29ya2luZyI7aToxO3M6MTY6IldlYiBkZXZlbG9wbWVudHMiO2k6MjtzOjg6IkJ1c2luZXNzIjt9', NULL, NULL, 'Male', '2015-01-08', NULL),
+(18, 'isankacom', 'a:1:{i:0;s:1:"4";}', 0, 'isankacom', 'isanka com', '', 'isankacom@mail.com', 112256145, '03810a2293e9e65125db68fb54967be2', '2014-12-08 17:38:43', '1421571335_18.jpg', NULL, NULL, NULL, NULL, 'YToyOntpOjA7czoxOToiU29mdHdhcmUgUHJvZ3JhbWluZyI7aToxO3M6MTY6IldlYiBkZXZlbG9wbWVudHMiO30=', 'Semi government', 'Kurunegala', NULL, '2015-01-06', 'This is my company description'),
+(19, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'abc123', 'abac123', '', 'abcqwe@mail.com', NULL, '9a457976f74ec063120c79b89eed87d8', '2015-01-18 07:32:20', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(20, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'abc1234', 'abc123', 'abc123', 'aasda@mail.com', NULL, '2388d563676d07c101ce19164620d96a', '2015-01-18 07:34:04', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'isanka2', 'isanka', '2', 'isanka@mm.com', NULL, '03810a2293e9e65125db68fb54967be2', '2015-01-19 10:48:59', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -407,32 +433,89 @@ CREATE TABLE IF NOT EXISTS `projects` (
 --
 
 INSERT INTO `projects` (`id`, `uid`, `pname`, `pdescription`, `ptechnologies`, `pclient`, `pgroupmode`, `prole`) VALUES
-(1, 4, 'abcde dasdasd', 'abcadasda  ddsda', 'asakdalnsdlas asdasd', 'abc123', 1, 'adasdasd');
+(1, 4, 'First Project', 'This is description', 'ajbask dkjadklasd', 'asdadasdasd', 1, 'admin');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `skills`
+-- Table structure for table `skills_list`
 --
 
-CREATE TABLE IF NOT EXISTS `skills` (
+CREATE TABLE IF NOT EXISTS `skills_list` (
+`id` int(11) NOT NULL,
+  `cat` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `skills_list`
+--
+
+INSERT INTO `skills_list` (`id`, `cat`, `name`) VALUES
+(1, 'Software Programing ', 'PHP'),
+(3, 'Software Programing ', 'Java'),
+(4, 'Software Programing ', '.NET'),
+(5, 'Software Programing ', 'Python'),
+(6, 'Software Programing ', 'C/C++'),
+(7, 'Software Programing ', 'Objective-C'),
+(8, 'Networking', 'Wireless'),
+(9, 'Networking', 'Routing'),
+(10, 'Networking', 'Switching'),
+(11, 'Networking', 'TCP/IP'),
+(12, 'Networking', 'Virtualization'),
+(13, 'Networking', 'DHCP'),
+(14, 'Networking', 'LDAP'),
+(15, 'Networking', 'Unix/Linux servers'),
+(16, 'Networking', 'Windows servers'),
+(17, 'Web applications', 'PHP'),
+(18, 'Web applications', 'Python'),
+(19, 'Web applications', 'Ruby'),
+(20, 'Web applications', 'SQL/MySql'),
+(21, 'Web applications', 'Javascript'),
+(22, 'Web applications', 'HTML4/HTML5'),
+(23, 'Web applications', 'Joomla'),
+(24, 'Web applications', 'Wordpress'),
+(25, 'Web applications', 'Drupal'),
+(26, 'Web applications', 'eCommerce'),
+(27, 'Web applications', 'JSF'),
+(28, 'Business', 'Business process MGT'),
+(29, 'Business', 'Information systems '),
+(30, 'Business', 'Marketing'),
+(31, 'Business', 'Planning and monitor'),
+(32, 'Business', 'Project MGT'),
+(33, 'Business', 'Requirements analysi'),
+(34, 'Professional', 'CIMA'),
+(35, 'Professional', 'CIM'),
+(36, 'Professional', 'Charted'),
+(37, 'Professional', 'AAT'),
+(38, 'Professional', 'CCNA'),
+(39, 'Professional', 'CCNP'),
+(40, 'Professional', 'Java certification'),
+(41, 'Professional', 'Zend Certificate');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `skills_user`
+--
+
+CREATE TABLE IF NOT EXISTS `skills_user` (
 `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
-  `programing` longtext,
-  `networking` longtext,
-  `webapplication` longtext,
-  `business` longtext,
-  `professional` longtext,
-  `cv` varchar(30) DEFAULT NULL,
-  `transcript` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+  `cat` varchar(50) NOT NULL,
+  `skills` varchar(500) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `skills`
+-- Dumping data for table `skills_user`
 --
 
-INSERT INTO `skills` (`id`, `uid`, `programing`, `networking`, `webapplication`, `business`, `professional`, `cv`, `transcript`) VALUES
-(2, 4, 'YTozOntpOjA7czo0OiJKYXZhIjtpOjE7czo0OiIuTkVUIjtpOjI7czoxMToiT2JqZWN0aXZlLUMiO30=', 'YToxOntpOjA7czo0OiJESENQIjt9', 'YToyOntpOjA7czo0OiJKYXZhIjtpOjE7czo2OiJQeXRob24iO30=', 'YToyOntpOjA7czoyMzoiSW5mb3JtYXRpb24gc3lzdGVtcyBNR1QiO2k6MTtzOjk6Ik1hcmtldGluZyI7fQ==', 'YToxOntpOjA7czo3OiJDaGFydGVkIjt9', '1421550050_4.pdf', '1421550050_4.pdf');
+INSERT INTO `skills_user` (`id`, `uid`, `cat`, `skills`) VALUES
+(1, 4, 'softwareprograming', 'PHP, .NET, Python, C/C++, Objective-C'),
+(2, 4, 'networking', 'Wireless, Routing, TCP/IP, Virtualization, DHCP, LDAP, Unix/Linux servers, Windows servers'),
+(3, 4, 'webapplications', 'PHP, Ruby, SQL/MySql, Javascript, HTML4/HTML5, Joomla, Wordpress, Drupal, eCommerce, JSF'),
+(4, 4, 'business', 'Business process MGT, Marketing, Planning and monitor, Project MGT, Requirements analysi'),
+(5, 4, 'professional', 'CIMA, Charted, AAT, CCNA, CCNP, Java certification, Zend Certificate');
 
 --
 -- Indexes for dumped tables
@@ -499,10 +582,16 @@ ALTER TABLE `projects`
  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `skills`
+-- Indexes for table `skills_list`
 --
-ALTER TABLE `skills`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `id` (`id`), ADD UNIQUE KEY `uid` (`uid`);
+ALTER TABLE `skills_list`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `skills_user`
+--
+ALTER TABLE `skills_user`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -512,12 +601,12 @@ ALTER TABLE `skills`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `login_confirm`
 --
 ALTER TABLE `login_confirm`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `login_levels`
 --
@@ -542,22 +631,27 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
 -- AUTO_INCREMENT for table `login_timestamps`
 --
 ALTER TABLE `login_timestamps`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=110;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=132;
 --
 -- AUTO_INCREMENT for table `login_users`
 --
 ALTER TABLE `login_users`
-MODIFY `user_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+MODIFY `user_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `skills`
+-- AUTO_INCREMENT for table `skills_list`
 --
-ALTER TABLE `skills`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+ALTER TABLE `skills_list`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
+--
+-- AUTO_INCREMENT for table `skills_user`
+--
+ALTER TABLE `skills_user`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
