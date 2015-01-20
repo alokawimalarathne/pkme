@@ -82,10 +82,7 @@ $("#searchform").on( "submit" , function(){
     return false; // Prevent the form from actually submitting
 });
 
-$(".nav a").on("click", function(){
-   $(".nav").find(".active").removeClass("active");
-   $(this).parent().addClass("active");
-});
+
 
 </script>
 </body>

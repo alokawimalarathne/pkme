@@ -857,12 +857,17 @@ OR b.skills LIKE :searchQ OR  b.skills LIKE :searchQ2
                                         </a>
                                     </div>
                                     <div>
+                                       
                                         <b>Qualification:</b>
+                                         <?php if($ur['qualification']){ ?>
                                         <?php echo implode(', ', unserialize(base64_decode($ur['qualification']))); ?>
+                                        <?php } ?>
                                     </div>
                                     <div>
                                         <b>Teaching area:</b>
+                                        <?php if($ur['qualification']){ ?>
                                         <?php echo implode(', ', unserialize(base64_decode($ur['field']))); ?>
+                                        <?php } ?>
                                     </div>
                                     
                                 </div> 

@@ -29,22 +29,16 @@ a.signup-link em {
     margin-top: 45px;
     float: right;
 }
-form.normal-label label {
-    font-weight: normal;
-    font-size: 11px;
-    color: #999;
-}
+
 .forgotcenter {
     margin: auto;
     width: 50%;
 }
-div.login {
-    margin-left: 5%;
-    margin-right: 5%;
-    text-align: center;
-}
+
 .a-tooltip { display:inline-block; }
-.btn.login-submit { margin-right: 70px }
+.modal-backdrop.in{
+    opacity: 0.8;
+}
 input[type="checkbox"]#remember,
 .remember { display: inline }
 .login-label { margin-right: 170px }
