@@ -137,8 +137,12 @@
                         <?php  if( protectThis("3") ){  ?>
 
                             <legend><?php _e('Skill Set'); ?></legend>
+                            <?php $profile->returnSkills(); ?>
+                            <input type="hidden" name="categories" value="<?php echo $profile->returnSkillscat() ?>" />
+                            <!--
                             <div class="form-group col-xs-4">
-                                <label class="" for="programing"><?php _e('Software programing'); 
+                               
+                                <label class="" for="programing"><?php _e('Software programing');  
                                /// $data = ($profile->getField('programing'));
                              //  echo '<pre>'; print_r(unserialize(base64_decode($profile->getField('programing'))));
                                 ?>
@@ -215,6 +219,8 @@
                                 </select>
 
                             </div>
+                            
+                            -->
                             <legend><?php _e('Projects'); ?></legend>
                             <div class="form-group col-xs-4">
                                 <label class="" for="pname" ><?php _e('Project Name'); ?></label>

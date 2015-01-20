@@ -91,7 +91,7 @@ class Login extends Pickme_integration {
 
 		if(isset($_GET['e'])) :
 			if (parent::getOption('block-msg-out-enable'))
-				$this->msg = '<div class="alert alert-error">'.parent::getOption('block-msg-out').'</div>';
+				$this->msg = '<div class="alert alert-danger alert-dismissible fade in ">'.parent::getOption('block-msg-out').'</div>';
 		endif;
 	}
 
@@ -99,7 +99,7 @@ class Login extends Pickme_integration {
 
 		// Check that the token is valid, prevents exploits
 		if(!parent::valid_token($this->token)) {
-			$this->error = '<div class="alert alert-error">'._('Invalid login attempt').'</div>';
+			$this->error = '<div class="alert alert-danger alert-dismissible fade in ">'._('Invalid login attempt').'</div>';
 			return false;
 		}
 
@@ -115,12 +115,12 @@ class Login extends Pickme_integration {
 		if(!empty($this->error)) return false;
 
 		if(empty($this->user)) {
-			$this->error = '<div class="alert alert-error">'._('You must enter a username.').'</div>';
+			$this->error = '<div class="alert alert-danger alert-dismissible fade in ">'._('You must enter a username.').'</div>';
 			return false;
 		}
 
 		if(empty($this->pass)) {
-			$this->error = '<div class="alert alert-error">'._('You forgot your password, silly.').'</div>';
+			$this->error = '<div class="alert alert-danger alert-dismissible fade in ">'._('You forgot your password, silly.').'</div>';
 			return false;
 		}
 
@@ -130,7 +130,7 @@ class Login extends Pickme_integration {
 		$this->result = $stmt->fetch();
 
 		if(!parent::validatePassword($this->pass, $this->result['password']))
-			$this->error = "<div class=\"alert alert-error\">"._('Incorrect username or password.')."</div>";
+			$this->error = "<div class=\"alert alert-danger alert-dismissible fade in \">"._('Incorrect username or password.')."</div>";
 
 	}
 

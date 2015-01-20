@@ -15,6 +15,7 @@ if ( !isset($_POST['add_user']) && !isset($_POST['add_level']) && !isset($_POST[
 				<li><a href="#user-control" data-toggle="tab"><i class="icon-list"></i> <?php _e('Users'); ?></a></li>
 				<li><a href="#level-control" data-toggle="tab"><i class="icon-list"></i> <?php _e('Levels'); ?></a></li>
                                 <li><a href="#articles" data-toggle="tab"><i class="icon-folder-open"></i> <?php _e('Articles'); ?></a></li>
+                                <li><a href="#skills" data-toggle="tab"><i class="icon-folder-open"></i> <?php _e('Skills'); ?></a></li>
 				<li><a href="#reports" data-toggle="tab"><i class="icon-folder-open"></i> <?php _e('Reports'); ?></a></li>
 				<li><a href="#send-email" data-toggle="tab"><i class="icon-envelope"></i> <?php _e('Send email'); ?></a></li>
 				<li><a href="settings.php"><i class="icon-cog"></i> <?php _e('Settings'); ?></a></li>
@@ -49,7 +50,13 @@ if ( !isset($_POST['add_user']) && !isset($_POST['add_level']) && !isset($_POST[
                                     <?php include_once('page/articles.php'); ?>
                                 </div>
 				<!-- - - - - - - - - - - - - - - - -
+                                		Skills
 
+				- - - - - - - - - - - - - - - - - -->
+                                <div class="tab-pane fade" id="skills">
+                                    <?php include_once('page/skills.php'); ?>
+                                </div>
+				<!-- - - - - - - - - - - - - - - - -
 						Reports
 
 				- - - - - - - - - - - - - - - - - -->

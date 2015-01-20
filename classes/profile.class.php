@@ -31,7 +31,7 @@ class Profile extends Generic {
 
 			foreach ($_POST as $field => $value)
 				$this->settings[$field] = parent::secure($value);
-
+                                
 			// Validate fields
 			$this->validate();
 
@@ -76,26 +76,19 @@ class Profile extends Generic {
                 if( protectThis("3") ){
                     $sql = " SELECT `user_id`, `username`, `user_level`,`name`, `lname`, `email`, `image`, dob, sex ";
                     $stmt2 = parent::query( "SELECT * FROM projects WHERE `uid` = :user_id" , $params);
-                    $stmt3 = parent::query( "SELECT * FROM skills WHERE `uid` = :user_id" , $params);
+                    
                     if ($stmt2->rowCount() >= 1){
                      $sql.= " ,pname,pdescription,ptechnologies,pclient,pgroupmode,prole, p.uid  ";   
                     }
-                    if ($stmt3->rowCount() >= 1){
-                        $sql.= " ,programing, networking,webapplication,business,professional, s.uid  ";   
-                    }
+                    
                      $sql.= " FROM login_users ";
                     if ($stmt2->rowCount() >= 1){
                      $sql.= " , projects p ";    
                     }
-                     if ($stmt2->rowCount() >= 1){
-                        $sql.= " , skills s ";      
-                     }
+                     
                      $sql.= " WHERE `user_id` = :user_id ";
                      
-                     
-                   if ($stmt2->rowCount() >= 1){
-                     $sql.= " AND s.uid = :user_id ";
-                   }
+                  
                     if ($stmt2->rowCount() >= 1){
                         
                     }
@@ -295,7 +288,7 @@ class Profile extends Generic {
                         ':transcript' => $uniname,
                         ':uid' => $this->settings['user_id']
                     );
-                    parent::query("UPDATE `skills` SET `transcript`=:transcript WHERE `uid` = :uid", $params);
+                    parent::query("UPDATE `login_users` SET `transcript`=:transcript WHERE `user_id` = :uid", $params);
                 } else {
                     
                 }
@@ -318,7 +311,7 @@ class Profile extends Generic {
                         ':cv' => $uniname,
                         ':uid' => $this->settings['user_id']
                     );
-                    parent::query("UPDATE `skills` SET `cv`=:cv WHERE `uid` = :uid", $params);
+                    parent::query("UPDATE `login_users` SET `cv`=:cv WHERE `user_id` = :uid", $params);
                 } else {
                     
                 }
@@ -327,7 +320,7 @@ class Profile extends Generic {
             }
 
             }
-
+/*
             $params = array(':uid' => $this->settings['user_id']);
             $sql = "SELECT * FROM `skills` WHERE `uid` = :uid;";
             $stmt1 = parent::query($sql, $params);
@@ -349,7 +342,41 @@ class Profile extends Generic {
 				VALUES (:uid, :programing, :networking, :webapplication, :business, :professional);";
                 parent::query($sql2, $params2);
             }
+            */
+            $categories = $this->settings['categories'];
+            $catarr = explode(', ', $categories); 
+            foreach ($catarr as $cat) {
+                if(!empty($this->settings['' . $cat . ''])){
+                    $filtercat = array_filter($this->settings['' . $cat . '']);
+                $skillset = implode(', ', $filtercat);
+                }else{
+                  $skillset='';  
+                }
+               // echo '<pre>';print_r($this->settings);  
+                $params = array(':uid' => $this->settings['user_id'], ':cat' => $cat);
+                $sql = "SELECT * FROM `skills_user` WHERE `uid` = :uid AND `cat`=:cat;";
+                $stmt1 = parent::query($sql, $params);
+                
+               
 
+                $params2 = array(
+                    ':uid' => $this->user_id,
+                    ':cat' => $cat,
+                    ':skills' => $skillset
+                );
+
+                 if ($stmt1->rowCount() >= 1){
+                      $sql2 = "UPDATE `skills_user` SET `skills` = :skills  WHERE `uid` = :uid and `cat` = :cat;";
+                       parent::query($sql2, $params2);
+                 }else{
+               
+                     $sql2 = "INSERT INTO `skills_user` (`uid`, `cat`, `skills`)
+				VALUES (:uid, :cat, :skills);";
+                    parent::query($sql2, $params2);
+                 }
+            }
+
+            
 
             $params = array(':uid' => $this->settings['user_id']);
             $sql = "SELECT * FROM `projects` WHERE `uid` = :uid;";
@@ -447,8 +474,91 @@ class Profile extends Generic {
 
 	}
         
-       
+        public function returnSkills() {
+
+
+        $sql = "SELECT * from skills_list";
+        $stmt2 = parent::query($sql);
+
+        $skills = $stmt2->fetchALL(PDO::FETCH_ASSOC);
+
+        $cat = array();
+        //$this->getUserskills();
+        foreach ($skills as $value) {
+            $cat[] = $value['cat'];
+        }
+        $cat = array_unique($cat);
+        foreach ($cat as $c) {
+            $pname = strtolower($c);
+            $pname = preg_replace('/\s+/', '', $pname); //echo  $pname;
+      ?> 
+            <div class="form-group col-xs-4">          
+                <label class="" for="<?php echo $pname; ?>"><?php echo $c;      ?></label>
+                <select multiple class="form-control" id="<?php echo $pname; ?>" name="<?php echo $pname; ?>[]"> 
+                    <option  selected="selected" value="">Select one or more</option>
+                    <?php foreach ($skills as $skill) {
+                        
+                        if ($skill['cat'] == $c) { 
+                           $skillret = $this->getUserskills($pname);  
+                           $chheckskill = explode(',', $skillret[''.$pname.'']['skills']);
+                                                     
+                            ?>
+                             
+                    <option <?php echo (@in_array($skill['name'], $chheckskill) ? "selected" : "") ?> value="<?php echo ($skill['name']); ?>"><?php echo ($skill['name']); ?> </option>
+
+                        <?php }
+                    }
+                    ?>
+
+                </select>
+            </div>                <?php
+        }
         
+    }
+    public function returnSkillscat() {
+       
+
+        $sql = "SELECT * from skills_list";
+        $stmt2 = parent::query($sql);
+
+        $skills = $stmt2->fetchALL(PDO::FETCH_ASSOC);
+
+        $cat = array();
+
+        foreach ($skills as $value) {
+            $cat[] = $value['cat'];
+        }
+        $cat = array_unique($cat);
+        foreach ($cat as $c) {
+           // $pname[] = strtolower($c);
+            $pname[] = preg_replace('/\s+/', '', strtolower($c)); //echo  $pname;
+        }
+        $pnames = implode(", ",$pname);
+        return $pnames;
+        
+    }
+    
+    private function getUserskills($pname) {
+    
+        $param = array(
+            ':uid' => $this->settings['user_id'],
+            ':cat' => $pname
+        );
+        $sql = "SELECT * FROM skills_user WHERE `cat` =:cat AND `uid` =:uid";
+        $stmt2 = parent::query($sql, $param);
+
+        $skills = $stmt2->fetchALL(PDO::FETCH_ASSOC);
+        // print_r($stmt2);
+        foreach($skills as $sk){
+           
+           $new[''.$sk['cat'].'']  = $sk ;
+        }
+        
+        return $new;
+        
+        
+    }
+
 }
 
 $profile = new Profile();

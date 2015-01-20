@@ -14,7 +14,8 @@ $level = min(get_level($uid));
 
 //print_r($_SESSION['pickme']['user_level']);
 
-$profile = get_image($uid, $level);//echo '<pre>';print_r($profile );echo '</pre>';
+$profile = get_image($uid, $level);
+//echo '<pre>';print_r($skills );echo '</pre>';
 ?>
 <div class="container">
     <div>
@@ -48,67 +49,45 @@ $profile = get_image($uid, $level);//echo '<pre>';print_r($profile );echo '</pre
                         
                         
                         <div class="col-md-8">
-                            <dl>
+                            <div>
                                 
-                                <dt><legend>Genaral</legend>Name</dt>
-                                <dd><?php echo $profile['name'].' '.$profile['lname'];?></dd>
-                                <dt>Email</dt>
-                                <dd><?php echo $profile['email'];?></dd>
-                                <dt>Mobile/Telephone</dt>
-                                <dd><?php echo $profile['mobile'];?></dd>
-                                <dt>Date of Birth</dt>
-                                <dd><?php echo $profile['dob'];?></dd>
-                                <dt>Sex</dt>
-                                <dd><?php echo $profile['sex'];?></dd>
+                                <div><legend>Genaral</legend>Name</div>
+                                <div class="pro-details"><?php echo $profile['name'].' '.$profile['lname'];?></div>
+                                <div>Email</div>
+                                <div class="pro-details"><?php echo $profile['email'];?></div>
+                                <div>Mobile/Telephone</div>
+                                <div class="pro-details"><?php echo $profile['mobile'];?></div>
+                                <div>Date of Birth</div>
+                                <div class="pro-details"><?php echo $profile['dob'];?></div>
+                                <div>Sex</div>
+                                <div class="pro-details"><?php echo $profile['sex'];?></div>
                                 
-                                <dt><legend>Skills</legend></dt>                                
-                                <?php if($profile['programing']){  ?>
-                                <dt>Programing</dt>
-                                <dd><?php  $programing = @unserialize(base64_decode($profile['programing']));//echo '<pre>';print_r($programing) ;
-                                echo implode(", ",$programing);?></dd>
-                                <?php } ?>
-                                <?php if($profile['networking']){  ?>
-                                <dt>networking</dt>
-                                <dd><?php  $programing = @unserialize(base64_decode($profile['networking']));//echo '<pre>';print_r($programing) ;
-                                echo implode(", ",$programing);?></dd>
-                                 <?php } ?>
-                                <?php if($profile['webapplication']){  ?>
-                                <dt>webapplication</dt>
-                                <dd><?php  $programing = @unserialize(base64_decode($profile['webapplication']));//echo '<pre>';print_r($programing) ;
-                                echo implode(", ",$programing);?></dd>
-                                 <?php } ?>
-                                <?php if($profile['business']){  ?>
-                                <dt>business</dt>
-                                <dd><?php  $programing = @unserialize(base64_decode($profile['business']));//echo '<pre>';print_r($programing) ;
-                                echo implode(", ",$programing);?></dd>
-                                 <?php } ?>
-                                <?php if($profile['professional']){  ?>
-                                <dt>professional</dt>
-                                <dd><?php  $programing = @unserialize(base64_decode($profile['professional']));//echo '<pre>';print_r($programing) ;
-                                echo implode(", ",$programing);?></dd>
-                                 <?php } ?>
+                                <legend>Skills</legend>
+                                <?php get_skills($uid); ?>
                                 
                                 
-                                <dt><legend>Projects</legend></dt>
-                                <dt>Name</dt>
-                                <dd><?php echo $profile['pname'];?></dd>
-                                <dt>Description</dt>
-                                <dd><?php echo $profile['pdescription'];?></dd>
-                                <dt>Technologies</dt>
-                                <dd><?php echo $profile['ptechnologies'];?></dd>
-                                <dt>Client</dt>
-                                <dd><?php echo $profile['pclient'];?></dd>
-                                <dt>Groupmode</dt>
-                                <dd><?php if( $profile['pgroupmode'] == 1){
+                                
+                                <div><legend>Projects</legend></div>
+                                <?php $projects= get_projects($uid);// echo '<pre>';print_r($projects);?>
+                                <div>Name</div>
+                                <div class="pro-details"><?php echo $projects['pname'];?></div>
+                                <div>Description</div>
+                                <div class="pro-details"><?php echo $projects['pdescription'];?></div>
+                                <div>Technologies</div>
+                                <div class="pro-details"><?php echo $projects['ptechnologies'];?></div>
+                                <div>Client</div>
+                                <div class="pro-details"><?php echo $projects['pclient'];?></div>
+                                <div>Groupmode</div>
+                                <div class="pro-details"><?php if( $projects['pgroupmode'] == 1){
                                     echo 'Yes';
                                     
                                 }else{
                                     echo 'No';
-                                } ?></dd>
-                                <dt>Role</dt>
-                                <dd><?php echo $profile['prole'];?></dd>
+                                } ?></div>
+                                <div>Role</div>
+                                <div class="pro-details"><?php echo $projects['prole'];?></div>
                                 
-                            </dl>
+                            </div>
                         </div>
                         <?php if($profile['image']){ ?>
                          <div class="col-md-4"><img class="img-responsive img-thumbnail" src="./uploads/images/<?php echo $profile['image'];?> "/></div>
@@ -142,27 +121,27 @@ $profile = get_image($uid, $level);//echo '<pre>';print_r($profile );echo '</pre
                 <div class="col-md-8">
                     <div class="profile-left">
                         <div class="col-md-8">
-                             <dt><legend>Genaral</legend>Name</dt>
-                                <dd><?php echo $profile['name'].' '.$profile['lname'];?></dd>
-                                <dt>Email</dt>
-                                <dd><?php echo $profile['email'];?></dd>
-                                <dt>Mobile/Telephone</dt>
-                                <dd><?php echo $profile['mobile'];?></dd>
-                                <dt>Date of Birth</dt>
-                                <dd><?php echo $profile['dob'];?></dd>
-                                <dt>Sex</dt>
-                                <dd><?php echo $profile['sex'];?></dd>
+                             <div><legend>Genaral</legend>Name</div>
+                                <div class="pro-details"><?php echo $profile['name'].' '.$profile['lname'];?></div>
+                                <div>Email</div>
+                                <div class="pro-details"><?php echo $profile['email'];?></div>
+                                <div>Mobile/Telephone</div>
+                                <div class="pro-details"><?php echo $profile['mobile'];?></div>
+                                <div>Date of Birth</div>
+                                <div class="pro-details"><?php echo $profile['dob'];?></div>
+                                <div>Sex</div>
+                                <div class="pro-details"><?php echo $profile['sex'];?></div>
                                                       
                                 <?php if($profile['qualification']){  ?>
-                                <dt>Qualifications</dt>
-                                <dd><?php  $qualification = @unserialize(base64_decode($profile['qualification']));//echo '<pre>';print_r($programing) ;
-                                echo implode(", ",$qualification);?></dd>
+                                <div>Qualifications</div>
+                                <div class="pro-details"><?php  $qualification = @unserialize(base64_decode($profile['qualification']));//echo '<pre>';print_r($programing) ;
+                                echo implode(", ",$qualification);?></div>
                                 <?php } ?>
                                 
                                  <?php if($profile['field']){  ?>
-                                <dt>Field</dt>
-                                <dd><?php  $field = @unserialize(base64_decode($profile['field']));//echo '<pre>';print_r($programing) ;
-                                echo implode(", ",$field);?></dd>
+                                <div>Field</div>
+                                <div class="pro-details"><?php  $field = @unserialize(base64_decode($profile['field']));//echo '<pre>';print_r($programing) ;
+                                echo implode(", ",$field);?></div>
                                 <?php } ?>
                         </div>
                         <?php if($profile['image']){ ?>
@@ -197,25 +176,25 @@ $profile = get_image($uid, $level);//echo '<pre>';print_r($profile );echo '</pre
                 <div class="col-md-8">
                     <div class="profile-left">
                         <div class="col-md-8">
-                             <dt><legend>Genaral</legend>Name</dt>
-                                <dd><?php echo $profile['name'].' '.$profile['lname'];?></dd>
-                                <dt>Email</dt>
-                                <dd><?php echo $profile['email'];?></dd>
-                                <dt>Mobile/Telephone</dt>
-                                <dd><?php echo $profile['mobile'];?></dd>
-                                <dt>Start Date/dt>
-                                <dd><?php echo $profile['dob'];?></dd>                                
+                             <div><legend>Genaral</legend>Name</div>
+                                <div class="pro-details"><?php echo $profile['name'].' '.$profile['lname'];?></div>
+                                <div>Email</div>
+                                <div class="pro-details"><?php echo $profile['email'];?></div>
+                                <div>Mobile/Telephone</div>
+                                <div class="pro-details"><?php echo $profile['mobile'];?></div>
+                                <div>Start Date/dt>
+                                <div class="pro-details"><?php echo $profile['dob'];?></div>                                
                                                       
                                 <?php if($profile['field']){  ?>
-                                <dt>Qualifications</dt>
-                                <dd><?php  $field = @unserialize(base64_decode($profile['field']));//echo '<pre>';print_r($programing) ;
-                                echo implode(", ",$field);?></dd>
+                                <div>Technologies</div>
+                                <div class="pro-details"><?php  $field = @unserialize(base64_decode($profile['field']));//echo '<pre>';print_r($programing) ;
+                                echo implode(", ",$field);?></div>
                                 <?php } ?>
                                 
                                  <?php if($profile['description']){  ?>
-                                <dt>Field</dt>
-                                <dd><?php  $description= $profile['description'];//echo '<pre>';print_r($programing) ;
-                                echo $description;?></dd>
+                                <div>Field</div>
+                                <div><?php  $description= $profile['description'];//echo '<pre>';print_r($programing) ;
+                                echo $description;?></div>
                                 <?php } ?>
                         </div>
                          <?php if($profile['image']){ ?>

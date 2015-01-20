@@ -379,7 +379,7 @@ class Generic extends Connect {
 
 		if(!empty($_SESSION['pickme']['username'])) {
 			$this->error =	"
-							<div class='alert alert-error'>"._('You\'re already logged in.')."</div>
+							<div class='alert alert-danger alert-dismissible fade in '>"._('You\'re already logged in.')."</div>
 							<h5>"._('What to do now?')."</h5>
 							<p>" . sprintf(_('Go <a href="%s">back</a> to the page you were viewing before this.'), 'javascript:history.go(-1)') . "</p>
 							";

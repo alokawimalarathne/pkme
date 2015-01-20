@@ -238,7 +238,11 @@ function pagination($table, $args = '',$total_pages = '') {
 		if (!empty($_SESSION['pickme']['users_page_limit']))
 			$limit = $_SESSION['pickme']['users_page_limit'];
 	endif;
-
+        if($table == 'skills_list') :
+		$hash = '#skills';
+		if (!empty($_SESSION['pickme']['users_page_limit']))
+			$limit = $_SESSION['pickme']['users_page_limit'];
+	endif;
 	/** The page number to retrieve. */
 	$page = (!empty($_GET['page']) && $_GET['page'] > 0) ? (int)$_GET['page'] : 1;
 
@@ -380,7 +384,7 @@ function articles() {
                                     ?>
 
 				<tr>
-					<td><a href="levels.php?lid="><?php echo $row['name']; ?></a></td>
+					<td><a href="article.php?id=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a></td>
 					<td width="5%"><?php echo $row['category']; ?></td>
 					<td width="60%"><?php echo $limitedcontent." ..."; ?></td>
 					<td width="5%"><?php echo $row['published']; ?></a></td>
@@ -392,6 +396,49 @@ function articles() {
 
 	<?php echo $pagination;
 }
+
+function skills(){
+    $pagination = pagination('skills_list');
+
+	global $sql, $query, $generic;
+
+	/* Check that at least one row was returned */
+	$stmt = $generic->query($sql);
+	if($stmt->rowCount() < 1) return false;
+
+	/* Manage levels */
+	?><table class='table'>
+			<thead>
+				<tr>
+					<th><?php echo _('Category'); ?></th>
+					<th><?php echo _('Name'); ?></th>
+					
+				</tr>
+			</thead>
+			<tbody>
+
+			<?php
+
+				while($row = $stmt->fetch(PDO::FETCH_ASSOC)) :
+                               
+                                    
+                                    ?>
+
+				<tr>
+					
+					<td width="20%"><?php echo $row['cat']; ?></td>
+                                        <td><a href="skills.php?id=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a></td>
+					
+					
+				</tr>
+
+			<?php endwhile; ?>
+			</tbody>
+			</table>
+
+	<?php echo $pagination;
+}
+
 
 function string_limit_words($string, $word_limit) { 
     $words = explode(' ', $string);   // echo '<pre>';print_r(array_slice($words, 0, $word_limit));
@@ -526,16 +573,11 @@ echo $pagination;
        u.image,
        p.uid AS puid,
        p.pname,
-       p.ptechnologies,
-       s.uid AS suid,
-       s.programing,
-       s.networking,
-       s.webapplication,
-       s.business,
-       s.professional
+       p.ptechnologies
+       
 FROM login_users u
 LEFT JOIN projects p ON p.uid =u.user_id
-LEFT JOIN skills s ON s.uid=u.user_id  WHERE u.user_level = 'a:1:{i:0;s:1:\"3\";}' ORDER BY RAND() LIMIT 10");
+WHERE u.user_level = 'a:1:{i:0;s:1:\"3\";}' ORDER BY RAND() LIMIT 10");
         
 	/* Check that at least one row was returned */
 	$stmt = $generic->query($sql);
@@ -568,36 +610,9 @@ LEFT JOIN skills s ON s.uid=u.user_id  WHERE u.user_level = 'a:1:{i:0;s:1:\"3\";
                 <div class="slider-contennt"> 
                     <div class="sli-name"><legend>Name</legend><div class="bg-info sli-name-in"><?php echo $row['name'].' '.$row['lname'] ; ?></div></div>
                     <div class="sli-name"><legend>Skills</legend>
-                    <?php if($row['programing']){
-                    echo '<div>Programing</div>';
-                    $programing = @unserialize(base64_decode($row['programing']));//echo '<pre>';print_r($programing) ;
-                    echo '<div class="bg-info sli-name-in">'.implode(", ",$programing).'</div>';
-                     }
-                    ?>
-                     <?php if($row['networking']){
-                    echo '<div>Networking</div>';
-                    $networking = @unserialize(base64_decode($row['networking']));//echo '<pre>';print_r($programing) ;
-                    echo '<div class="bg-info sli-name-in">'.implode(", ",$networking).'</div>';;
-                     }
-                    ?>  
-                     <?php if($row['webapplication']){
-                    echo '<div>Webapplication</div>';
-                    $webapplication = @unserialize(base64_decode($row['webapplication']));//echo '<pre>';print_r($programing) ;
-                    echo '<div class="bg-info sli-name-in">'.implode(", ",$webapplication).'</div>';;
-                     }
-                    ?>
-                    <?php if($row['business']){
-                    echo '<div>Business</div>';
-                    $business = @unserialize(base64_decode($row['business']));//echo '<pre>';print_r($programing) ;
-                    echo '<div class="bg-info sli-name-in">'.implode(", ",$business).'</div>';;
-                     }
-                    ?>
-                    <?php if($row['professional']){
-                    echo '<div>Professional</div>';
-                    $professional = @unserialize(base64_decode($row['professional']));//echo '<pre>';print_r($programing) ;
-                    echo '<div class="bg-info sli-name-in">'.implode(", ",$professional).'</div>';;
-                     }
-                    ?>
+                    <?php get_skills($row['user_id']);?>
+                    
+                   
                     </div>
                     <div class="sli-name"></div>
                 </div>
@@ -624,38 +639,93 @@ LEFT JOIN skills s ON s.uid=u.user_id  WHERE u.user_level = 'a:1:{i:0;s:1:\"3\";
        ':user_id'=> $uid
        
     );
-    if ($level == 3) {       
-        $sql = ("SELECT u.user_id, u.name,
-       u.lname,
-       u.email,
-       u.mobile,
-       u.image,
-       u.dob,
-       u.sex,
-       p.uid AS puid,
-       p.pname,
-       p.ptechnologies,
-       p.pdescription,
-       p.pclient,
-       p.pgroupmode,
-       p.prole,
-       s.uid AS suid,
-       s.programing,
-       s.networking,
-       s.webapplication,
-       s.business,
-       s.professional
-FROM login_users u
-LEFT JOIN projects p ON p.uid =u.user_id
-LEFT JOIN skills s ON s.uid=u.user_id  WHERE u.user_id =:user_id");
-    } else { 
-       $sql = ("SELECT * FROM login_users WHERE user_id=:user_id "); 
-    }
+   
+    $sql = ("SELECT * FROM login_users WHERE user_id=:user_id "); 
+ 
     
     $stmt = $generic->query($sql, $params);
     $userRow   = $stmt->fetch(PDO::FETCH_ASSOC);
     return $userRow;
 }
+
+function get_projects($uid){
+    global $query, $generic;
+    $params = array(
+       ':user_id'=> $uid
+       
+    );
+   
+    $sql = ("SELECT * FROM projects WHERE `uid`=:user_id "); 
+     
+    $stmt = $generic->query($sql, $params);
+    $userRow   = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    return $userRow;
+}
+function get_skills($uid){
+    global $query, $generic;
+    $params = array(
+       ':uid'=> $uid
+       
+    );
+   
+    $sql = ("SELECT * FROM skills_user WHERE uid =:uid "); 
+ 
+    
+    $stmt = $generic->query($sql, $params);
+    $userRow   = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    foreach($userRow as $sk){
+           
+          $newar[''.$sk['cat'].'']  = $sk ;
+            //$newar[]  = $sk ;
+        }
+        
+   // echo '<pre>'; print_r($newar);
+       
+        $sql2 = "SELECT * from skills_list";
+        $stmt2 = $generic->query($sql2 );
+
+        $skills = $stmt2->fetchALL(PDO::FETCH_ASSOC);
+
+        $cat = array();
+        //$this->getUserskills();
+        foreach ($skills as $value) {
+            $cat[] = $value['cat'];
+        }
+        $cat = array_unique($cat);
+        foreach ($cat as $c) {
+            $short = preg_replace('/\s+/', '', strtolower($c));
+            $pname[''.$short.''] = array('name'=>$c, 'short'=>$short);
+            
+           // $pname[] = ; //echo  $pname;
+        }
+        
+        if(!empty($newar)){
+         
+        foreach($pname as $pn){
+        //echo '<pre>'; print_r($nw);
+            foreach($newar as $nw){
+                if($nw['cat'] == $pn['short']){
+                    if(!empty($nw['skills'])){
+                        ?>
+                            <div><?php echo $pn['name']  ?></div>
+                            <div class="pro-details"><?php echo $nw['skills']  ?></div>
+ <?php 
+                        //echo '<pre>'; print_r($nw); print_r($pn);echo'</pre>';
+                    }
+                    
+                }
+                
+            }
+        }
+}
+        
+        
+         
+         
+       // print_r( $pname);
+}
+
 
 
 function get_article($id){
@@ -680,7 +750,10 @@ function get_search_results($query){
        
     );
      
-     $sql = ("SELECT * FROM login_users where name LIKE :searchQ OR  name LIKE :searchQ2 ");
+     $sql = ("SELECT u.* FROM login_users u
+              WHERE u.name LIKE :searchQ OR  u.name LIKE :searchQ2 
+             
+              ");
      $stmt = $generic->query($sql, $params);
      $userRow = $stmt->fetchALL(PDO::FETCH_ASSOC);
      //echo'<pre>';print_r($userRow);
@@ -702,7 +775,8 @@ function get_search_results($query){
         
         <?php
             foreach ($userRow as $ur) {
-                $level = min(unserialize($ur['user_level']));
+                $level = min(unserialize($ur['user_level']));// echo '<pre>';
+
                 if ($level == 3) {
                     ?>
                     <div class="row">
@@ -734,7 +808,7 @@ function get_search_results($query){
                                     </div>
                                     <div>
                                         <b>Skills:</b>
-                                        <?php echo $ur['sex']; ?>
+                                        <?php get_skills($ur['user_id'] ) ?>
                                     </div>
                                 </div> 
                             </div>
@@ -775,17 +849,14 @@ function get_search_results($query){
                                         </a>
                                     </div>
                                     <div>
-                                        <b>Date of Birth:</b>
-                                        <?php echo $ur['dob']; ?>
+                                        <b>Qualification:</b>
+                                        <?php echo implode(', ', unserialize(base64_decode($ur['qualification']))); ?>
                                     </div>
                                     <div>
-                                        <b>Gender:</b>
-                                        <?php echo $ur['sex']; ?>
+                                        <b>Teaching area:</b>
+                                        <?php echo implode(', ', unserialize(base64_decode($ur['field']))); ?>
                                     </div>
-                                    <div>
-                                        <b>Skills:</b>
-                                        <?php echo $ur['sex']; ?>
-                                    </div>
+                                    
                                 </div> 
                             </div>
                         </div>
@@ -824,16 +895,16 @@ function get_search_results($query){
                                         </a>
                                     </div>
                                     <div>
-                                        <b>Date of Birth:</b>
+                                        <b>Start Date:</b>
                                         <?php echo $ur['dob']; ?>
                                     </div>
                                     <div>
-                                        <b>Gender:</b>
-                                        <?php echo $ur['sex']; ?>
+                                        <b>Fields:</b>
+                                        <?php echo implode(', ', unserialize(base64_decode($ur['field']))); ?>
                                     </div>
                                     <div>
-                                        <b>Skills:</b>
-                                        <?php echo $ur['sex']; ?>
+                                        <b>Type:</b>
+                                        <?php echo $ur['type']; ?>
                                     </div>
                                 </div> 
                             </div>

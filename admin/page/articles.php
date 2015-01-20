@@ -30,7 +30,7 @@ include_once(dirname(dirname(dirname(__FILE__))) . '/classes/translate.class.php
 </fieldset>
 
 <script>
-$('#create_new_article_btn').click(function(e) {
+$('#create_new_article_btn').click(function(e) { 
 	e.preventDefault();
 	$('#create_article').slideToggle();
 

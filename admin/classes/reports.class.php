@@ -19,7 +19,7 @@ class Pickme_reports extends Generic {
 
 	}
 
-	/* @TODO: This is duplicated code from integration.class. Obliterate! */
+	
 	private function findEnabledMethods() {
 
 		foreach ( $this->socialMethods as $method => $color )

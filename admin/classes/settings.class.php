@@ -229,7 +229,7 @@ class Settings extends Generic {
 
 	}
 
-	/* @TODO: This function is repeated once in edit_user.class.php. Obliterate that repeat. */
+	
 	public function returnLevels($id = 'default-level') {
 
 		$option = parent::getOption($id);
