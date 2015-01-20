@@ -6,7 +6,7 @@ include_once('header.php');
 ?>
 
 <div class="row">
-
+    <div class="col-md-12">
 		<form method="post" class="form-horizontal">
 
 		<?php include_once('classes/edit_level.class.php'); ?>
@@ -71,7 +71,7 @@ include_once('header.php');
 			</div>
 
 		</form>
-
+</div>
 </div>
 
 <?php if(!empty($_GET['lid'])) :?>
