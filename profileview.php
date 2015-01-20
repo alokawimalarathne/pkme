@@ -37,11 +37,18 @@ $profile = get_image($uid, $level);
                 <div class="col-md-4">
                     <div class="profile-left ">
                         <legend>Settings</legend>
+                        
+                        <?php if($uid == $_SESSION['pickme']['user_id']){ ?>
                         <div>Messages</div>
+                        <?php }else{ ?>
+                        <div>Send Message</div>
+                        <?php } ?>
                         <div>Recommendations</div>
                         <div>Endorsing Points</div>
-                        <div>Edit profile</div>
-                        <div>Download CV</div>
+                        <?php if($uid == $_SESSION['pickme']['user_id']){ ?>
+                        <div><a  href='./profile.php<?php  ?>'>Edit profile</a></div>
+                      <?php } ?>
+                        <div><a target='_blank' href='./uploads/cvs/<?php echo $profile['cv'] ?>'>Download CV</a></div>
                     </div>
                 </div>
                 <div class="col-md-8">
