@@ -61,7 +61,7 @@ include_once('admin/classes/functions.php');
                         <div class=" homelogin"><form class="form-inline" role="form" method="post" action="login.php">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                        <label class="sr-only" for="exampleInputEmail2">Username</label>
                                         <div class="input-group-addon">@</div>
                                         <input type="text" class="form-control username" id="exampleInputEmail2" name="username" placeholder="Enter email">
                                     </div>

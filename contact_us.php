@@ -1,4 +1,36 @@
-<?php include_once('header.php'); ?>  
+<?php include_once('header.php'); 
+
+
+
+
+if (isset($_POST["submit"])) {
+// Checking For Blank Fields..
+    if ($_POST["InputName"] == "" || $_POST["InputEmail"] == "" || $_POST["InputMessage"] == "") {
+        echo "Fill All Fields..";
+    } else {
+// Check if the "Sender's Email" input field is filled out
+        $email = $_POST['InputEmail'];
+// Sanitize E-mail Address
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+// Validate E-mail Address
+        $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+        if (!$email) {
+            echo "Invalid Sender's Email";
+        } else {
+            $subject = "PICKME contact us";
+            $message = $_POST['InputMessage'];
+            $headers = 'From:' . $email . "\r\n"; // Sender's Email
+            $headers .= 'Cc:' . $email . "\r\n"; // Carbon copy to Sender
+// Message lines should not exceed 100 characters (PHP rule), so wrap it
+            $message = wordwrap($message, 100);
+// Send Mail By PHP Mail Function
+            if(mail("aloka.wimalarathne@gmail.com", $subject, $message, $headers)){
+            echo "<div class='alert alert-success'>Your mail has been sent successfuly ! Thank you for your feedback</div>";
+            }
+        }
+    }
+}
+?>  
 <div class="">
     <div id="content">
         <div class="article">	
@@ -32,7 +64,7 @@
                 <h3>Write to us</h3>
                 <hr class="noscreen" />
                 <div class="clr"></div>
-                <form role="form" action="" method="post" class="form-horizontal">
+                <form role="form" action="" method="post" class="form-horizontal" action="contact_us.php">
     <div class="">
   
       <div class="form-group">
