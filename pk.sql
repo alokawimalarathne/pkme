@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 20, 2015 at 03:03 PM
+-- Generation Time: Jan 21, 2015 at 12:22 AM
 -- Server version: 5.5.40-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.5
 
@@ -33,17 +33,41 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `content` longtext,
   `date` int(11) NOT NULL,
   `published` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `articles`
 --
 
 INSERT INTO `articles` (`id`, `name`, `category`, `content`, `date`, `published`) VALUES
-(12, 'Introduction to PickMe', 'news', 'There will be introduction session about our newly launched PICKME me UCSC job portal.', 1421566195, 1),
-(13, 'this is second news', 'news', 'this is out second news about our website', 1421567140, 1),
-(14, 'our third article', 'news', 'This is our third article.', 1421577690, 1),
-(15, 'aasA', 'news', 'AsAS', 1421696960, 1);
+(18, 'asd', 'news', 'asdasd', 1421740925, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE IF NOT EXISTS `jobs` (
+`id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `salary` varchar(20) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `experience` int(11) DEFAULT NULL,
+  `period` varchar(20) DEFAULT NULL,
+  `email` int(11) DEFAULT NULL,
+  `mobile` int(11) DEFAULT NULL,
+  `date` int(11) NOT NULL,
+  `published` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`id`, `name`, `description`, `salary`, `city`, `experience`, `period`, `email`, `mobile`, `date`, `published`) VALUES
+(1, 'qeqwewq', 'adadasdas', '231231', 'asdasda', 3, '23', 0, 2323123, 1421761439, 1);
 
 -- --------------------------------------------------------
 
@@ -217,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `login_timestamps` (
   `user_id` int(11) NOT NULL,
   `ip` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=150 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `login_timestamps`
@@ -354,7 +378,25 @@ INSERT INTO `login_timestamps` (`id`, `user_id`, `ip`, `timestamp`) VALUES
 (128, 4, '127.0.0.1', '2015-01-19 23:52:24'),
 (129, 4, '127.0.0.1', '2015-01-20 02:41:31'),
 (130, 4, '127.0.0.1', '2015-01-20 02:44:40'),
-(131, 4, '127.0.0.1', '2015-01-20 04:42:30');
+(131, 4, '127.0.0.1', '2015-01-20 04:42:30'),
+(132, 1, '127.0.0.1', '2015-01-20 06:51:10'),
+(133, 1, '127.0.0.1', '2015-01-20 07:43:08'),
+(134, 1, '127.0.0.1', '2015-01-20 07:49:52'),
+(135, 1, '127.0.0.1', '2015-01-20 08:04:17'),
+(136, 4, '127.0.0.1', '2015-01-20 08:13:47'),
+(137, 1, '127.0.0.1', '2015-01-20 10:25:05'),
+(138, 22, '127.0.0.1', '2015-01-20 10:25:29'),
+(139, 17, '127.0.0.1', '2015-01-20 10:56:30'),
+(140, 18, '127.0.0.1', '2015-01-20 11:20:26'),
+(141, 1, '127.0.0.1', '2015-01-20 11:39:55'),
+(142, 18, '127.0.0.1', '2015-01-20 11:39:59'),
+(143, 18, '127.0.0.1', '2015-01-20 11:40:03'),
+(144, 4, '127.0.0.1', '2015-01-20 12:31:09'),
+(145, 1, '127.0.0.1', '2015-01-20 12:37:36'),
+(146, 4, '127.0.0.1', '2015-01-20 12:38:19'),
+(147, 1, '127.0.0.1', '2015-01-20 12:49:56'),
+(148, 1, '127.0.0.1', '2015-01-20 14:37:18'),
+(149, 1, '127.0.0.1', '2015-01-20 15:10:15');
 
 -- --------------------------------------------------------
 
@@ -395,7 +437,7 @@ INSERT INTO `login_users` (`user_id`, `registered_number`, `user_level`, `restri
 (1, NULL, 'a:1:{i:0;s:1:"1";}', 0, 'admin', 'Demo Admin', '', 'admin@localhost.com', NULL, '21232f297a57a5a743894a0e4a801fc3', '2014-09-20 08:28:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, NULL, 'a:1:{i:0;s:1:"2";}', 1, 'special', 'Demo Special', '', 'test.special@mail.com', NULL, '0bd6506986ec42e732ffb866d33bb14e', '2014-09-20 08:28:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'user', 'Demo User', '', 'test.user@mail.com', NULL, 'ee11cbb19052e40b07aac0ca060c23ee', '2014-09-20 08:28:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'aloka', 'aloka', 'Wimalarathne', 'aloka.wimalarathne@gmail.com', 0, '3714fdc4dd2a94263753108dec3d4960', '2014-09-22 14:35:23', '1421569164_4.png', '1421721817_4.pdf', '1421721853_4.pdf', NULL, NULL, NULL, NULL, NULL, 'Female', '2015-01-07', NULL),
+(4, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'aloka', 'aloka', 'Wimalarathne', 'aloka.wimalarathne@gmail.com', 776125256, '3714fdc4dd2a94263753108dec3d4960', '2014-09-22 14:35:23', '1421569164_4.png', '1421721817_4.pdf', '1421721853_4.pdf', NULL, NULL, NULL, NULL, NULL, 'Female', '2015-01-07', NULL),
 (8, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'aasdasd', 'asdas', '', '1231@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-09-22 15:29:53', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (9, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'asdasda', 'sadas', '', '1231a@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-09-22 15:31:06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'asadsa', 'asdasq', 'asdasd', '1213@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-09-22 15:36:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -409,7 +451,7 @@ INSERT INTO `login_users` (`user_id`, `registered_number`, `user_level`, `restri
 (18, 'isankacom', 'a:1:{i:0;s:1:"4";}', 0, 'isankacom', 'isanka com', '', 'isankacom@mail.com', 112256145, '03810a2293e9e65125db68fb54967be2', '2014-12-08 17:38:43', '1421571335_18.jpg', NULL, NULL, NULL, NULL, 'YToyOntpOjA7czoxOToiU29mdHdhcmUgUHJvZ3JhbWluZyI7aToxO3M6MTY6IldlYiBkZXZlbG9wbWVudHMiO30=', 'Semi government', 'Kurunegala', NULL, '2015-01-06', 'This is my company description'),
 (19, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'abc123', 'abac123', '', 'abcqwe@mail.com', NULL, '9a457976f74ec063120c79b89eed87d8', '2015-01-18 07:32:20', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (20, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'abc1234', 'abc123', 'abc123', 'aasda@mail.com', NULL, '2388d563676d07c101ce19164620d96a', '2015-01-18 07:34:04', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(22, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'isanka2', 'isanka', '2', 'isanka@mm.com', NULL, '03810a2293e9e65125db68fb54967be2', '2015-01-19 10:48:59', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(22, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'isanka2', 'isanka', '2', 'isanka@mm.com', 0, '03810a2293e9e65125db68fb54967be2', '2015-01-19 10:48:59', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -504,18 +546,23 @@ CREATE TABLE IF NOT EXISTS `skills_user` (
   `uid` int(11) NOT NULL,
   `cat` varchar(50) NOT NULL,
   `skills` varchar(500) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `skills_user`
 --
 
 INSERT INTO `skills_user` (`id`, `uid`, `cat`, `skills`) VALUES
-(1, 4, 'softwareprograming', 'PHP, .NET, Python, C/C++, Objective-C'),
-(2, 4, 'networking', 'Wireless, Routing, TCP/IP, Virtualization, DHCP, LDAP, Unix/Linux servers, Windows servers'),
-(3, 4, 'webapplications', 'PHP, Ruby, SQL/MySql, Javascript, HTML4/HTML5, Joomla, Wordpress, Drupal, eCommerce, JSF'),
-(4, 4, 'business', 'Business process MGT, Marketing, Planning and monitor, Project MGT, Requirements analysi'),
-(5, 4, 'professional', 'CIMA, Charted, AAT, CCNA, CCNP, Java certification, Zend Certificate');
+(1, 4, 'softwareprograming', 'PHP'),
+(2, 4, 'networking', 'Wireless'),
+(3, 4, 'webapplications', 'PHP'),
+(4, 4, 'business', 'Business process MGT'),
+(5, 4, 'professional', 'CIMA'),
+(6, 22, 'softwareprograming', 'Java, .NET, Python'),
+(7, 22, 'networking', 'Wireless, Routing'),
+(8, 22, 'webapplications', 'HTML4/HTML5'),
+(9, 22, 'business', 'Business process MGT, Information systems'),
+(10, 22, 'professional', 'CIMA, CIM, Charted');
 
 --
 -- Indexes for dumped tables
@@ -525,6 +572,12 @@ INSERT INTO `skills_user` (`id`, `uid`, `cat`, `skills`) VALUES
 -- Indexes for table `articles`
 --
 ALTER TABLE `articles`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -601,7 +654,12 @@ ALTER TABLE `skills_user`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT for table `jobs`
+--
+ALTER TABLE `jobs`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `login_confirm`
 --
@@ -631,7 +689,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
 -- AUTO_INCREMENT for table `login_timestamps`
 --
 ALTER TABLE `login_timestamps`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=132;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=150;
 --
 -- AUTO_INCREMENT for table `login_users`
 --
@@ -651,7 +709,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
 -- AUTO_INCREMENT for table `skills_user`
 --
 ALTER TABLE `skills_user`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
