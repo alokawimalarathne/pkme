@@ -99,7 +99,7 @@
                         <div class="form-group col-xs-4">
                             <label class="" for="mobile"><?php _e('Telephone'); ?></label>
 
-                            <input type="tel"  autocomplete="off" pattern="^\d{4}-\d{7}$" class="form-control" id="mobile" name="mobile" placeholder="<?php _e('Mobile (ex: 0776-152152)'); ?>" value="<?php echo $profile->getField('mobile'); ?>">
+                            <input type="tel"  autocomplete="off" pattern="^\d{4}\d{2}\d{4}$" class="form-control" id="mobile" name="mobile" placeholder="<?php _e('Mobile (ex: 0776-152152)'); ?>" value="<?php echo $profile->getField('mobile'); ?>">
 
                         </div>
                         <?php  if( protectThis("4") ){  ?>
