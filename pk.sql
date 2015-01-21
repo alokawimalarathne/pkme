@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.8
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 21, 2015 at 12:22 AM
--- Server version: 5.5.40-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.5
+-- Generation Time: Jan 21, 2015 at 01:01 AM
+-- Server version: 5.6.12-log
+-- PHP Version: 5.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `pk`
 --
+CREATE DATABASE IF NOT EXISTS `pk` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `pk`;
 
 -- --------------------------------------------------------
 
@@ -27,20 +29,26 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `articles` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   `category` varchar(10) NOT NULL,
   `content` longtext,
   `date` int(11) NOT NULL,
-  `published` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+  `published` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `articles`
 --
 
 INSERT INTO `articles` (`id`, `name`, `category`, `content`, `date`, `published`) VALUES
-(18, 'asd', 'news', 'asdasd', 1421740925, 1);
+(19, 'Facebook clamps down on fake news stories', 'news', '(Reuters) - Facebook Inc said on Tuesday it has taken steps to clamp down on &quot;hoaxes&quot; and fake news stories that can spread like wildfire on its 1.35-billion member online social network.\r\n\r\nThe company said it had introduced an option to allow Facebook users to flag a story as &quot;purposefully fake or deceitful news&quot; to reduce the distribution of news stories reported as hoaxes.\r\n\r\nFacebook said it will not remove fake news stories from its website. Instead, the company''s algorithm, which determines how widely user posts are distributed, will take into account hoax reports.\r\n\r\n&quot;A post with a link to an article that many people have reported as a hoax or chose to delete will get reduced distribution in the News Feed,&quot; Facebook explained.\r\n\r\nFacebook has become an increasingly important source of news, with 30 percent of adults in the U.S. consuming news on the world''s largest social network, according to a 2013 study by the Pew Research Center in collaboration with the John S. and James L. Knight Foundation.\r\n\r\nFacebook cited stories about dinosaur sightings and research supposedly proving the existence of Santa Claus as examples of fake news stories.\r\n\r\nFacebook said &quot;satirical&quot; content, such as news stories &quot;intended to be humorous, or content that is clearly labeled as satire,&quot; should not be affected.\r\n\r\n(Reporting by Alexei Oreskovic; editing by Andrew Hay)', 1421786084, 1),
+(20, 'Google sticks to EU only application of ''right to ', 'news', '(Reuters) - Google is only removing search results from European websites when individuals invoke their &quot;right to be forgotten&quot;, contrary to regulators'' guidelines, but will review that approach soon, the company''s chief legal officer said on Monday.\r\n\r\nThe issue of how far the so-called right to be forgotten should extend has concentrated the minds of Europe''s privacy regulators since the continent''s top court ruled in May that individuals could have &quot;inadequate, irrelevant or no longer relevant&quot; information removed from search results.\r\n\r\nGoogle has consistently argued that it believes the ruling should only apply to its European websites, such as Google.de in Germany or Google.fr in France.\r\n\r\nBut the group of privacy watchdogs from EU countries, the Article 29 Working Party, concluded in November that they want search engines to scrub results globally because of the ease of switching from a European domain to Google.com.\r\n\r\nDavid Drummond, Google''s Chief Legal Officer, said the Internet giant''s approach had not changed since November and it would review it when a group of experts publishes a report on last year''s court judgment towards the end of this month.\r\n\r\n&quot;We''ve had a basic approach, we''ve followed it, on this question we''ve made removals Europe-wide but not beyond,&quot; he said at an event in Brussels on Monday.\r\n\r\nBetween September and November, an advisory council, including a former German justice minister and Wikipedia founder Jimmy Wales, held public meetings across Europe to debate the balance between privacy and the free flow of information.\r\n\r\nIt is expected to publish a report with its conclusions at the end of January to help inform Google on its application of the ruling.\r\n\r\n&quot;We''ll take that (the report), along with the Article 29 input and other input and arrive at an approach,&quot; Drummond said.\r\n\r\n&quot;It''s our strong view that there needs to be some way of limiting the concept, because it is a European concept.&quot;\r\n\r\nSince the ruling in May, Google has received more than 200,000 requests from across Europe affecting over 700,000 URLs, according to its online transparency report.\r\n\r\nThe EU''s privacy chiefs adopted a set of non-binding guidelines in November to ensure the ruling is applied consistently across the bloc''s 28 member states.\r\n\r\nCitizens whose removal requests have been refused by a search engine can appeal to their national data protection regulator, who can then take action against the company.\r\n\r\nOn Friday, the Article 29 Working Party wrote to Microsoft, Yahoo and French search engine Qwant to remind them of the regulators'' view that results should be scrubbed across all relevant domains.\r\n\r\n(Editing by David Clarke)', 1421786141, 1),
+(21, 'Sony''s ''The Interview'' surpasses $40 million in di', 'news', '(Reuters) - &quot;The Interview,&quot; the Sony Pictures comedy believed to have triggered a cyber attack on the studio, has racked up over $40 million in sales from 5.8 million digital downloads, the studio said on Tuesday.\r\n\r\nMichael Lynton, chief executive of Sony Corp''s entertainment arm, called the $40 million mark &quot;a significant milestone&quot; for the studio''s unprecedented online and pay television release, on platforms such as Google Inc''s Google Play, Apple Inc''s iTunes and Time Warner Cable.\r\n\r\nThe film''s digital release on Dec. 24 was cobbled together a week after Sony Pictures shelved a wide release when major theater chains refused to screen the movie due to unspecified threats of violence from hackers. President Barack Obama called the decision to scrap the theatrical release a &quot;mistake&quot; akin to self-censorship.\r\n\r\nThe film starring Seth Rogen and James Franco, which depicts the fictional assassination of North Korea leader Kim Jong Un, has also earned $6 million at the box office after independent theaters pushed for a limited release on Christmas Day.\r\n\r\nIt was unclear if Sony Pictures would recoup its investment in the comedy, which cost $44 million to make and tens of millions more to market.\r\n\r\nThe U.S. government has blamed North Korea for the most devastating cyber attack on a private company on U.S. soil. The North Korean government called &quot;The Interview&quot; an &quot;act of war,&quot; but denies it is behind the hacking.\r\n\r\n(Reporting by Mary Milliken; Editing by Richard Chang)', 1421786197, 1),
+(22, 'Intel''s diversity drive should focus on internal c', 'news', '(Reuters) - When Intel Corp (INTC.O) said this month it would spend $300 million on increasing diversity in its workforce, Silicon Valley lauded its plan to improve the &quot;pipeline&quot; of candidates by helping more women and minorities study computer science and engineering.\r\n\r\nBut focusing too hard on the pipeline, a frequent tactic of technology firms seeking to change their workforce, will benefit the chipmaker less than working on what happens inside Intel, diversity advocates say.\r\n\r\nChief Executive Officer Brian Krzanich surprised a mostly male crowd at the Consumer Electronics Show in Las Vegas by unveiling a 2020 goal for Intel to employ more women and minorities.\r\n\r\nDiversity has become a major corporate issue in the United States as companies look to improve their images and for ways to boost productivity by tapping new groups of potential employees. Intel''s effort is one of the largest to date by cash spent.\r\n\r\nSilicon Valley has a dismal track record employing those groups, and Intel is no exception: just a quarter of its U.S. employees in 2013 were women and 12 percent were Hispanic or African American, it said. By comparison, about one-third of bachelor degrees granted in computers and math go to women, according to the National Science Foundation.\r\n\r\nKrzanich described plans for educational initiatives, an area where Intel already spends $100 million annually with an undisclosed but small portion focusing on women and minorities. He also broadly promised to improve hiring and retention.\r\n\r\nA shortfall of women and minorities receiving technology-oriented education is often seen as the leading barrier to a diverse workforce in Silicon Valley.\r\n\r\nAn opinion piece in the San Francisco Chronicle said Intel''s plans &quot;hinge on the available talent produced by a limited educational pipeline.&quot; Prominent venture capitalist Paul Graham told online publication the Information last year that the lack of women technology entrepreneurs and programmers was a problem &quot;10 years upstream of us.&quot;\r\n\r\nDiversity advocates say seizing on the supply issue can obscure other causes.\r\n\r\n&quot;They are blaming the pipeline for their own faults,&quot; said Vivek Wadhwa, author of &quot;Innovating Women,&quot; noting that many technology companies no longer consider degrees of any sort, including computer science (CS), a requirement for employment.\r\n\r\n&quot;If male flunkies can join (tech companies), why do women need to have CS degrees?&quot; he asked. &quot;This is an excuse.&quot;\r\n\r\nHe and others say technology companies should look inward, working on making themselves attractive to qualified women and minority candidates who avoid or abandon technology careers.\r\n\r\nOf all science and engineering graduates, only about 31 percent of males and 15 percent of females work in related occupations, according to the U.S. Census Bureau. Just 17 percent of African Americans with science and engineering degrees go on to work in related jobs.\r\n\r\nTo draw women and minorities, Intel should make managers accountable to specific diversity goals and measure progress through employee surveys, said Katherine Kimpel, a lawyer specializing in discrimination at Sanford Heisler Kimpel LLP.\r\n\r\nIntel CEO Krzanich said he would tie executive compensation to hitting diversity targets. The company also plans to factor diversity into year-end bonuses, a spokeswoman said.\r\n\r\nLori Nishiura Mackenzie, executive director of Stanford Universityâ€™s Clayman Institute for Gender Research, said Intel should spend the bulk of its cash on what she called â€œthe frozen middleâ€ just below the top executives.\r\n\r\nEBay has a workforce that is 42 percent female, compared with around 30 percent for most technology companies. A spokeswoman said women in leadership positions rose 30 percent annually after eBay launched a gender initiative, including mentorship of five women per senior executive, at the end of 2010.   \r\n\r\nTelle Whitney, chief executive officer of the Anita Borg Institute, which focuses on women and technology, said that the best return on investment is for companies to combat unconscious bias: unintentional discrimination that comes out in words and actions.\r\n\r\nMany technology companies now offer managers training in this area, including Google Inc (GOOGL.O) and Microsoft Corp (MSFT.O).\r\n\r\nIntel already has unconscious bias training and plans more, the spokeswoman said.\r\n\r\nAvivah Wittenberg-Cox, who runs a diversity consultancy called 20-First, said Intel should focus on improving diversity in its top three management layers, through steps such as encouraging different departments to compete on goals. Intel President Renee James is female, but the chipmaker has no Hispanics or blacks at its highest levels.\r\n\r\nSilicon Valley is still seen as a nerdy boys club that is not interested in diversity, Wittenberg-Cox said. &quot;Until that image and mindset changes, the numbers will not follow.&quot;\r\n\r\n(Reporting by Noel Randewich and Sarah McBride; Editing by Peter Henderson and Lisa Shumaker)', 1421786303, 1),
+(23, 'Amazon doubles down on entertainment with ''indie''', 'news', '(Reuters) - Amazon.com Inc is making a high-stakes foray into the challenging realm of independent movies, the latest step in its attempt to move beyond simply distributing digital entertainment content to creating it.\r\n\r\nAmazon said on Monday it was aiming to produce close to 12 movies a year for theatrical release which would then be available on its Prime video service within two months, significantly faster than the roughly one-year wait it normally faces to stream Hollywood releases.\r\n\r\nAmazon expects to focus on &quot;indie&quot; movies with budgets of between $5 million and $25 million, spokeswoman Sally Fouts said. While modest compared with Hollywood blockbusters, the move will add to already hefty spending at Amazon, potentially unnerving investors concerned about the company''s lack of profitability.\r\n\r\nSuch films have proved challenging even for major Hollywood studios such as Paramount and Warner Brothers, which have bowed out of the business in recent years, said Jeff Bock, Box office analyst at Exhibitor Relations.\r\n\r\n&quot;It''s a tough, tough racket to play consistently,&quot; he said, pointing to the difficulty of getting good content and the competition for quality productions at festivals like Sundance.\r\n\r\nThe move shows Amazon''s growing ambitions in digital media, coming just days after the online retailer signed director Woody Allen to create a TV series and one of its existing series won a Golden Globe Award, a first for Internet TV services.\r\n\r\nUnlike rival Netflix Inc, a standalone Internet TV service, Amazon''s Prime video service comes bundled with the Internet retailer''s two-day delivery for items purchased on the site, which costs $99 a year, a key driver of revenue for the company.', 1421786444, 0),
+(24, 'University Of Colombo School Of Computing Library', 'resources', 'The UCSC Library provides its service to the staff and students of the UCSC. There are more than 1,400 registered library members. The library hosts more than 10,000 books and has a comprehensive collection of computer science books supported by the latest editions and books related to Statistics. At the library members can refer to books, journals, theses, dissertations and other resources such as magazines, newspapers and CDs, while accessing the internet in order to gather and update knowledge. There is a high demand for the theses and dissertation collection in the library as many users are doing research. The library has a reference area with a seating capacity of 137 and it also provides an electronic catelogy.', 1421786682, 1);
 
 -- --------------------------------------------------------
 
@@ -49,7 +57,7 @@ INSERT INTO `articles` (`id`, `name`, `category`, `content`, `date`, `published`
 --
 
 CREATE TABLE IF NOT EXISTS `jobs` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `description` varchar(500) DEFAULT NULL,
   `salary` varchar(20) DEFAULT NULL,
@@ -59,15 +67,16 @@ CREATE TABLE IF NOT EXISTS `jobs` (
   `email` int(11) DEFAULT NULL,
   `mobile` int(11) DEFAULT NULL,
   `date` int(11) NOT NULL,
-  `published` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `published` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `jobs`
 --
 
 INSERT INTO `jobs` (`id`, `name`, `description`, `salary`, `city`, `experience`, `period`, `email`, `mobile`, `date`, `published`) VALUES
-(1, 'qeqwewq', 'adadasdas', '231231', 'asdasda', 3, '23', 0, 2323123, 1421761439, 1);
+(2, 'Short Term Engagement', 'An ideal short term opportunity (around 3-4 months from January to March/ April, 2015) is awaiting for two recent graduate students to obtain hands-on experience in a special assignment on Business Continuity Planning (BCP) Project related to Information Systems at a Bank organization in Colombo.\r\n\r\nthe Ideal candidate should posses at a minimum of the following qualification and skills:\r\n\r\n1. should have completed a degree in information technology, business administration, business information', '30000 LKR', 'Colombo', 0, 'January to March/Apr', 0, 112825177, 1421785673, 1);
 
 -- --------------------------------------------------------
 
@@ -76,13 +85,14 @@ INSERT INTO `jobs` (`id`, `name`, `description`, `salary`, `city`, `experience`,
 --
 
 CREATE TABLE IF NOT EXISTS `login_confirm` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `data` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `key` varchar(255) NOT NULL,
-  `type` varchar(25) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+  `type` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `login_confirm`
@@ -104,7 +114,8 @@ CREATE TABLE IF NOT EXISTS `login_integration` (
   `twitter` varchar(255) NOT NULL,
   `google` varchar(255) NOT NULL,
   `yahoo` varchar(255) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -114,13 +125,15 @@ CREATE TABLE IF NOT EXISTS `login_integration` (
 --
 
 CREATE TABLE IF NOT EXISTS `login_levels` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `level_name` varchar(255) NOT NULL,
   `level_level` int(1) NOT NULL,
   `level_disabled` tinyint(1) NOT NULL DEFAULT '0',
   `redirect` varchar(255) DEFAULT NULL,
-  `welcome_email` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `welcome_email` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `level_level` (`level_level`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `login_levels`
@@ -139,11 +152,12 @@ INSERT INTO `login_levels` (`id`, `level_name`, `level_level`, `level_disabled`,
 --
 
 CREATE TABLE IF NOT EXISTS `login_profiles` (
-`p_id` bigint(20) unsigned NOT NULL,
+  `p_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `pfield_id` int(255) unsigned NOT NULL,
   `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `profile_value` longtext
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `profile_value` longtext,
+  PRIMARY KEY (`p_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -152,13 +166,14 @@ CREATE TABLE IF NOT EXISTS `login_profiles` (
 --
 
 CREATE TABLE IF NOT EXISTS `login_profile_fields` (
-`id` int(255) NOT NULL,
+  `id` int(255) NOT NULL AUTO_INCREMENT,
   `section` varchar(255) NOT NULL,
   `type` varchar(25) NOT NULL,
   `label` varchar(255) NOT NULL,
   `public` tinyint(4) NOT NULL,
-  `signup` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `signup` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -167,10 +182,13 @@ CREATE TABLE IF NOT EXISTS `login_profile_fields` (
 --
 
 CREATE TABLE IF NOT EXISTS `login_settings` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `option_name` varchar(255) NOT NULL,
-  `option_value` longtext NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
+  `option_value` longtext NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `option_name` (`option_name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=53 ;
 
 --
 -- Dumping data for table `login_settings`
@@ -208,7 +226,7 @@ INSERT INTO `login_settings` (`id`, `option_name`, `option_value`) VALUES
 (29, 'signin-redirect-referrer-enable', '1'),
 (30, 'default-level', 'a:1:{i:0;s:1:"3";}'),
 (31, 'new-user-redirect', 'http://localhost/pickme/profile.php'),
-(32, 'user-activation-enable', '1'),
+(32, 'user-activation-enable', '0'),
 (33, 'email-new-user-subj', 'A new user has registered !'),
 (34, 'email-new-user-msg', 'Hello,\r\n\r\nThere''s been a new registration at &lt;a href=&quot;{{site_address}}&quot;&gt;your site&lt;/a&gt;.\r\n\r\nHere''s the user''s details:\r\n\r\nName: {{full_name}}\r\nUsername: {{username}}\r\nEmail: {{email}}'),
 (35, 'signout-redirect-url', ''),
@@ -237,166 +255,30 @@ INSERT INTO `login_settings` (`id`, `option_name`, `option_value`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `login_timestamps` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `ip` varchar(255) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=150 DEFAULT CHARSET=utf8;
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=163 ;
 
 --
 -- Dumping data for table `login_timestamps`
 --
 
 INSERT INTO `login_timestamps` (`id`, `user_id`, `ip`, `timestamp`) VALUES
-(1, 4, '127.0.0.1', '2014-09-22 17:10:04'),
-(2, 1, '127.0.0.1', '2014-09-22 17:11:11'),
-(3, 1, '127.0.0.1', '2014-09-22 17:13:19'),
-(4, 1, '127.0.0.1', '2014-09-22 17:13:47'),
-(5, 1, '127.0.0.1', '2014-09-22 17:15:56'),
-(6, 1, '127.0.0.1', '2014-09-22 17:17:17'),
-(7, 1, '127.0.0.1', '2014-09-22 17:17:31'),
-(8, 1, '127.0.0.1', '2014-09-22 17:18:08'),
-(9, 1, '127.0.0.1', '2014-09-22 17:18:19'),
-(10, 1, '127.0.0.1', '2014-09-22 17:30:09'),
-(11, 11, '127.0.0.1', '2014-09-23 14:36:33'),
-(12, 1, '127.0.0.1', '2014-09-23 14:38:10'),
-(13, 1, '127.0.0.1', '2014-09-28 12:54:05'),
-(14, 1, '127.0.0.1', '2014-10-25 16:19:17'),
-(15, 1, '127.0.0.1', '2014-12-07 05:01:43'),
-(16, 1, '127.0.0.1', '2014-12-07 09:29:30'),
-(17, 1, '127.0.0.1', '2014-12-07 13:19:20'),
-(18, 1, '127.0.0.1', '2014-12-07 13:24:26'),
-(19, 1, '127.0.0.1', '2014-12-07 13:24:35'),
-(20, 1, '127.0.0.1', '2014-12-07 13:25:42'),
-(21, 1, '127.0.0.1', '2014-12-07 13:31:42'),
-(22, 1, '127.0.0.1', '2014-12-07 13:32:50'),
-(23, 1, '127.0.0.1', '2014-12-07 13:36:30'),
-(24, 1, '127.0.0.1', '2014-12-07 15:42:29'),
-(25, 1, '127.0.0.1', '2014-12-07 15:42:36'),
-(26, 1, '127.0.0.1', '2014-12-08 13:51:54'),
-(27, 1, '127.0.0.1', '2014-12-08 13:52:02'),
-(28, 1, '127.0.0.1', '2014-12-08 16:41:25'),
-(29, 1, '127.0.0.1', '2014-12-08 17:16:36'),
-(30, 1, '127.0.0.1', '2014-12-08 17:16:55'),
-(31, 1, '127.0.0.1', '2014-12-08 17:17:27'),
-(32, 1, '127.0.0.1', '2015-01-12 06:01:31'),
-(33, 1, '127.0.0.1', '2015-01-17 04:08:00'),
-(34, 4, '127.0.0.1', '2015-01-17 07:34:53'),
-(35, 4, '127.0.0.1', '2015-01-17 07:35:46'),
-(36, 1, '127.0.0.1', '2015-01-17 07:51:12'),
-(37, 4, '127.0.0.1', '2015-01-17 07:51:42'),
-(38, 4, '127.0.0.1', '2015-01-17 07:53:36'),
-(39, 4, '127.0.0.1', '2015-01-17 08:37:49'),
-(40, 4, '127.0.0.1', '2015-01-17 09:01:34'),
-(41, 4, '127.0.0.1', '2015-01-17 09:14:35'),
-(42, 4, '127.0.0.1', '2015-01-17 09:23:46'),
-(43, 4, '127.0.0.1', '2015-01-17 10:14:38'),
-(44, 4, '127.0.0.1', '2015-01-17 11:48:04'),
-(45, 4, '127.0.0.1', '2015-01-17 16:09:15'),
-(46, 4, '127.0.0.1', '2015-01-18 02:13:22'),
-(47, 1, '127.0.0.1', '2015-01-18 03:02:32'),
-(48, 17, '127.0.0.1', '2015-01-18 03:03:19'),
-(49, 1, '127.0.0.1', '2015-01-18 03:03:30'),
-(50, 17, '127.0.0.1', '2015-01-18 03:03:47'),
-(51, 17, '127.0.0.1', '2015-01-18 03:04:42'),
-(52, 1, '127.0.0.1', '2015-01-18 03:33:45'),
-(53, 17, '127.0.0.1', '2015-01-18 03:34:04'),
-(54, 17, '127.0.0.1', '2015-01-18 04:02:12'),
-(55, 17, '127.0.0.1', '2015-01-18 04:03:33'),
-(56, 17, '127.0.0.1', '2015-01-18 04:04:05'),
-(57, 17, '127.0.0.1', '2015-01-18 04:08:04'),
-(58, 17, '127.0.0.1', '2015-01-18 04:08:16'),
-(59, 17, '127.0.0.1', '2015-01-18 04:08:27'),
-(60, 17, '127.0.0.1', '2015-01-18 04:14:46'),
-(61, 17, '127.0.0.1', '2015-01-18 04:41:41'),
-(62, 4, '127.0.0.1', '2015-01-18 04:45:56'),
-(63, 1, '127.0.0.1', '2015-01-18 05:04:14'),
-(64, 4, '127.0.0.1', '2015-01-18 05:22:02'),
-(65, 1, '127.0.0.1', '2015-01-18 05:22:24'),
-(66, 1, '127.0.0.1', '2015-01-18 05:25:04'),
-(67, 18, '127.0.0.1', '2015-01-18 05:25:19'),
-(68, 18, '127.0.0.1', '2015-01-18 06:51:31'),
-(69, 1, '127.0.0.1', '2015-01-18 07:05:16'),
-(70, 18, '127.0.0.1', '2015-01-18 07:05:34'),
-(71, 18, '127.0.0.1', '2015-01-18 07:18:03'),
-(72, 18, '127.0.0.1', '2015-01-18 07:21:00'),
-(73, 1, '127.0.0.1', '2015-01-18 07:27:55'),
-(74, 1, '127.0.0.1', '2015-01-18 07:32:00'),
-(75, 1, '127.0.0.1', '2015-01-18 07:52:14'),
-(76, 4, '127.0.0.1', '2015-01-18 07:52:32'),
-(77, 17, '127.0.0.1', '2015-01-18 08:52:40'),
-(78, 1, '127.0.0.1', '2015-01-18 08:53:47'),
-(79, 1, '127.0.0.1', '2015-01-18 08:54:32'),
-(80, 17, '127.0.0.1', '2015-01-18 08:54:39'),
-(81, 18, '127.0.0.1', '2015-01-18 08:55:10'),
-(82, 18, '127.0.0.1', '2015-01-18 10:39:58'),
-(83, 1, '127.0.0.1', '2015-01-18 10:40:33'),
-(84, 4, '127.0.0.1', '2015-01-18 12:54:59'),
-(85, 4, '127.0.0.1', '2015-01-18 13:14:47'),
-(86, 4, '127.0.0.1', '2015-01-18 14:17:09'),
-(87, 4, '127.0.0.1', '2015-01-18 14:25:30'),
-(88, 4, '127.0.0.1', '2015-01-18 14:28:54'),
-(89, 21, '127.0.0.1', '2015-01-18 14:30:03'),
-(90, 4, '127.0.0.1', '2015-01-18 14:31:45'),
-(91, 4, '127.0.0.1', '2015-01-18 15:36:31'),
-(92, 4, '127.0.0.1', '2015-01-18 15:37:58'),
-(93, 1, '127.0.0.1', '2015-01-18 17:00:55'),
-(94, 17, '127.0.0.1', '2015-01-18 17:04:14'),
-(95, 4, '127.0.0.1', '2015-01-18 17:05:29'),
-(96, 17, '127.0.0.1', '2015-01-18 17:07:26'),
-(97, 4, '127.0.0.1', '2015-01-18 17:13:00'),
-(98, 17, '127.0.0.1', '2015-01-18 17:13:09'),
-(99, 18, '127.0.0.1', '2015-01-18 17:39:26'),
-(100, 17, '127.0.0.1', '2015-01-18 17:45:41'),
-(101, 4, '127.0.0.1', '2015-01-18 17:47:31'),
-(102, 4, '127.0.0.1', '2015-01-18 17:49:20'),
-(103, 18, '127.0.0.1', '2015-01-18 17:51:07'),
-(104, 17, '127.0.0.1', '2015-01-18 17:51:25'),
-(105, 4, '127.0.0.1', '2015-01-18 17:53:21'),
-(106, 17, '127.0.0.1', '2015-01-18 17:54:37'),
-(107, 18, '127.0.0.1', '2015-01-18 17:55:39'),
-(108, 18, '127.0.0.1', '2015-01-18 18:01:01'),
-(109, 18, '127.0.0.1', '2015-01-18 18:07:05'),
-(110, 18, '127.0.0.1', '2015-01-19 10:44:12'),
-(111, 4, '127.0.0.1', '2015-01-19 10:48:20'),
-(112, 4, '127.0.0.1', '2015-01-19 10:48:26'),
-(113, 22, '127.0.0.1', '2015-01-19 10:49:26'),
-(114, 4, '127.0.0.1', '2015-01-19 14:39:30'),
-(115, 1, '127.0.0.1', '2015-01-19 17:31:47'),
-(116, 4, '127.0.0.1', '2015-01-19 17:55:20'),
-(117, 18, '127.0.0.1', '2015-01-19 18:03:25'),
-(118, 17, '127.0.0.1', '2015-01-19 18:04:52'),
-(119, 1, '127.0.0.1', '2015-01-19 18:35:51'),
-(120, 1, '127.0.0.1', '2015-01-19 19:15:04'),
-(121, 1, '127.0.0.1', '2015-01-19 20:24:07'),
-(122, 4, '127.0.0.1', '2015-01-19 20:51:50'),
-(123, 1, '127.0.0.1', '2015-01-19 20:52:29'),
-(124, 4, '127.0.0.1', '2015-01-19 21:02:51'),
-(125, 4, '127.0.0.1', '2015-01-19 23:29:22'),
-(126, 4, '127.0.0.1', '2015-01-19 23:37:33'),
-(127, 4, '127.0.0.1', '2015-01-19 23:39:11'),
-(128, 4, '127.0.0.1', '2015-01-19 23:52:24'),
-(129, 4, '127.0.0.1', '2015-01-20 02:41:31'),
-(130, 4, '127.0.0.1', '2015-01-20 02:44:40'),
-(131, 4, '127.0.0.1', '2015-01-20 04:42:30'),
-(132, 1, '127.0.0.1', '2015-01-20 06:51:10'),
-(133, 1, '127.0.0.1', '2015-01-20 07:43:08'),
-(134, 1, '127.0.0.1', '2015-01-20 07:49:52'),
-(135, 1, '127.0.0.1', '2015-01-20 08:04:17'),
-(136, 4, '127.0.0.1', '2015-01-20 08:13:47'),
-(137, 1, '127.0.0.1', '2015-01-20 10:25:05'),
-(138, 22, '127.0.0.1', '2015-01-20 10:25:29'),
-(139, 17, '127.0.0.1', '2015-01-20 10:56:30'),
-(140, 18, '127.0.0.1', '2015-01-20 11:20:26'),
-(141, 1, '127.0.0.1', '2015-01-20 11:39:55'),
-(142, 18, '127.0.0.1', '2015-01-20 11:39:59'),
-(143, 18, '127.0.0.1', '2015-01-20 11:40:03'),
-(144, 4, '127.0.0.1', '2015-01-20 12:31:09'),
-(145, 1, '127.0.0.1', '2015-01-20 12:37:36'),
-(146, 4, '127.0.0.1', '2015-01-20 12:38:19'),
-(147, 1, '127.0.0.1', '2015-01-20 12:49:56'),
-(148, 1, '127.0.0.1', '2015-01-20 14:37:18'),
-(149, 1, '127.0.0.1', '2015-01-20 15:10:15');
+(151, 1, '127.0.0.1', '2015-01-20 17:33:40'),
+(152, 1, '127.0.0.1', '2015-01-20 17:46:02'),
+(153, 1, '127.0.0.1', '2015-01-20 19:58:41'),
+(154, 1, '127.0.0.1', '2015-01-20 20:30:29'),
+(155, 23, '127.0.0.1', '2015-01-20 20:41:02'),
+(156, 1, '127.0.0.1', '2015-01-20 20:44:01'),
+(157, 23, '127.0.0.1', '2015-01-20 20:45:33'),
+(158, 41, '127.0.0.1', '2015-01-20 20:47:29'),
+(159, 37, '127.0.0.1', '2015-01-20 20:48:04'),
+(160, 1, '127.0.0.1', '2015-01-20 20:48:59'),
+(161, 1, '127.0.0.1', '2015-01-20 20:49:55'),
+(162, 31, '127.0.0.1', '2015-01-20 20:58:01');
 
 -- --------------------------------------------------------
 
@@ -405,7 +287,7 @@ INSERT INTO `login_timestamps` (`id`, `user_id`, `ip`, `timestamp`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `login_users` (
-`user_id` int(8) NOT NULL,
+  `user_id` int(8) NOT NULL AUTO_INCREMENT,
   `registered_number` varchar(50) DEFAULT NULL,
   `user_level` longtext NOT NULL,
   `restricted` int(1) NOT NULL DEFAULT '0',
@@ -426,8 +308,11 @@ CREATE TABLE IF NOT EXISTS `login_users` (
   `city` varchar(50) DEFAULT NULL,
   `sex` varchar(10) DEFAULT NULL,
   `dob` varchar(20) DEFAULT NULL,
-  `description` longtext
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+  `description` longtext,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_id` (`user_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=51 ;
 
 --
 -- Dumping data for table `login_users`
@@ -435,23 +320,34 @@ CREATE TABLE IF NOT EXISTS `login_users` (
 
 INSERT INTO `login_users` (`user_id`, `registered_number`, `user_level`, `restricted`, `username`, `name`, `lname`, `email`, `mobile`, `password`, `timestamp`, `image`, `cv`, `transcript`, `qualification`, `position`, `field`, `type`, `city`, `sex`, `dob`, `description`) VALUES
 (1, NULL, 'a:1:{i:0;s:1:"1";}', 0, 'admin', 'Demo Admin', '', 'admin@localhost.com', NULL, '21232f297a57a5a743894a0e4a801fc3', '2014-09-20 08:28:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, NULL, 'a:1:{i:0;s:1:"2";}', 1, 'special', 'Demo Special', '', 'test.special@mail.com', NULL, '0bd6506986ec42e732ffb866d33bb14e', '2014-09-20 08:28:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'user', 'Demo User', '', 'test.user@mail.com', NULL, 'ee11cbb19052e40b07aac0ca060c23ee', '2014-09-20 08:28:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'aloka', 'aloka', 'Wimalarathne', 'aloka.wimalarathne@gmail.com', 776125256, '3714fdc4dd2a94263753108dec3d4960', '2014-09-22 14:35:23', '1421569164_4.png', '1421721817_4.pdf', '1421721853_4.pdf', NULL, NULL, NULL, NULL, NULL, 'Female', '2015-01-07', NULL),
-(8, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'aasdasd', 'asdas', '', '1231@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-09-22 15:29:53', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'asdasda', 'sadas', '', '1231a@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-09-22 15:31:06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'asadsa', 'asdasq', 'asdasd', '1213@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-09-22 15:36:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'aloka2', 'aloka2', 'aloka2', '12312312@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-09-23 14:35:49', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(12, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'qweqwe', 'weqw', 'eqweqwe', 'dada@mail.com', NULL, '4297f44b13955235245b2497399d7a93', '2014-10-13 06:27:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(13, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'asdasdasd', 'adasd', 'asdasd', 'abc@mail.com', NULL, 'efe6398127928f1b2e9ef3207fb82663', '2014-12-08 15:19:36', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(14, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'sd21212', '11123123', 'sdadasda', 'asdasd@mail.com', NULL, 'efe6398127928f1b2e9ef3207fb82663', '2014-12-08 15:23:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(15, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'klansldnals', 'dasdasd', 'sdasdasda', 'adnasldad@mail.com', NULL, 'efe6398127928f1b2e9ef3207fb82663', '2014-12-08 15:32:51', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(16, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'isankast', 'isankast', 'isanka', 'isankadn@yahoo.com', NULL, 'efe6398127928f1b2e9ef3207fb82663', '2014-12-08 16:36:45', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17, NULL, 'a:1:{i:0;s:1:"2";}', 0, 'asanka', 'asanka', 'dada', 'asnak@mail.com', 0, '03810a2293e9e65125db68fb54967be2', '2014-12-08 17:18:13', '1421601694_17.jpg', NULL, NULL, 'YToxOntpOjA7czoxMzoiUHJvZmVzc29yc2hpcCI7fQ==', NULL, 'YTozOntpOjA7czoxMDoiTmV0d29ya2luZyI7aToxO3M6MTY6IldlYiBkZXZlbG9wbWVudHMiO2k6MjtzOjg6IkJ1c2luZXNzIjt9', NULL, NULL, 'Male', '2015-01-08', NULL),
-(18, 'isankacom', 'a:1:{i:0;s:1:"4";}', 0, 'isankacom', 'isanka com', '', 'isankacom@mail.com', 112256145, '03810a2293e9e65125db68fb54967be2', '2014-12-08 17:38:43', '1421571335_18.jpg', NULL, NULL, NULL, NULL, 'YToyOntpOjA7czoxOToiU29mdHdhcmUgUHJvZ3JhbWluZyI7aToxO3M6MTY6IldlYiBkZXZlbG9wbWVudHMiO30=', 'Semi government', 'Kurunegala', NULL, '2015-01-06', 'This is my company description'),
-(19, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'abc123', 'abac123', '', 'abcqwe@mail.com', NULL, '9a457976f74ec063120c79b89eed87d8', '2015-01-18 07:32:20', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(20, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'abc1234', 'abc123', 'abc123', 'aasda@mail.com', NULL, '2388d563676d07c101ce19164620d96a', '2015-01-18 07:34:04', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(22, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'isanka2', 'isanka', '2', 'isanka@mm.com', 0, '03810a2293e9e65125db68fb54967be2', '2015-01-19 10:48:59', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL);
+(23, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'aloka', 'Aloka', 'Wimalarathne', 'alokawimalarathne@gmail.com', 776790057, '3714fdc4dd2a94263753108dec3d4960', '2015-01-20 17:47:15', '1421776530_23.jpg', '1421776530_23.docx', NULL, NULL, NULL, NULL, NULL, NULL, 'Female', '1992-12-27', NULL),
+(24, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'nimesh', 'Nimesh', 'Kaveendra', 'nimesh@gmail.com', 713457923, 'b786d5c5737fa6c3331eed0c71cf5f79', '2015-01-20 17:58:16', '1421777114_24.jpg', '1421777114_24.docx', NULL, NULL, NULL, NULL, NULL, NULL, 'Male', '1991-03-14', NULL),
+(25, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'kasuni', 'Kasuni', 'Liyanage', 'kasuni@gmail.com', 717777107, 'f26fe4b9737c5f00f306c67195b2cc29', '2015-01-20 18:06:30', '1421777479_25.jpg', '1421777479_25.docx', NULL, NULL, NULL, NULL, NULL, NULL, 'Female', '1992-04-07', NULL),
+(26, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'piyumi', 'Piyumi', 'Samaranayaka', 'piyumi@gmail.com', 712345698, 'dfa6fd8fa887ac377619297c74f0c71a', '2015-01-20 18:12:28', '1421777798_26.jpg', '1421777798_26.docx', NULL, NULL, NULL, NULL, NULL, NULL, 'Female', '1992-09-12', NULL),
+(27, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'ranil', 'Ranil', 'Abhayarathna', 'ranil@gmail.com', 713343234, '2f8a4431b0ba44c819be3ff2afcb9e06', '2015-01-20 18:17:47', '1421778029_27.jpg', '1421778029_27.docx', NULL, NULL, NULL, NULL, NULL, NULL, 'Male', '1991-04-01', NULL),
+(28, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'buddhika', 'Buddhika', 'Senevirathna', 'buddhika@gmail.com', 714578994, 'e030a5646be096dced64cfdd4dd9a28d', '2015-01-20 18:21:51', '1421778434_28.jpg', '1421778372_28.docx', NULL, NULL, NULL, NULL, NULL, NULL, 'Male', '1990-02-03', NULL),
+(29, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'bhagya', 'Bhagya', 'Wijesuriya', 'bhagya@gmail.com', 712378564, 'f423bc6d404fc5de4f25761676cd68d1', '2015-01-20 18:29:06', '1421778858_29.jpg', '1421778858_29.docx', NULL, NULL, NULL, NULL, NULL, NULL, 'Female', '1990-12-27', NULL),
+(30, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'shashini', 'Shashini', 'Rajaguru', 'shashini@gmail.com', 774587990, 'bba1fd98efd3487bbbdd4a62411e8ecb', '2015-01-20 18:36:22', '1421779275_30.jpg', '1421779275_30.docx', NULL, NULL, NULL, NULL, NULL, NULL, 'Female', '1992-03-04', NULL),
+(31, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'thilina', 'Thilina', 'Disanayaka', 'thilina@gmail.com', 0, '6ddcd8662a816b460b96144c618c4f4c', '2015-01-20 18:43:14', '1421779533_31.jpg', '1421779533_31.docx', NULL, NULL, NULL, NULL, NULL, NULL, 'Male', '1991-04-23', NULL),
+(32, NULL, 'a:1:{i:0;s:1:"3";}', 0, 'laksith', 'Laksith', 'Ekanayaka', 'laksith@gmail.com', 0, '3fa1c8d2d6d34430b9ec2d8c078769d3', '2015-01-20 18:48:34', '1421779835_32.jpg', '1421779835_32.docx', NULL, NULL, NULL, NULL, NULL, NULL, 'Male', '', NULL),
+(33, NULL, 'a:1:{i:0;s:1:"4";}', 0, '99x', '99X Technology', '', '99x@mail.com', 114721194, 'dcd2326b541ba90a61f860499b4c99af', '2015-01-20 18:54:16', '1421780230_33.jpg', NULL, NULL, NULL, NULL, 'YToxOntpOjA7czoxOToiU29mdHdhcmUgUHJvZ3JhbWluZyI7fQ==', 'Private', 'Colombo', NULL, '', 'Our success is primarily because of our focus, competent people, good teamwork, close collaboration, and transparent and friendly environment that empowers the culture of openness. This is all enabled by a vibrant and innovative young workforce which ensures that we deliver excellence and value on every front, when dealing with our numerous stakeholders, both locally and globally. We are dedicated to being a responsible corporate citizen and reach out to various communities through our work.'),
+(34, NULL, 'a:1:{i:0;s:1:"4";}', 0, 'ifs', 'IFS', '', 'ifs@mail.com', 0, '77df3f0ff097a87d972e0deeed1d5e83', '2015-01-20 18:58:47', '1421780410_34.jpg', NULL, NULL, NULL, NULL, 'YToyOntpOjA7czoxOToiU29mdHdhcmUgUHJvZ3JhbWluZyI7aToxO3M6MTY6IldlYiBkZXZlbG9wbWVudHMiO30=', 'Multi national', 'Colombo', NULL, '', 'IFS is a globally recognized leader in developing and delivering business software for enterprise resource planning (ERP), enterprise asset management (EAM) and enterprise service management (ESM). IFS brings customers in targeted sectors closer to their business, helps them be more agile and enables them to profit from change. IFS is a public company (XSTO: IFS) that was founded in 1983 and currently has over 2,600 employees. IFS supports more than 2,200 customers worldwide from local offices and through partners in more than 60 countries.'),
+(35, NULL, 'a:1:{i:0;s:1:"4";}', 0, 'cms', 'CMS', '', 'cms@mail.com', 118923456, '2392b563201578e3b420394a577be334', '2015-01-20 19:01:30', '1421780739_35.jpg', NULL, NULL, NULL, NULL, 'YTozOntpOjA7czoxOToiU29mdHdhcmUgUHJvZ3JhbWluZyI7aToxO3M6MTY6IldlYiBkZXZlbG9wbWVudHMiO2k6MjtzOjg6IkJ1c2luZXNzIjt9', 'Government', 'Colombo', NULL, '', 'Since 1997,\r\nCMS is one of Sri Lankaâ€™s best established information technology solutions providers with a sound financial base derived from its affiliated partners.\r\nWe serve a large number of corporate customers in Europe and the US.\r\nWe have sales offices in Belgium and France.'),
+(36, NULL, 'a:1:{i:0;s:1:"4";}', 0, 'slt', 'Sri Lanka Telecom', '', 'slt@slt.com', 112021000, '6e0d635290e2c91f7fd039c950f6d894', '2015-01-20 19:07:29', '1421781028_36.jpg', NULL, NULL, NULL, NULL, 'YToyOntpOjA7czoxMDoiTmV0d29ya2luZyI7aToxO3M6ODoiQnVzaW5lc3MiO30=', 'Government', 'Colombo', NULL, '', 'The SLT Group has a customer base of over six million including multinational corporations, large and small corporate, public sector, retail and domestic customers. SLT group provides full range of ICT facilities and services in the areas of voice, data, broadband, wholesale, enterprise, tv and mobile services'),
+(37, NULL, 'a:1:{i:0;s:1:"4";}', 0, 'wso2', 'WSO2', '', 'wso2@mail.com', 112145345, '620dff52412773f9dcd5031483b9971c', '2015-01-20 19:11:57', '1421781204_37.jpg', NULL, NULL, NULL, NULL, 'YToyOntpOjA7czoxOToiU29mdHdhcmUgUHJvZ3JhbWluZyI7aToxO3M6MTY6IldlYiBkZXZlbG9wbWVudHMiO30=', 'Private', 'Colombo', NULL, '', 'In 2005 CEO Dr. Sanjiva Weerawarana and CTO Paul Fremantle set out to revolutionize enterprise IT as we know it by introducing lean, powerful and flexible solutions that address 21st century enterprise challenges. Though continents apart they founded WSO2 as a global company that continues to innovate not only on the technology front, but business models and work culture too. WSO2 currently has offices in the US (Mountain View, CA and Bloomington, IN), UK (London), and Sri Lanka (Colombo).'),
+(38, NULL, 'a:1:{i:0;s:1:"4";}', 0, 'accsoft', 'AccSoft ERP', '', 'accsoft@mail.com', 777554225, '2280da5d1734d82cffbc456029746cc8', '2015-01-20 19:15:11', '1421781543_38.jpg', NULL, NULL, NULL, NULL, 'YTozOntpOjA7czoxOToiU29mdHdhcmUgUHJvZ3JhbWluZyI7aToxO3M6ODoiQnVzaW5lc3MiO2k6MjtzOjk6IkVkdWNhdGlvbiI7fQ==', 'Private', 'Colombo', NULL, '', 'AccSoft Solution (Pvt) Ltd is the leading Information and Communications Technology (ICT) Companies in Sri Lanka. From its humble beginnings way back in 1998 AccSoft has come a long way in the Sri Lanka ICT field. Today, AccSoft Solution (Pvt) Ltd is the premier enterprise solution providers for small and medium scale enterprises in Sri Lanka as well as a high profile training Organization for several state owned and private Educational Institutes'),
+(39, NULL, 'a:1:{i:0;s:1:"4";}', 0, 'dialog', 'Dialog Axiata', '', 'dialog@mail.com', 0, '91c7ec8d1c8bb75e853f70fee324a43b', '2015-01-20 19:24:31', '1421781979_39.jpg', NULL, NULL, NULL, NULL, 'YToyOntpOjA7czoxMDoiTmV0d29ya2luZyI7aToxO3M6ODoiQnVzaW5lc3MiO30=', 'Private', 'Colombo', NULL, '', 'Dialog Broadband Networks (DBN), DBA Dialog, is Sri Lanka''s 3rd largest fixed phone operator with an island wide digital wireless network. The company uses technologies such as CDMA 2000 1x, DECT, E-1 R2/PRI, CorDECT etc., to connect thousands of residential customers and businesses. Dialog Axiata PLC acquired Suntel in 2012 under and now it is operated by its subsidiary Dialog Broadband Networks (Pvt) Ltd.'),
+(40, NULL, 'a:1:{i:0;s:1:"4";}', 0, 'mit', 'Millennium IT', '', 'mit@mail.com', 0, 'a10a7583541fe1c77fc10c2b17934a79', '2015-01-20 19:28:04', '1421782292_40.gif', NULL, NULL, NULL, NULL, 'YTozOntpOjA7czoxOToiU29mdHdhcmUgUHJvZ3JhbWluZyI7aToxO3M6ODoiQnVzaW5lc3MiO2k6MjtzOjEwOiJBY2NvdW50aW5nIjt9', 'Private', 'Colombo', NULL, '', 'MillenniumIT is a leading innovative trading technology business. MillenniumITâ€™s systems are used by exchange businesses around the world including,London Stock Exchange, Borsa Italiana, Oslo BÃ¸rs,Turquoise, ICAP, the London Metal Exchange, Johannesburg Stock Exchange and a series of emerging market exchanges'),
+(41, NULL, 'a:1:{i:0;s:1:"2";}', 0, 'isuru', 'Isuru', 'Balasooriya', 'irb@ucsc.lk', 0, '3699c5bc277a4eeabe37ccf34ce491f2', '2015-01-20 19:33:51', NULL, NULL, NULL, 'YToxOntpOjA7czo5OiJNU2MgbGV2ZWwiO30=', NULL, 'YToxOntpOjA7czoxMDoiUHJvZ3JhbWluZyI7fQ==', NULL, NULL, 'Male', '', NULL),
+(42, NULL, 'a:1:{i:0;s:1:"2";}', 0, 'noel', 'Noel', 'Fernando', 'noel@ucsc.lk', 0, 'd5d8bdcfcc8bae5fd560e60b7f01cc0e', '2015-01-20 19:39:40', NULL, NULL, NULL, 'YToxOntpOjA7czo5OiJEb2N0b3JhdGUiO30=', NULL, 'YToxOntpOjA7czoxMDoiUHJvZ3JhbWluZyI7fQ==', NULL, NULL, 'Male', '', NULL),
+(43, NULL, 'a:1:{i:0;s:1:"2";}', 0, 'amitha', 'Amitha', 'Caldera', 'ac@ucsc.lk', 0, '0c4bd27c6a82cfb316aecc3014f0505b', '2015-01-20 19:41:27', NULL, NULL, NULL, 'YToxOntpOjA7czo5OiJEb2N0b3JhdGUiO30=', NULL, 'YToxOntpOjA7czoxMDoiUHJvZ3JhbWluZyI7fQ==', NULL, NULL, 'Male', '', NULL),
+(44, NULL, 'a:1:{i:0;s:1:"2";}', 0, 'lakshman', 'Lakshman', 'Jayarathna', 'lj@ucsc.lk', 0, '601d30a958e6604df910330239ce7fcf', '2015-01-20 19:43:46', NULL, NULL, NULL, 'YToxOntpOjA7czo5OiJEb2N0b3JhdGUiO30=', NULL, 'YToxOntpOjA7czoxMDoiUHJvZ3JhbWluZyI7fQ==', NULL, NULL, 'Male', '', NULL),
+(45, NULL, 'a:1:{i:0;s:1:"2";}', 0, 'udeni', 'Udeni', 'Jayasinghe', 'uj@ucsc.lk', 0, '66c199983f5eddfe02424b90dd65260f', '2015-01-20 19:46:16', NULL, NULL, NULL, 'YToxOntpOjA7czo5OiJCU2MgbGV2ZWwiO30=', NULL, 'YToxOntpOjA7czoxMDoiUHJvZ3JhbWluZyI7fQ==', NULL, NULL, 'Female', '', NULL),
+(46, NULL, 'a:1:{i:0;s:1:"2";}', 0, 'viraj', 'Viraj', 'Welgama', 'vw@ucsc.lk', 0, '70dfbca685f7424fa7ff90845d0fa564', '2015-01-20 19:48:29', NULL, NULL, NULL, 'YToxOntpOjA7czo5OiJEb2N0b3JhdGUiO30=', NULL, 'YToxOntpOjA7czoxMDoiUHJvZ3JhbWluZyI7fQ==', NULL, NULL, 'Male', '', NULL),
+(47, NULL, 'a:1:{i:0;s:1:"2";}', 0, 'kapila', 'Kapila', 'Dias', 'gkad@ucsc.lk', 0, '653235cf4e0bde7eefe0e6ac0e65a93b', '2015-01-20 19:50:35', NULL, NULL, NULL, 'YToxOntpOjA7czo5OiJEb2N0b3JhdGUiO30=', NULL, 'YToxOntpOjA7czoxMDoiUHJvZ3JhbWluZyI7fQ==', NULL, NULL, 'Male', '', NULL),
+(48, NULL, 'a:1:{i:0;s:1:"2";}', 0, 'Hewagamage', 'KP', 'Hewagamage', 'kph@ucsc.lk', 0, '9dd4e5d1a10b7ddf9e4f9cf4cc7eb5eb', '2015-01-20 19:53:39', NULL, NULL, NULL, 'YToxOntpOjA7czoxMzoiUHJvZmVzc29yc2hpcCI7fQ==', NULL, 'YToxOntpOjA7czoxMDoiUHJvZ3JhbWluZyI7fQ==', NULL, NULL, '', '', NULL),
+(49, NULL, 'a:1:{i:0;s:1:"2";}', 0, 'ruwan', 'Ruwan', 'Weerasinghe', 'rw@ucsc.lk', 0, '2ef6a0c4dca503f47cfc10fd74953abc', '2015-01-20 19:55:35', NULL, NULL, NULL, 'YToxOntpOjA7czo5OiJEb2N0b3JhdGUiO30=', NULL, 'YToyOntpOjA7czoxMDoiUHJvZ3JhbWluZyI7aToxO3M6MTY6IldlYiBkZXZlbG9wbWVudHMiO30=', NULL, NULL, 'Male', '', NULL),
+(50, NULL, 'a:1:{i:0;s:1:"2";}', 0, 'samantha', 'Samatha', 'Mathara Arachchi', 'sma@ucsc.lk', 0, 'f01e0d7992a3b7748538d02291b0beae', '2015-01-20 19:58:00', NULL, NULL, NULL, 'YToxOntpOjA7czo5OiJEb2N0b3JhdGUiO30=', NULL, 'YToxOntpOjA7czoxNjoiV2ViIGRldmVsb3BtZW50cyI7fQ==', NULL, NULL, 'Male', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -460,22 +356,31 @@ INSERT INTO `login_users` (`user_id`, `registered_number`, `user_level`, `restri
 --
 
 CREATE TABLE IF NOT EXISTS `projects` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `uid` int(11) NOT NULL,
   `pname` varchar(100) NOT NULL,
   `pdescription` longtext,
   `ptechnologies` varchar(100) DEFAULT NULL,
   `pclient` varchar(100) DEFAULT NULL,
   `pgroupmode` int(11) NOT NULL,
-  `prole` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `prole` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `projects`
 --
 
 INSERT INTO `projects` (`id`, `uid`, `pname`, `pdescription`, `ptechnologies`, `pclient`, `pgroupmode`, `prole`) VALUES
-(1, 4, 'First Project', 'This is description', 'ajbask dkjadklasd', 'asdadasdasd', 1, 'admin');
+(2, 23, 'Pickme | UCSC Job Seekers'' Portal', 'This project named PickMe | UCSC Job-seekers Portal is a web based system for the University of Colombo School Of Computing. This projectâ€™s basic scope is act as a web platform to find job easily to UCSC fresh graduates.\r\nThere are so many web based systems which provide job opportunities. But there is no such a system which is limited for UCSC students. So we discussed with our client Professional Development Center (PDC) of UCSC and decided to develop our web based system as specify for UCSC students.', 'OOB ,PHP, HTML, Javascript, Jquery, CSS,', 'Professional Development Center, university of colombo School of Computing', 1, 'Leader'),
+(3, 24, 'Pickme | UCSC Job Seekers'' Portal', 'This project named PickMe | UCSC Job-seekers Portal is a web based system for the University of Colombo School Of Computing. This projectâ€™s basic scope is act as a web platform to find job easily to UCSC fresh graduates.\r\nThere are so many web based systems which provide job opportunities. But there is no such a system which is limited for UCSC students. So we discussed with our client Professional Development Center (PDC) of UCSC and decided to develop our web based system as specify for UCSC students.', 'OOB, PHP, CSS, HTML, Javascript, Jquery', 'Professional Development Center, university of colombo School of Computing', 1, 'Deputy Lea'),
+(4, 25, 'Pickme | UCSC Job Seekers'' Portal', 'This project named PickMe | UCSC Job-seekers Portal is a web based system for the University of Colombo School Of Computing. This projectâ€™s basic scope is act as a web platform to find job easily to UCSC fresh graduates.\r\nThere are so many web based systems which provide job opportunities. But there is no such a system which is limited for UCSC students. So we discussed with our client Professional Development Center (PDC) of UCSC and decided to develop our web based system as specify for UCSC students.', 'OOB, PHP, HTML, CSS, Javascript, Jquery', 'Professional Development Center, university of colombo School of Computing', 1, 'Developer'),
+(5, 26, 'Pickme | UCSC Job Seekers'' Portal', 'This project named PickMe | UCSC Job-seekers Portal is a web based system for the University of Colombo School Of Computing. This projectâ€™s basic scope is act as a web platform to find job easily to UCSC fresh graduates.\r\nThere are so many web based systems which provide job opportunities. But there is no such a system which is limited for UCSC students. So we discussed with our client Professional Development Center (PDC) of UCSC and decided to develop our web based system as specify for UCSC students.', 'OOB, PHP, HTML, CSS, JavaScript, Jquery', 'Professional Development Center, university of colombo School of Computing', 1, 'QA'),
+(6, 27, 'Pickme | UCSC Job Seekers'' Portal', 'This project named PickMe | UCSC Job-seekers Portal is a web based system for the University of Colombo School Of Computing. This projectâ€™s basic scope is act as a web platform to find job easily to UCSC fresh graduates.\r\nThere are so many web based systems which provide job opportunities. But there is no such a system which is limited for UCSC students. So we discussed with our client Professional Development Center (PDC) of UCSC and decided to develop our web based system as specify for UCSC students.', 'OOB, PHP, HTML, CSS, Javascript, Jquery', 'Professional Development Center, university of colombo School of Computing', 1, 'Developer'),
+(7, 28, 'Pickme | UCSC Job Seekers'' Portal', 'This project named PickMe | UCSC Job-seekers Portal is a web based system for the University of Colombo School Of Computing. This projectâ€™s basic scope is act as a web platform to find job easily to UCSC fresh graduates.\r\nThere are so many web based systems which provide job opportunities. But there is no such a system which is limited for UCSC students. So we discussed with our client Professional Development Center (PDC) of UCSC and decided to develop our web based system as specify for UCSC students.', 'OOB ,PHP, HTML, Javascript, Jquery, CSS,', 'Professional Development Center, university of colombo School of Computing', 1, 'Leader'),
+(8, 29, 'VaccinoAssist', '', '', 'Nawaloka Hospital', 1, 'Developer'),
+(9, 30, '', '', '', '', 2, ''),
+(10, 32, '', '', '', '', 2, '');
 
 -- --------------------------------------------------------
 
@@ -484,10 +389,11 @@ INSERT INTO `projects` (`id`, `uid`, `pname`, `pdescription`, `ptechnologies`, `
 --
 
 CREATE TABLE IF NOT EXISTS `skills_list` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `cat` varchar(50) NOT NULL,
-  `name` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
 
 --
 -- Dumping data for table `skills_list`
@@ -542,11 +448,12 @@ INSERT INTO `skills_list` (`id`, `cat`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `skills_user` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `uid` int(11) NOT NULL,
   `cat` varchar(50) NOT NULL,
-  `skills` varchar(500) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  `skills` varchar(500) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=61 ;
 
 --
 -- Dumping data for table `skills_user`
@@ -562,154 +469,58 @@ INSERT INTO `skills_user` (`id`, `uid`, `cat`, `skills`) VALUES
 (7, 22, 'networking', 'Wireless, Routing'),
 (8, 22, 'webapplications', 'HTML4/HTML5'),
 (9, 22, 'business', 'Business process MGT, Information systems'),
-(10, 22, 'professional', 'CIMA, CIM, Charted');
+(10, 22, 'professional', 'CIMA, CIM, Charted'),
+(11, 23, 'softwareprograming', 'PHP, Python'),
+(12, 23, 'networking', 'Routing, Switching, TCP/IP, Unix/Linux servers, Windows servers'),
+(13, 23, 'webapplications', 'PHP, Python, SQL/MySql, Javascript, HTML4/HTML5, Joomla, Drupal'),
+(14, 23, 'business', 'Business process MGT, Information systems, Marketing, Project MGT, Requirements analysi'),
+(15, 23, 'professional', ''),
+(16, 24, 'softwareprograming', 'PHP, Java, Python, C/C++'),
+(17, 24, 'networking', ''),
+(18, 24, 'webapplications', 'PHP, Python, SQL/MySql, Javascript, HTML4/HTML5, Joomla'),
+(19, 24, 'business', ''),
+(20, 24, 'professional', 'Charted, Java certification'),
+(21, 25, 'softwareprograming', 'PHP, Python'),
+(22, 25, 'networking', 'Routing, Switching, TCP/IP'),
+(23, 25, 'webapplications', 'SQL/MySql, Javascript, HTML4/HTML5, Joomla'),
+(24, 25, 'business', 'Business process MGT, Information systems, Marketing'),
+(25, 25, 'professional', ''),
+(26, 26, 'softwareprograming', 'PHP'),
+(27, 26, 'networking', 'Routing'),
+(28, 26, 'webapplications', 'PHP, Python'),
+(29, 26, 'business', 'Information systems, Marketing'),
+(30, 26, 'professional', 'Charted'),
+(31, 27, 'softwareprograming', 'Java'),
+(32, 27, 'networking', ''),
+(33, 27, 'webapplications', 'HTML4/HTML5, Joomla'),
+(34, 27, 'business', ''),
+(35, 27, 'professional', ''),
+(36, 28, 'softwareprograming', 'Java'),
+(37, 28, 'networking', ''),
+(38, 28, 'webapplications', 'Joomla'),
+(39, 28, 'business', ''),
+(40, 28, 'professional', ''),
+(41, 29, 'softwareprograming', ''),
+(42, 29, 'networking', 'Routing'),
+(43, 29, 'webapplications', 'Joomla'),
+(44, 29, 'business', 'Information systems'),
+(45, 29, 'professional', ''),
+(46, 30, 'softwareprograming', 'PHP'),
+(47, 30, 'networking', ''),
+(48, 30, 'webapplications', 'Python'),
+(49, 30, 'business', 'Information systems'),
+(50, 30, 'professional', ''),
+(51, 31, 'softwareprograming', 'Python'),
+(52, 31, 'networking', 'Routing'),
+(53, 31, 'webapplications', 'Python'),
+(54, 31, 'business', 'Marketing'),
+(55, 31, 'professional', 'Charted'),
+(56, 32, 'softwareprograming', 'C/C++'),
+(57, 32, 'networking', ''),
+(58, 32, 'webapplications', 'Ruby, Wordpress'),
+(59, 32, 'business', ''),
+(60, 32, 'professional', '');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `articles`
---
-ALTER TABLE `articles`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `jobs`
---
-ALTER TABLE `jobs`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `login_confirm`
---
-ALTER TABLE `login_confirm`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `login_integration`
---
-ALTER TABLE `login_integration`
- ADD PRIMARY KEY (`user_id`);
-
---
--- Indexes for table `login_levels`
---
-ALTER TABLE `login_levels`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `level_level` (`level_level`);
-
---
--- Indexes for table `login_profiles`
---
-ALTER TABLE `login_profiles`
- ADD PRIMARY KEY (`p_id`);
-
---
--- Indexes for table `login_profile_fields`
---
-ALTER TABLE `login_profile_fields`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `login_settings`
---
-ALTER TABLE `login_settings`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `id` (`id`), ADD UNIQUE KEY `option_name` (`option_name`);
-
---
--- Indexes for table `login_timestamps`
---
-ALTER TABLE `login_timestamps`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `login_users`
---
-ALTER TABLE `login_users`
- ADD PRIMARY KEY (`user_id`), ADD UNIQUE KEY `user_id` (`user_id`), ADD UNIQUE KEY `username` (`username`);
-
---
--- Indexes for table `projects`
---
-ALTER TABLE `projects`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `skills_list`
---
-ALTER TABLE `skills_list`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `skills_user`
---
-ALTER TABLE `skills_user`
- ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `articles`
---
-ALTER TABLE `articles`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `jobs`
---
-ALTER TABLE `jobs`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `login_confirm`
---
-ALTER TABLE `login_confirm`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
---
--- AUTO_INCREMENT for table `login_levels`
---
-ALTER TABLE `login_levels`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `login_profiles`
---
-ALTER TABLE `login_profiles`
-MODIFY `p_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `login_profile_fields`
---
-ALTER TABLE `login_profile_fields`
-MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `login_settings`
---
-ALTER TABLE `login_settings`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
---
--- AUTO_INCREMENT for table `login_timestamps`
---
-ALTER TABLE `login_timestamps`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=150;
---
--- AUTO_INCREMENT for table `login_users`
---
-ALTER TABLE `login_users`
-MODIFY `user_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
---
--- AUTO_INCREMENT for table `projects`
---
-ALTER TABLE `projects`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `skills_list`
---
-ALTER TABLE `skills_list`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
---
--- AUTO_INCREMENT for table `skills_user`
---
-ALTER TABLE `skills_user`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

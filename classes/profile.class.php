@@ -7,6 +7,7 @@ class Profile extends Generic {
 
 	private $settings = array();
 	private $error;
+        private $pgroupmode;
 
 	public $guest;
 
@@ -28,7 +29,7 @@ class Profile extends Generic {
 
 		if (!$this->guest && !empty($_POST)) :
 			$this->retrieveFields();
-
+//echo '<pre>';print_r($_POST);echo '</pre>';
 			foreach ($_POST as $field => $value)
 				$this->settings[$field] = parent::secure($value);
                                 
@@ -381,7 +382,7 @@ class Profile extends Generic {
             $params = array(':uid' => $this->settings['user_id']);
             $sql = "SELECT * FROM `projects` WHERE `uid` = :uid;";
             $stmt2 = parent::query($sql, $params);
-
+            if(empty($this->settings['pgroupmode'])){$this->settings['pgroupmode']=1;}
             $params3 = array(
                 ':uid' => $this->user_id,
                 ':pname' => $this->settings['pname'],

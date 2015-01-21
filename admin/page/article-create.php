@@ -30,10 +30,10 @@
 				<label class="control-label" for="published"><?php _e('Publish'); ?></label>
                                 <div class="controls">
 				<label class="checkbox-inline">
-                                    <input type="checkbox" id="publishedyes" value="1" name='published'> Yes
+                                    <input type="radio" id="publishedyes" value="1" name='published'> Yes
                                   </label>
                                   <label class="checkbox-inline">
-                                    <input type="checkbox" id="publishedno" value="0" name='published'> No
+                                    <input type="radio" id="publishedno" value="0" name='published'> No
                                 </label>
                                 </div>
 			</div>

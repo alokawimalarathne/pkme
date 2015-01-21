@@ -389,7 +389,7 @@ include_once('admin/classes/functions.php');
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active tabpane" id="home"><?php echo get_news(); ?></div>
+                            <div role="tabpanel" class="tab-pane active tabpane" id="home"><div class="row "><div class="newspanel"><?php echo get_news(); ?></div></div></div>
                             <div role="tabpanel" class="tab-pane tabpane" id="profile"><?php echo get_profiles(); ?></div>
                             <div role="tabpanel" class="tab-pane tabpane" id="messages"><?php echo get_jobs(); ?></div>
 
